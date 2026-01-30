@@ -6,7 +6,7 @@
 [node name="Level_1" type="Node2D" unique_id=1905444224]
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1424375688]
-position = Vector2(1026, 121)
+position = Vector2(1007, 536)
 texture = ExtResource("1_vk57k")
 
 [node name="Second Sprit_ hourra!" type="Sprite2D" parent="." unique_id=903538589]
@@ -14,5 +14,5 @@ position = Vector2(168, 498)
 texture = ExtResource("1_vk57k")
 
 [node name="Unnamed(56)" type="Sprite2D" parent="." unique_id=123233797]
-position = Vector2(391, -128)
+position = Vector2(424, -151)
 texture = ExtResource("2_8ffim")
