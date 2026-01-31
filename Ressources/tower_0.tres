@@ -8,6 +8,7 @@
 [resource]
 script = ExtResource("1_luhry")
 name = "Tour 1"
+description = "Description 1"
 scene = ExtResource("3_6kymq")
 preview_scene = ExtResource("2_1esev")
 icon = ExtResource("1_lwqoe")

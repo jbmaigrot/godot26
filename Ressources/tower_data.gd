@@ -2,6 +2,7 @@ extends Resource
 class_name TowerData
 @export var index: int = 0
 @export var name: String = "Tour"
+@export var description: String = "Description"
 @export var cost_gold: int = 100
 @export var cost_wood: int = 100
 @export var cost_stone: int = 100
