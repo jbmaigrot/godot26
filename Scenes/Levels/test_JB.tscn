@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://cqthi2xirxhww"]
+
+[ext_resource type="PackedScene" uid="uid://b0cc5a8tn6ny2" path="res://Scenes/Objects/enemy.tscn" id="1_ste6u"]
+[ext_resource type="PackedScene" uid="uid://bu78r3thxof5y" path="res://Scenes/Objects/tower.tscn" id="2_x2wu1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uy2gt"]
+size = Vector2(69, 68)
+
+[node name="TestJB" type="Node2D" unique_id=376779238]
+
+[node name="Enemy" parent="." unique_id=352245600 instance=ExtResource("1_ste6u")]
+position = Vector2(137, 246)
+
+[node name="Tower" parent="." unique_id=258828074 instance=ExtResource("2_x2wu1")]
+position = Vector2(566, 245)
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1029307303]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=780154410]
+position = Vector2(231, 91)
+shape = SubResource("RectangleShape2D_uy2gt")

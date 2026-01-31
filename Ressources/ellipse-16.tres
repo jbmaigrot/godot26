@@ -1,0 +1,5 @@
+[gd_resource type="ConvexPolygonShape2D" format=3 uid="uid://bt8ks1mvf5hi3"]
+
+[resource]
+resource_name = "ellipse-16"
+points = PackedVector2Array(1, 0, 0.924, 0.382, 0.707, 0.707, 0.382, 0.924, 0, 1, -0.382, 0.924, -0.707, 0.707, -0.924, 0.382, -1, 0, -0.924, -0.382, -0.707, -0.707, -0.382, -0.924, 0, -1, 0.382, -0.924, 0.707, -0.707, 0.924, -0.382)

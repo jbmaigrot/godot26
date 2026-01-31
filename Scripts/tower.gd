@@ -13,6 +13,8 @@ func _process(delta):
 
 func _on_area_entered(area):
 	print("An area overlapped me!")
+	print(area.get_class())
 
-func _on_body_entered(area):
+func _on_body_entered(body):
 	print("A body overlapped me!")
+	print(body.get_class())
