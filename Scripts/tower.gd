@@ -36,7 +36,7 @@ func _on_body_exited(body):
 
 func shoot():
 		var projectile :Projectile = projectile_scene.instantiate()
-		owner.add_child(projectile)
+		add_child(projectile)
 		
 		# projectile spawns on tower and targets incoming enemy (body)
 		projectile.position = position

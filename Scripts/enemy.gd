@@ -1,25 +1,36 @@
 extends CharacterBody2D
 class_name Enemy
 
-@export var speed = 50
+@export var SPEED = 50.0
+@export var target: Node2D = null # La base à atteindre
 
-# Called when the node enters the scene tree for the first time.
+@onready var nav_agent: NavigationAgent2D = $NavigationAgent2D
+
 func _ready():
-	pass # Replace with function body.
+	# On attend un peu que la map de navigation soit prête
+	call_deferred("setup_navigation")
 
+func setup_navigation():
+	# Attendre la première frame physique pour s'assurer que le NavServer est synchronisé
+	await get_tree().physics_frame
+	if target:
+		nav_agent.target_position = target.global_position
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	#(temp/debug) control the enemy
-	var moveDirection = Vector2()
-	if (Input.is_key_pressed(KEY_LEFT)):
-		moveDirection.x -= 1
-	if (Input.is_key_pressed(KEY_RIGHT)):
-		moveDirection.x += 1
-	if (Input.is_key_pressed(KEY_UP)):
-		moveDirection.y -= 1
-	if (Input.is_key_pressed(KEY_DOWN)):
-		moveDirection.y += 1
+func _physics_process(_delta):
+	if nav_agent.is_navigation_finished():
+		return
+
+	# Calcul de la direction vers le prochain point du chemin
+	var next_path_position: Vector2 = nav_agent.get_next_path_position()
+	var current_agent_position: Vector2 = global_position
 	
-	velocity = moveDirection * speed
+	# Calcul du vecteur de vélocité
+	var new_velocity: Vector2 = (next_path_position - current_agent_position).normalized() * SPEED
+	
+	# Application du mouvement
+	velocity = new_velocity
 	move_and_slide()
+
+# Optionnel : Mettre à jour la cible si elle bouge (pas nécessaire pour une base fixe)
+func update_target_position(new_target: Vector2):
+	nav_agent.target_position = new_target

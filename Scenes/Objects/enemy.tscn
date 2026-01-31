@@ -5,13 +5,19 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1f0kj"]
 custom_solver_bias = 1.0
-size = Vector2(64, 64)
+size = Vector2(29, 35)
 
 [node name="Enemy" type="CharacterBody2D" unique_id=352245600]
 script = ExtResource("2_1f0kj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=991233269]
+position = Vector2(-0.5, -3.5)
 shape = SubResource("RectangleShape2D_1f0kj")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1173252088]
 texture = ExtResource("2_i2hje")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=1583255730]
+path_postprocessing = 1
+avoidance_enabled = true
+debug_enabled = true

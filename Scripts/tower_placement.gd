@@ -18,14 +18,14 @@ extends Node2D
 
 var occupied_cells: Dictionary = {}
 var buildable_data_name: String = "buildable"
-var is_ghost_active: bool = true
+var is_ghost_active: bool = false
 var off_screen_pos: Vector2 = Vector2(-10000, -10000) # Position de sécurité
 
 var main:Main = null
 
 func _ready() -> void:
 	main = get_tree().current_scene as Main
-	
+	disable_ghost()
 
 func _process(_delta):
 	
@@ -45,7 +45,7 @@ func _process(_delta):
 	if can_build_at(tile_pos):
 		preview_sprite.modulate = color_valid
 		# Utilisation de Input.is_mouse_button_pressed pour le clic gauche
-		if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
+		if Input.is_action_just_pressed("left_click"):
 			# On vérifie encore si on peut construire pour éviter les doublons
 			place_tower(tile_pos)
 	else:

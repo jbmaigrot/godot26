@@ -2,12 +2,16 @@
 
 [ext_resource type="TileSet" uid="uid://daa7eu2x4my4d" path="res://Ressources/tileset_temp.tres" id="1_dmrp3"]
 [ext_resource type="Script" uid="uid://ighbsj5gm3jn" path="res://Scripts/main.gd" id="1_k7731"]
+[ext_resource type="Script" uid="uid://c11fjqxgjmpdx" path="res://Scripts/mob.gd" id="2_dhrhm"]
 [ext_resource type="Script" uid="uid://cju5bo7mf4hdc" path="res://Scripts/tile_map_layer_base.gd" id="2_dmrp3"]
+[ext_resource type="Texture2D" uid="uid://by1pllewt8jcu" path="res://Assets/Sprites/icon.svg" id="2_juhik"]
 [ext_resource type="Script" uid="uid://2ttknnv561fy" path="res://Scripts/tower_placement.gd" id="3_o5qjw"]
 [ext_resource type="PackedScene" uid="uid://bu78r3thxof5y" path="res://Scenes/Objects/tower.tscn" id="4_28xcq"]
 [ext_resource type="PackedScene" uid="uid://d4dfxvfucaywr" path="res://Scenes/UI/Test_UI_jeu.tscn" id="5_f04l1"]
-[ext_resource type="PackedScene" uid="uid://b0cc5a8tn6ny2" path="res://Scenes/Objects/enemy.tscn" id="8_28xcq"]
 [ext_resource type="Texture2D" uid="uid://ci066wviaqgy8" path="res://Assets/Sprites/tower.png" id="8_k7731"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dmrp3"]
+radius = 1.0060302
 
 [node name="TestMala" type="Node2D" unique_id=100231516]
 script = ExtResource("1_k7731")
@@ -37,8 +41,42 @@ tile_set = ExtResource("1_dmrp3")
 position = Vector2(-72, 23)
 zoom = Vector2(1.705, 1.705)
 
+[node name="Mob" type="CharacterBody2D" parent="." unique_id=990479173 node_paths=PackedStringArray("target")]
+position = Vector2(-81, 176.89001)
+script = ExtResource("2_dhrhm")
+SPEED = 30.0
+target = NodePath("../Node2D- base a atteindre")
+
+[node name="Sprite2D" type="Sprite2D" parent="Mob" unique_id=2030161893]
+scale = Vector2(0.07812497, 0.07031266)
+texture = ExtResource("2_juhik")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Mob" unique_id=1821596487]
+shape = SubResource("CircleShape2D_dmrp3")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="Mob" unique_id=1072712883]
+path_desired_distance = 5.0
+path_postprocessing = 1
+debug_enabled = true
+
 [node name="Node2D- base a atteindre" type="Node2D" parent="." unique_id=252246131]
 position = Vector2(-78, 29)
+
+[node name="Mob2" type="CharacterBody2D" parent="." unique_id=1961085159 node_paths=PackedStringArray("target")]
+position = Vector2(209.505, 26)
+script = ExtResource("2_dhrhm")
+SPEED = 30.0
+target = NodePath("../Node2D- base a atteindre")
+
+[node name="Sprite2D" type="Sprite2D" parent="Mob2" unique_id=1332793313]
+scale = Vector2(0.07812497, 0.07031266)
+texture = ExtResource("2_juhik")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Mob2" unique_id=497293316]
+shape = SubResource("CircleShape2D_dmrp3")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="Mob2" unique_id=470271498]
+avoidance_enabled = true
 
 [node name="preview tower" type="Sprite2D" parent="." unique_id=1435833403]
 position = Vector2(-291, 140)
@@ -50,10 +88,3 @@ offset_left = 238.0
 offset_top = 195.0
 offset_right = 238.0
 offset_bottom = 195.0
-
-[node name="MobSpawner" type="Node" parent="." unique_id=703194275]
-
-[node name="Enemy" parent="." unique_id=352245600 node_paths=PackedStringArray("target") instance=ExtResource("8_28xcq")]
-position = Vector2(-360, 39)
-scale = Vector2(0.3, 0.3)
-target = NodePath("../Node2D- base a atteindre")
