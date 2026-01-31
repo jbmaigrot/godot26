@@ -1,10 +1,11 @@
 [gd_scene format=3 uid="uid://b0cc5a8tn6ny2"]
 
-[ext_resource type="Texture2D" uid="uid://by1pllewt8jcu" path="res://Assets/Sprites/icon.svg" id="1_hghv2"]
 [ext_resource type="Script" uid="uid://ceh6n3u1xd5n5" path="res://Scripts/enemy.gd" id="2_1f0kj"]
+[ext_resource type="Texture2D" uid="uid://evgybgwect5v" path="res://Assets/Sprites/devil.png" id="2_i2hje"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1f0kj"]
-size = Vector2(128, 128)
+custom_solver_bias = 1.0
+size = Vector2(64, 64)
 
 [node name="Enemy" type="CharacterBody2D" unique_id=352245600]
 script = ExtResource("2_1f0kj")
@@ -13,5 +14,4 @@ script = ExtResource("2_1f0kj")
 shape = SubResource("RectangleShape2D_1f0kj")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1173252088]
-modulate = Color(1, 0, 0, 1)
-texture = ExtResource("1_hghv2")
+texture = ExtResource("2_i2hje")
