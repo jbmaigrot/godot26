@@ -1,5 +1,9 @@
 [gd_scene format=3 uid="uid://d4dfxvfucaywr"]
 
+[ext_resource type="Script" uid="uid://bfbh0koo635lb" path="res://Scripts/main_ui.gd" id="1_153dk"]
+[ext_resource type="Texture2D" uid="uid://ci066wviaqgy8" path="res://Assets/Sprites/tower.png" id="1_w4llb"]
+[ext_resource type="Script" uid="uid://dy2ulufn5t4h1" path="res://Scripts/Add_tower_button.gd" id="2_t71j2"]
+
 [node name="UI" type="Control" unique_id=1048431771]
 layout_mode = 3
 anchors_preset = 3
@@ -7,21 +11,54 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -360.0
-offset_top = -275.0
-offset_right = -1.0
-offset_bottom = -3.0
+grow_horizontal = 0
+grow_vertical = 0
+script = ExtResource("1_153dk")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=2086873229]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -55.08
+offset_top = -32.205
+offset_right = -1.0800018
+offset_bottom = -1.2050018
 grow_horizontal = 0
 grow_vertical = 0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1258392377]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer" unique_id=959433865]
+layout_mode = 2
 
-[node name="Label" type="Label" parent="VBoxContainer" unique_id=840320054]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer" unique_id=1258392377]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer" unique_id=840320054]
 layout_mode = 2
 text = "towers"
 
-[node name="TextureButton" type="TextureButton" parent="VBoxContainer" unique_id=1959688014]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer" unique_id=1266301401]
 layout_mode = 2
+
+[node name="TextureButton" type="TextureButton" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer" unique_id=1277037449]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+toggle_mode = true
+action_mode = 0
+texture_normal = ExtResource("1_w4llb")
+ignore_texture_size = true
+stretch_mode = 0
+script = ExtResource("2_t71j2")
+
+[node name="TextureButton2" type="TextureButton" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer" unique_id=319645839]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+toggle_mode = true
+action_mode = 0
+texture_normal = ExtResource("1_w4llb")
+ignore_texture_size = true
+stretch_mode = 0
+
+[connection signal="add_tower_request" from="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/TextureButton" to="." method="_on_texture_button_add_tower_request"]
