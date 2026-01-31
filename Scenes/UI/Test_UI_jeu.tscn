@@ -1,9 +1,22 @@
 [gd_scene format=3 uid="uid://d4dfxvfucaywr"]
 
 [ext_resource type="Script" uid="uid://bfbh0koo635lb" path="res://Scripts/main_ui.gd" id="1_153dk"]
+[ext_resource type="Texture2D" uid="uid://ci066wviaqgy8" path="res://Assets/Sprites/tower.png" id="1_w4llb"]
+[ext_resource type="Texture2D" uid="uid://brp5kyaikae6n" path="res://Assets/Sprites/UI_elmement_0.png" id="2_aimx2"]
 [ext_resource type="Script" uid="uid://dy2ulufn5t4h1" path="res://Scripts/Add_tower_button.gd" id="2_t71j2"]
 [ext_resource type="Resource" uid="uid://ckq0dhq0vet7i" path="res://Ressources/tower_0.tres" id="3_7tcah"]
+[ext_resource type="FontFile" uid="uid://c5gujw5rg7fo7" path="res://Ressources/VCR_OSD_MONO_1.001.ttf" id="3_khhww"]
 [ext_resource type="Resource" uid="uid://q6d6at027vno" path="res://Ressources/tower_1.tres" id="4_oqd1j"]
+[ext_resource type="Texture2D" uid="uid://b7iakc4y4c5lc" path="res://Assets/Sprites/tower_1_icon.png" id="8_k63uj"]
+[ext_resource type="Texture2D" uid="uid://dmuywxv2n6vku" path="res://Assets/Sprites/Coin_icon.png" id="9_6goqt"]
+[ext_resource type="Texture2D" uid="uid://dm8w628d6j673" path="res://Assets/Sprites/Wood_icon.png" id="10_u5k0s"]
+[ext_resource type="Texture2D" uid="uid://b871kh3akkvd" path="res://Assets/Sprites/stone_icon.png" id="11_vebho"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_pb7x7"]
+paragraph_spacing = 1.0
+font = ExtResource("3_khhww")
+font_size = 9
+shadow_size = 0
 
 [node name="UI" type="Control" unique_id=1048431771]
 layout_mode = 3
@@ -12,48 +25,72 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -69.0
+offset_top = -52.0
+offset_right = -69.0
+offset_bottom = -52.0
 grow_horizontal = 0
 grow_vertical = 0
 script = ExtResource("1_153dk")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=2086873229]
+layout_mode = 0
+offset_right = 6.0
+offset_bottom = 6.0
+
+[node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=275134525]
 layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -55.08
-offset_top = -32.205
-offset_right = -1.0800018
-offset_bottom = -1.2050018
-grow_horizontal = 0
-grow_vertical = 0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -41.0
+offset_top = -25.0
+offset_right = 64.0
+offset_bottom = 49.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_aimx2")
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
 
-[node name="PanelContainer" type="PanelContainer" parent="MarginContainer" unique_id=959433865]
+[node name="VBoxContainer" type="VBoxContainer" parent="NinePatchRect" unique_id=1258392377]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -42.0
+offset_top = -33.5
+offset_right = 42.0
+offset_bottom = 33.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="NinePatchRect/VBoxContainer" unique_id=840320054]
+layout_mode = 2
+text = "Constructions"
+label_settings = SubResource("LabelSettings_pb7x7")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="NinePatchRect/VBoxContainer" unique_id=1266301401]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer" unique_id=1258392377]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer" unique_id=840320054]
-layout_mode = 2
-text = "towers"
-
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer" unique_id=1266301401]
-layout_mode = 2
-
-[node name="TextureButton" type="TextureButton" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer" unique_id=1277037449]
-custom_minimum_size = Vector2(40, 40)
+[node name="TextureButton" type="TextureButton" parent="NinePatchRect/VBoxContainer/HBoxContainer" unique_id=1277037449]
+custom_minimum_size = Vector2(32, 64)
 layout_mode = 2
 toggle_mode = true
 action_mode = 0
+texture_normal = ExtResource("1_w4llb")
 ignore_texture_size = true
 stretch_mode = 0
 script = ExtResource("2_t71j2")
 tower_info = ExtResource("3_7tcah")
 
-[node name="TextureButton2" type="TextureButton" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer" unique_id=1609143517]
+[node name="TextureButton2" type="TextureButton" parent="NinePatchRect/VBoxContainer/HBoxContainer" unique_id=1609143517]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
 toggle_mode = true
@@ -63,5 +100,61 @@ stretch_mode = 0
 script = ExtResource("2_t71j2")
 tower_info = ExtResource("4_oqd1j")
 
-[connection signal="add_tower_request" from="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/TextureButton" to="." method="_on_texture_button_add_tower_request"]
-[connection signal="add_tower_request" from="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/TextureButton2" to="." method="_on_texture_button_add_tower_request"]
+[node name="Button" type="Button" parent="NinePatchRect/VBoxContainer/HBoxContainer" unique_id=855956770]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="NinePatchRect/VBoxContainer/HBoxContainer/Button" unique_id=1542285951]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="NinePatchRect/VBoxContainer/HBoxContainer/Button/VBoxContainer" unique_id=2044021301]
+layout_mode = 2
+text = "Structure_name"
+
+[node name="TextureRect" type="TextureRect" parent="NinePatchRect/VBoxContainer/HBoxContainer/Button/VBoxContainer" unique_id=103647756]
+layout_mode = 2
+texture = ExtResource("8_k63uj")
+
+[node name="PanelContainer" type="PanelContainer" parent="NinePatchRect/VBoxContainer/HBoxContainer/Button/VBoxContainer" unique_id=2078581238]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="NinePatchRect/VBoxContainer/HBoxContainer/Button/VBoxContainer/PanelContainer" unique_id=353262704]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="NinePatchRect/VBoxContainer/HBoxContainer/Button/VBoxContainer/PanelContainer/VBoxContainer" unique_id=306531978]
+layout_mode = 2
+
+[node name="TextureRect2" type="TextureRect" parent="NinePatchRect/VBoxContainer/HBoxContainer/Button/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer" unique_id=1716045789]
+layout_mode = 2
+texture = ExtResource("9_6goqt")
+
+[node name="Label2" type="Label" parent="NinePatchRect/VBoxContainer/HBoxContainer/Button/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer" unique_id=1012518130]
+layout_mode = 2
+text = "namùe"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="NinePatchRect/VBoxContainer/HBoxContainer/Button/VBoxContainer/PanelContainer/VBoxContainer" unique_id=386787425]
+layout_mode = 2
+
+[node name="TextureRect2" type="TextureRect" parent="NinePatchRect/VBoxContainer/HBoxContainer/Button/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer2" unique_id=1673493566]
+layout_mode = 2
+texture = ExtResource("10_u5k0s")
+
+[node name="Label2" type="Label" parent="NinePatchRect/VBoxContainer/HBoxContainer/Button/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer2" unique_id=1948944616]
+layout_mode = 2
+text = "namùe"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="NinePatchRect/VBoxContainer/HBoxContainer/Button/VBoxContainer/PanelContainer/VBoxContainer" unique_id=1373323491]
+layout_mode = 2
+
+[node name="TextureRect2" type="TextureRect" parent="NinePatchRect/VBoxContainer/HBoxContainer/Button/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer3" unique_id=238454387]
+layout_mode = 2
+texture = ExtResource("11_vebho")
+
+[node name="Label2" type="Label" parent="NinePatchRect/VBoxContainer/HBoxContainer/Button/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer3" unique_id=1915361110]
+layout_mode = 2
+text = "namùe"
+
+[connection signal="add_tower_request" from="NinePatchRect/VBoxContainer/HBoxContainer/TextureButton" to="." method="_on_texture_button_add_tower_request"]
+[connection signal="add_tower_request" from="NinePatchRect/VBoxContainer/HBoxContainer/TextureButton2" to="." method="_on_texture_button_add_tower_request"]

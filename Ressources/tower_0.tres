@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="TowerData" format=3 uid="uid://ckq0dhq0vet7i"]
 
-[ext_resource type="Script" path="res://Ressources/tower_data.gd" id="1_luhry"]
+[ext_resource type="Script" uid="uid://b6b0n4uwqiwah" path="res://Ressources/tower_data.gd" id="1_luhry"]
 [ext_resource type="Texture2D" uid="uid://ci066wviaqgy8" path="res://Assets/Sprites/tower.png" id="1_lwqoe"]
 [ext_resource type="PackedScene" uid="uid://bo82y0rhx06sk" path="res://Scenes/Objects/preview_tower_1.tscn" id="2_1esev"]
 [ext_resource type="PackedScene" uid="uid://bu78r3thxof5y" path="res://Scenes/Objects/tower.tscn" id="3_6kymq"]
