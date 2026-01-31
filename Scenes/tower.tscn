@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://bu78r3thxof5y"]
+
+[ext_resource type="Script" uid="uid://oqwqyxke03us" path="res://Scripts/tower.gd" id="1_mh5eo"]
+[ext_resource type="Texture2D" uid="uid://by1pllewt8jcu" path="res://icon.svg" id="1_ndpwd"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mh5eo"]
+radius = 337.80682
+
+[node name="Tower" type="Area2D" unique_id=258828074]
+script = ExtResource("1_mh5eo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1864448042]
+scale = Vector2(1, 0.6)
+shape = SubResource("CircleShape2D_mh5eo")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=487342815]
+modulate = Color(0, 1, 0, 1)
+texture = ExtResource("1_ndpwd")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
