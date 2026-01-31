@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bu78r3thxof5y"]
 
 [ext_resource type="Script" uid="uid://oqwqyxke03us" path="res://Scripts/tower.gd" id="1_mh5eo"]
-[ext_resource type="Texture2D" uid="uid://by1pllewt8jcu" path="res://icon.svg" id="1_ndpwd"]
+[ext_resource type="Texture2D" uid="uid://by1pllewt8jcu" path="res://Assets/Sprites/icon.svg" id="1_ndpwd"]
 [ext_resource type="Shape2D" uid="uid://bt8ks1mvf5hi3" path="res://Ressources/ellipse-16.tres" id="2_tghyl"]
 
 [node name="Tower" type="Area2D" unique_id=258828074]

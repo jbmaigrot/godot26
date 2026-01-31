@@ -13,7 +13,7 @@ config_version=5
 config/name="godot26"
 run/main_scene="uid://dgfb8x4dvrusk"
 config/features=PackedStringArray("4.6", "Mobile")
-config/icon="res://icon.svg"
+config/icon="res://Assets/Sprites/icon.svg"
 
 [physics]
 
