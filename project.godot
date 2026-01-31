@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="godot26"
-run/main_scene="uid://dgfb8x4dvrusk"
+run/main_scene="uid://fnuc1wfm8vjy"
 config/features=PackedStringArray("4.6", "Mobile")
 config/icon="res://Assets/Sprites/icon.svg"
 
@@ -34,5 +34,6 @@ right_click={
 
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 rendering_device/driver.windows="d3d12"
 renderer/rendering_method="mobile"
