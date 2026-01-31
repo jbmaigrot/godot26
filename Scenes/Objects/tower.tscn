@@ -14,5 +14,5 @@ shape = ExtResource("2_tghyl")
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=487342815]
 texture = ExtResource("3_4oh1s")
 
-[connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
