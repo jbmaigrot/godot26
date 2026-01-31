@@ -1,16 +1,16 @@
 extends Control
 
-signal add_tower_request(is_active: bool)
+# Ce signal sera connecté à ton script de construction (celui avec les TileMaps)
+signal global_add_tower_request(index: int)
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
 	pass
 
+func _process(_delta: float) -> void:
+	# Clic droit pour annuler
+	if Input.is_action_just_pressed("right_click"): # Utiliser action_just_pressed pour éviter le spam
+		global_add_tower_request.emit(-1)
 
-func _on_texture_button_add_tower_request(is_active: bool) -> void:
-		add_tower_request.emit(is_active)
+
+func _on_texture_button_add_tower_request(index: int) -> void:
+	global_add_tower_request.emit(index)

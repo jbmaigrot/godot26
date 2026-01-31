@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://6a7blbpacvyh"]
+
+[ext_resource type="Texture2D" uid="uid://ci066wviaqgy8" path="res://Assets/Sprites/tower.png" id="1_dknud"]
+
+[node name="preview tower 2" type="Sprite2D" unique_id=1965824367]
+scale = Vector2(0.265, 0.265)
+texture = ExtResource("1_dknud")
+
+[node name="Label" type="Label" parent="." unique_id=1016778131]
+modulate = Color(0.07524232, 5.551581e-06, 0.075507335, 1)
+offset_left = 3.773585
+offset_right = 43.773586
+offset_bottom = 23.0
+text = "2"

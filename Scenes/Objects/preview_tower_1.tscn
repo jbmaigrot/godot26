@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://bo82y0rhx06sk"]
+
+[ext_resource type="Texture2D" uid="uid://ci066wviaqgy8" path="res://Assets/Sprites/tower.png" id="1_f5v44"]
+
+[node name="preview tower 1" type="Sprite2D" unique_id=1965824367]
+scale = Vector2(0.265, 0.265)
+texture = ExtResource("1_f5v44")

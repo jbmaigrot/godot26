@@ -1,8 +1,9 @@
 [gd_scene format=3 uid="uid://d4dfxvfucaywr"]
 
 [ext_resource type="Script" uid="uid://bfbh0koo635lb" path="res://Scripts/main_ui.gd" id="1_153dk"]
-[ext_resource type="Texture2D" uid="uid://ci066wviaqgy8" path="res://Assets/Sprites/tower.png" id="1_w4llb"]
 [ext_resource type="Script" uid="uid://dy2ulufn5t4h1" path="res://Scripts/Add_tower_button.gd" id="2_t71j2"]
+[ext_resource type="Resource" uid="uid://ckq0dhq0vet7i" path="res://Ressources/tower_0.tres" id="3_7tcah"]
+[ext_resource type="Resource" uid="uid://q6d6at027vno" path="res://Ressources/tower_1.tres" id="4_oqd1j"]
 
 [node name="UI" type="Control" unique_id=1048431771]
 layout_mode = 3
@@ -47,18 +48,20 @@ custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
 toggle_mode = true
 action_mode = 0
-texture_normal = ExtResource("1_w4llb")
 ignore_texture_size = true
 stretch_mode = 0
 script = ExtResource("2_t71j2")
+tower_info = ExtResource("3_7tcah")
 
-[node name="TextureButton2" type="TextureButton" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer" unique_id=319645839]
+[node name="TextureButton2" type="TextureButton" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer" unique_id=1609143517]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
 toggle_mode = true
 action_mode = 0
-texture_normal = ExtResource("1_w4llb")
 ignore_texture_size = true
 stretch_mode = 0
+script = ExtResource("2_t71j2")
+tower_info = ExtResource("4_oqd1j")
 
 [connection signal="add_tower_request" from="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/TextureButton" to="." method="_on_texture_button_add_tower_request"]
+[connection signal="add_tower_request" from="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/TextureButton2" to="." method="_on_texture_button_add_tower_request"]

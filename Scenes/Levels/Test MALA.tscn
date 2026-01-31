@@ -4,8 +4,9 @@
 [ext_resource type="TileSet" uid="uid://daa7eu2x4my4d" path="res://Ressources/tileset_temp.tres" id="2_wuixj"]
 [ext_resource type="Script" uid="uid://cju5bo7mf4hdc" path="res://Scripts/tile_map_layer_base.gd" id="3_i5ms1"]
 [ext_resource type="Script" uid="uid://2ttknnv561fy" path="res://Scripts/tower_placement.gd" id="4_dpd5p"]
-[ext_resource type="PackedScene" uid="uid://bu78r3thxof5y" path="res://Scenes/Objects/tower.tscn" id="5_6ulhk"]
-[ext_resource type="Texture2D" uid="uid://ci066wviaqgy8" path="res://Assets/Sprites/tower.png" id="6_pumka"]
+[ext_resource type="Script" uid="uid://b6b0n4uwqiwah" path="res://Ressources/tower_data.gd" id="5_wuixj"]
+[ext_resource type="Resource" uid="uid://ckq0dhq0vet7i" path="res://Ressources/tower_0.tres" id="6_i5ms1"]
+[ext_resource type="Resource" uid="uid://q6d6at027vno" path="res://Ressources/tower_1.tres" id="7_dpd5p"]
 [ext_resource type="PackedScene" uid="uid://d4dfxvfucaywr" path="res://Scenes/UI/Test_UI_jeu.tscn" id="7_vistq"]
 [ext_resource type="Script" uid="uid://cmoddd1j15s53" path="res://Scripts/mob_spawner.gd" id="8_oixh4"]
 [ext_resource type="PackedScene" uid="uid://b0cc5a8tn6ny2" path="res://Scenes/Objects/enemy.tscn" id="9_ksp68"]
@@ -22,12 +23,11 @@ collision_enabled = false
 script = ExtResource("3_i5ms1")
 mask = NodePath("../TileMapLayer2-Mask")
 
-[node name="Towers" type="Node2D" parent="." unique_id=137093131 node_paths=PackedStringArray("ground_layer", "mask_layer", "preview_sprite")]
+[node name="Towers" type="Node2D" parent="." unique_id=137093131 node_paths=PackedStringArray("ground_layer", "mask_layer")]
 script = ExtResource("4_dpd5p")
-tower_scene = ExtResource("5_6ulhk")
+available_towers_data = Array[ExtResource("5_wuixj")]([ExtResource("6_i5ms1"), ExtResource("7_dpd5p")])
 ground_layer = NodePath("../TileMapLayer-Base")
 mask_layer = NodePath("../TileMapLayer2-Mask")
-preview_sprite = NodePath("../preview tower")
 
 [node name="TileMapLayer2-Mask" type="TileMapLayer" parent="." unique_id=626676577]
 texture_filter = 1
@@ -40,11 +40,6 @@ zoom = Vector2(1.705, 1.705)
 
 [node name="Player_base" type="Node2D" parent="." unique_id=252246131]
 position = Vector2(-79, 28)
-
-[node name="preview tower" type="Sprite2D" parent="." unique_id=1435833403]
-position = Vector2(-291, 140)
-scale = Vector2(0.265, 0.265)
-texture = ExtResource("6_pumka")
 
 [node name="UI" parent="." unique_id=1048431771 instance=ExtResource("7_vistq")]
 offset_left = 238.0

@@ -1,24 +1,26 @@
 extends TextureButton
 
-# 1. On déclare le signal personnalisé
-signal add_tower_request(is_active: bool)
+# Correction de l'export : on définit le type int et une valeur par défaut
 
-var ghost_enabled: bool = false
+@export var tower_info: TowerData
+
+# Signal que le contrôleur UI va écouter
+signal add_tower_request(index: int)
 
 func _ready() -> void:
-	# On connecte le signal interne de Godot à notre propre logique
+	# Connexion propre du clic
 	self.pressed.connect(_on_self_pressed)
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	if Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT):
-		ghost_enabled = false
-		add_tower_request.emit(ghost_enabled)
+	
+	# MISE À JOUR AUTOMATIQUE DE LA TEXTURE
+	if tower_info:
+		# On définit la texture normale du bouton
+		texture_normal = tower_info.icon 
+		# Optionnel : si tu as des textures de survol/clic, tu peux les gérer ici
+	else:
+		push_warning("Bouton de tour sans TowerData assigné !")
 
 func _on_self_pressed() -> void:
-	ghost_enabled = !ghost_enabled # On inverse l'état (ON/OFF)
-	
-	# 2. On émet notre signal avec l'état actuel
-	add_tower_request.emit(ghost_enabled)
-	
-	print("Signal Ghost émis ! État : ", ghost_enabled)
+	# On émet simplement l'ID de ce bouton
+	var index = tower_info.index
+	add_tower_request.emit(index)
+	print("Bouton cliqué, envoi de la tour ID : ", index)

@@ -1,16 +1,20 @@
 extends Node2D
 
-
-
 @export_group("Configurations")
 
-@export var tower_scene: PackedScene 
+#@export var tower_scene: PackedScene 
+var selected_tower_scene: PackedScene = null
+#@export var available_towers: Array[PackedScene] = []
+var preview_sprite: Sprite2D = null
+#@export var available_preview_sprite: Array[PackedScene] = []
+var current_tower_index: int = -1
+@export var available_towers_data: Array[TowerData] = []
+
 
 @export_group("Références")
 @export var ground_layer: TileMapLayer 
 @export var mask_layer: TileMapLayer 
 
-@export var preview_sprite: Sprite2D
 
 @export_group("Apparence")
 @export var color_valid: Color = Color(0, 1, 0, 0.5) 
@@ -29,28 +33,22 @@ func _ready() -> void:
 	disable_ghost()
 
 func _process(_delta):
-	
-	if not ground_layer or not preview_sprite:
+# On s'arrête si le ghost n'est pas actif ou si le sprite n'est pas encore créé
+	if not is_ghost_active or not preview_sprite:
 		return
-
-	if is_ghost_active == false:
-		return
-
 
 	var mouse_pos = get_global_mouse_position()
-	var local_pos = ground_layer.to_local(mouse_pos)
-	var tile_pos = ground_layer.local_to_map(local_pos)
+	var tile_pos = ground_layer.local_to_map(ground_layer.to_local(mouse_pos))
 	
 	preview_sprite.global_position = ground_layer.map_to_local(tile_pos)
 	
 	if can_build_at(tile_pos):
 		preview_sprite.modulate = color_valid
-		# Utilisation de Input.is_mouse_button_pressed pour le clic gauche
 		if Input.is_action_just_pressed("left_click"):
-			# On vérifie encore si on peut construire pour éviter les doublons
 			place_tower(tile_pos)
 	else:
 		preview_sprite.modulate = color_invalid
+
 
 func can_build_at(tile_pos: Vector2i) -> bool:
 	# 1. Vérifier si le terrain de base autorise la construction
@@ -73,26 +71,63 @@ func place_tower(tile_pos: Vector2i):
 	# Optionnel : une petite sécurité pour ne pas spammer dans le _process
 	if occupied_cells.has(tile_pos): return
 	
-	print("tour construite")
-	var new_tower = tower_scene.instantiate()
+	# On vérifie le prix auprès du Main (le banquier)
+	var tower_info = available_towers_data[current_tower_index]
+	
+	if main.check_tower_money(tower_info):
+		var new_tower = selected_tower_scene.instantiate()
+		add_child(new_tower)
+		new_tower.global_position = ground_layer.map_to_local(tile_pos)
+		occupied_cells[tile_pos] = new_tower
+		print("Tour construite")
+	else:
+		print("Pas assez d'or !")
+	
+	
+	
+	var new_tower = selected_tower_scene.instantiate()
 	add_child(new_tower)
 	new_tower.global_position = ground_layer.map_to_local(tile_pos)
 	occupied_cells[tile_pos] = new_tower
 	
 	print("tower built")
 
-## Désactive le mode fantôme et dégage l'objet de la vue
+## Réactive le mode fantôme
+func enable_ghost(index: int) -> void:
+	if index < 0 or index >= available_towers_data.size():
+		disable_ghost()
+		return
+	
+	is_ghost_active = true
+	current_tower_index = index # On mémorise l'index
+	
+	# On récupère les infos depuis l'objet TowerData
+	var data = available_towers_data[index]
+	selected_tower_scene = data.scene
+	
+	if preview_sprite:
+		preview_sprite.queue_free()
+	
+	# On instancie le preview_scene défini dans la ressource
+	if data.preview_scene:
+		preview_sprite = data.preview_scene.instantiate() as Sprite2D
+		add_child(preview_sprite)
+		preview_sprite.modulate = color_invalid
+	print("Ghost activé pour la tour index: ", index)
+
+## Désactive et nettoie tout
 func disable_ghost() -> void:
 	is_ghost_active = false
-	preview_sprite.global_position = off_screen_pos
+	selected_tower_scene = null
+	
+	if preview_sprite:
+		preview_sprite.queue_free()
+		preview_sprite = null
 
-## Réactive le mode fantôme
-func enable_ghost() -> void:
-	is_ghost_active = true
 
-
-func _on_ui_add_tower_request(is_active: bool) -> void:
-	if is_active:
-		enable_ghost()
+## Point d'entrée depuis l'UI
+func _on_ui_add_tower_request(index: int) -> void:
+	if index != -1:
+		enable_ghost(index)
 	else:
 		disable_ghost()
