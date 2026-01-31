@@ -3,8 +3,8 @@ class_name Tower
 
 @export var projectile_scene : PackedScene
 
-@export var shoot_cooldown = 2
-var current_cooldown = 0
+@export var shoot_cooldown :float = 2
+var current_cooldown :float = 0
 
 var target :Enemy = null
 var enemies_in_range = []
@@ -25,6 +25,8 @@ func _process(delta):
 		if (target):
 			shoot()
 			current_cooldown = shoot_cooldown
+	# texture ordering
+	z_index = round(position.y) #this should work, else use x+y but with isometric coordinates
 
 func _on_body_entered(body):
 	if body is Enemy:
@@ -39,6 +41,7 @@ func shoot():
 		add_child(projectile)
 		
 		# projectile spawns on tower and targets incoming enemy (body)
-		projectile.position = position
+		projectile.global_position = global_position
 		projectile.target = target
+	
 	
