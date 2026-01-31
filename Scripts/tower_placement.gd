@@ -8,8 +8,9 @@ extends Node2D
 
 @export_group("Références")
 @export var ground_layer: TileMapLayer 
+@export var mask_layer: TileMapLayer 
+
 @export var preview_sprite: Sprite2D
-@export var towers_container: Node2D
 
 @export_group("Apparence")
 @export var color_valid: Color = Color(0, 1, 0, 0.5) 
@@ -51,13 +52,18 @@ func _process(_delta):
 	else:
 		preview_sprite.modulate = color_invalid
 
-
 func can_build_at(tile_pos: Vector2i) -> bool:
+	# 1. Vérifier si le terrain de base autorise la construction
 	var tile_data = ground_layer.get_cell_tile_data(tile_pos)
-	
 	if not tile_data or not tile_data.get_custom_data(buildable_data_name):
 		return false
 	
+	# 2. VÉRIFICATION DU MASK : Si une tile existe à cet endroit, on bloque
+	# get_cell_source_id retourne -1 si la cellule est vide
+	if mask_layer and mask_layer.get_cell_source_id(tile_pos) != -1:
+		return false
+	
+	# 3. Vérifier si une tour est déjà présente
 	if occupied_cells.has(tile_pos):
 		return false
 		
@@ -69,7 +75,7 @@ func place_tower(tile_pos: Vector2i):
 	
 	print("tour construite")
 	var new_tower = tower_scene.instantiate()
-	towers_container.add_child(new_tower)
+	add_child(new_tower)
 	new_tower.global_position = ground_layer.map_to_local(tile_pos)
 	occupied_cells[tile_pos] = new_tower
 	

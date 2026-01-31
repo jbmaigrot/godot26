@@ -1,3 +1,6 @@
+# NOT in use anymore!!!!
+
+
 extends CharacterBody2D
 
 @export var SPEED = 50.0
