@@ -6,15 +6,16 @@
 [ext_resource type="Texture2D" uid="uid://ci066wviaqgy8" path="res://Assets/Sprites/tower.png" id="3_4oh1s"]
 
 [node name="Tower" type="Area2D" unique_id=258828074]
-scale = Vector2(0.3, 0.3)
 script = ExtResource("1_mh5eo")
 projectile_scene = ExtResource("2_k775i")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1864448042]
+visible = false
 scale = Vector2(300, 200)
 shape = ExtResource("2_tghyl")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=487342815]
+position = Vector2(0, -16)
 texture = ExtResource("3_4oh1s")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
