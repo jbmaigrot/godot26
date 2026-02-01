@@ -15,6 +15,12 @@ run/main_scene="uid://dgfb8x4dvrusk"
 config/features=PackedStringArray("4.6", "Mobile")
 config/icon="res://Assets/Sprites/icon.svg"
 
+[display]
+
+window/size/viewport_width=800
+window/size/viewport_height=450
+window/stretch/mode="canvas_items"
+
 [input]
 
 left_click={
