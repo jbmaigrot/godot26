@@ -6,7 +6,7 @@
 [ext_resource type="Resource" uid="uid://ckq0dhq0vet7i" path="res://Ressources/tower_0.tres" id="3_7tcah"]
 [ext_resource type="LabelSettings" uid="uid://b237c40thsjnv" path="res://Ressources/new_label_settings.tres" id="3_k63uj"]
 [ext_resource type="Resource" uid="uid://q6d6at027vno" path="res://Ressources/tower_1.tres" id="4_oqd1j"]
-[ext_resource type="Texture2D" uid="uid://b7iakc4y4c5lc" path="res://Assets/Sprites/tower_0_icon.png" id="8_k63uj"]
+[ext_resource type="Texture2D" uid="uid://b7iakc4y4c5lc" path="res://Assets/Sprites/tower_1_icon.png" id="8_k63uj"]
 [ext_resource type="Texture2D" uid="uid://dmuywxv2n6vku" path="res://Assets/Sprites/Coin_icon.png" id="9_6goqt"]
 [ext_resource type="Texture2D" uid="uid://dm8w628d6j673" path="res://Assets/Sprites/Wood_icon.png" id="10_u5k0s"]
 [ext_resource type="Texture2D" uid="uid://b871kh3akkvd" path="res://Assets/Sprites/stone_icon.png" id="11_vebho"]

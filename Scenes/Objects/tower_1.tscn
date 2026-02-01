@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://oqwqyxke03us" path="res://Scripts/tower.gd" id="1_00fu1"]
 [ext_resource type="PackedScene" uid="uid://b0l60actuvf5i" path="res://Scenes/Objects/projectile.tscn" id="2_l6vkb"]
 [ext_resource type="Shape2D" uid="uid://bt8ks1mvf5hi3" path="res://Ressources/ellipse-16.tres" id="3_gxh6w"]
-[ext_resource type="Texture2D" uid="uid://7d4aj7v70hi3" path="res://Assets/Sprites/tower_1.png" id="4_00fu1"]
+[ext_resource type="Texture2D" uid="uid://ci066wviaqgy8" path="res://Assets/Sprites/tower_1.png" id="4_00fu1"]
 
 [node name="Tower" type="Area2D" unique_id=258828074]
 script = ExtResource("1_00fu1")
@@ -11,13 +11,11 @@ projectile_scene = ExtResource("2_l6vkb")
 shoot_cooldown = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1864448042]
-visible = false
-scale = Vector2(300, 200)
+scale = Vector2(240, 160)
 shape = ExtResource("3_gxh6w")
 
 [node name="Tower1" type="Sprite2D" parent="." unique_id=802895542]
-position = Vector2(-1.2187513, -19.28125)
-scale = Vector2(0.5290178, 0.4956055)
+position = Vector2(0, -16)
 texture = ExtResource("4_00fu1")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

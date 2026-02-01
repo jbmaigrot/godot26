@@ -56,7 +56,7 @@ func _process(_delta):
 	var mouse_pos = get_global_mouse_position()
 	var tile_pos = ground_layer.local_to_map(ground_layer.to_local(mouse_pos))
 	
-	preview_sprite.global_position = ground_layer.map_to_local(tile_pos) + Vector2(0, -16)
+	preview_sprite.global_position = ground_layer.map_to_local(tile_pos) # + Vector2(0, -16)
 	
 	if can_build_at(tile_pos):
 		preview_sprite.modulate = color_valid
