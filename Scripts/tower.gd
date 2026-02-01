@@ -26,7 +26,7 @@ func _process(delta):
 			shoot()
 			current_cooldown = shoot_cooldown
 	# texture ordering
-	z_index = round(global_position.y) #this should work, else use x+y but with isometric coordinates
+	# z_index = round(global_position.y) #this should work, else use x+y but with isometric coordinates
 
 func _on_body_entered(body):
 	if body is Enemy:
