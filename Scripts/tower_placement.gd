@@ -13,7 +13,7 @@ var current_tower_index: int = -1
 
 @export_group("Références")
 @export var ground_layer: TileMapLayer 
-@export var mask_layer: TileMapLayer 
+var mask_layer: TileMapLayer 
 
 
 @export_group("Apparence")

@@ -8,6 +8,11 @@ signal mask_changed(new_mask: TileMapLayer)
 
 @export_range(0.0, 1.0) var preview_alpha: float = 0.3
 
+@onready var towers_container = $"../Towers"
+@onready var mobs_container = $"../Mobs"
+@onready var resources_container = $"../Resources"
+
+
 func _ready() -> void:
 	# 1. Récupération dynamique des enfants
 	for child in get_children():
@@ -61,6 +66,7 @@ func select_next_mask(index: int) -> void:
 	
 	# 4. On génère les nouvelles options pour le tour suivant
 	_update_options()
+	_filter_all_entities()
 	
 	mask_changed.emit(current_mask)
 
@@ -105,3 +111,49 @@ func hide_preview(index: int) -> void:
 	target.visible = false
 	target.self_modulate.a = 1.0
 	
+
+func _filter_all_entities() -> void:
+	# 1. On vérifie d'abord que les nœuds parents eux-mêmes existent (pas null)
+	if towers_container == null or mobs_container == null or resources_container == null:
+		push_warning("Un ou plusieurs conteneurs sont manquants (null).")
+		return
+
+	# 2. On traite chaque groupe seulement s'ils ont des enfants
+	if towers_container.get_child_count() > 0:
+		_process_group(towers_container.get_children(), "HIDE")
+	
+	if mobs_container.get_child_count() > 0:
+		_process_group(mobs_container.get_children(), "DELETE")
+		
+	if resources_container.get_child_count() > 0:
+		_process_group(resources_container.get_children(), "HIDE")
+	
+func _process_group(entities: Array, mode: String) -> void:
+	for entity in entities:
+		# Sécurité supplémentaire : on vérifie que l'entité est bien un Node2D
+		# et qu'elle n'est pas déjà en train d'être supprimée
+		if is_instance_valid(entity) and entity is Node2D:
+			
+			var map_pos = current_mask.local_to_map(current_mask.to_local(entity.global_position))
+			var has_ground = current_mask.get_cell_tile_data(map_pos) != null
+			
+			if has_ground:
+				_apply_status(entity, true)
+			else:
+				if mode == "DELETE":
+					print("unit deleted by fog")
+					entity.queue_free()
+				else:
+					print("unit desactivated by fog")
+					_apply_status(entity, false)
+
+# Gère l'activation/désactivation propre des objets (Visuel, Process, Physique)
+func _apply_status(entity: Node2D, active: bool) -> void:
+	entity.visible = active
+	entity.set_process(active)
+	entity.set_physics_process(active)
+	
+	# Gestion des collisions pour éviter qu'une tour cachée ne tire
+	for child in entity.get_children():
+		if child is CollisionShape2D or child is CollisionPolygon2D:
+			child.set_deferred("disabled", !active)
