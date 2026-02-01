@@ -8,6 +8,7 @@
 [ext_resource type="Resource" uid="uid://ckq0dhq0vet7i" path="res://Ressources/tower_0.tres" id="6_trw0a"]
 [ext_resource type="Resource" uid="uid://q6d6at027vno" path="res://Ressources/tower_1.tres" id="7_tjcye"]
 [ext_resource type="PackedScene" uid="uid://d4dfxvfucaywr" path="res://Scenes/UI/Test_UI_jeu.tscn" id="8_557vl"]
+[ext_resource type="Texture2D" uid="uid://b7kjlm7ubp4db" path="res://Assets/Sprites/trees.png" id="8_tjl6l"]
 [ext_resource type="Script" uid="uid://cmoddd1j15s53" path="res://Scripts/mob_spawner.gd" id="9_tjj3e"]
 [ext_resource type="PackedScene" uid="uid://b0cc5a8tn6ny2" path="res://Scenes/Objects/enemy.tscn" id="10_qxyq8"]
 [ext_resource type="Texture2D" uid="uid://b50sfrxcwotfe" path="res://Assets/Sprites/fog.png" id="11_34y5i"]
@@ -35,7 +36,14 @@ ground_layer = NodePath("../TileMapLayer-Base")
 
 [node name="Mobs" type="Node2D" parent="." unique_id=1187758797]
 
-[node name="Ressources" type="Node2D" parent="." unique_id=872982009]
+[node name="Resources" type="Node2D" parent="." unique_id=872982009]
+
+[node name="Wood_res" type="Node2D" parent="Resources" unique_id=1479521644]
+position = Vector2(-14, 18)
+
+[node name="Sprite2D" type="Sprite2D" parent="Resources/Wood_res" unique_id=999434528]
+position = Vector2(0, -18)
+texture = ExtResource("8_tjl6l")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1551926076]
 modulate = Color(1, 0, 0, 1)

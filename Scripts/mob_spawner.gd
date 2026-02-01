@@ -5,6 +5,7 @@ extends Node2D
 @export var spawn_delay: float = 2.0  # Seconds between spawns
 
 @onready var spawn_timer: Timer = $SpawnTimer
+@onready var mobs_container = $"../Mobs"
 
 func _ready() -> void:
 	spawn_timer.wait_time = spawn_delay
@@ -24,9 +25,12 @@ func spawn_enemy() -> void:
 		enemy.position = global_position
 		enemy.target = $"../Player_base"
 		
-		# 3. Add it to the scene tree
-		# Note: Adding it to 'get_parent()' prevents the mob from moving 
-		# WITH the spawner if the spawner moves.
-		get_parent().add_child(enemy)
+		# On ajoute l'ennemi comme enfant du nœud Mobs au lieu du parent global
+		if mobs_container:
+			mobs_container.add_child(enemy)
+		else:
+			# Sécurité au cas où le nœud "Mobs" n'existe pas ou est mal nommé
+			print("Erreur : Le nœud '../Mobs' est introuvable !")
+			
 	else:
 		print("Warning: No enemy_scene assigned to the MobSpawner!")

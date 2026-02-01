@@ -68,5 +68,5 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="Timer" type="Timer" parent="." unique_id=1928110996]
-wait_time = 5.0
+wait_time = 15.0
 autostart = true

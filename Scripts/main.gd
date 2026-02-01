@@ -9,7 +9,7 @@ var stone: float = 0.0
 var wood_per_second: float = 1.5
 var stone_per_second: float = 0.8
 
-@onready var ui = $UI_ressources
+@onready var ui = $UI_resources
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

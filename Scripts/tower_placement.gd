@@ -31,6 +31,16 @@ var main:Main = null
 func _ready() -> void:
 	main = get_tree().current_scene as Main
 	disable_ghost()
+	
+	# 1. On trouve le gestionnaire
+	var manager = $"../Masks_manager"
+	if manager:
+		# On s'abonne au changement de masque (si tu as créé le signal)
+		# Ou on récupère simplement le masque actuel au début
+		mask_layer = manager.current_mask
+		
+		# Optionnel : Connecter un signal pour mettre à jour automatiquement
+		manager.mask_changed.connect(_on_mask_changed)
 
 func _process(_delta):
 # On s'arrête si le ghost n'est pas actif ou si le sprite n'est pas encore créé
@@ -135,3 +145,6 @@ func _on_ui_add_tower_request(index: int) -> void:
 		enable_ghost(index)
 	else:
 		disable_ghost()
+
+func _on_mask_changed(new_mask: TileMapLayer) -> void:
+	mask_layer = new_mask

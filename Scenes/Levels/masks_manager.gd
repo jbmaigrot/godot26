@@ -37,12 +37,6 @@ func _ready() -> void:
 	
 	mask_changed.emit(current_mask)
 
-func _process(_delta: float) -> void:
-	# Debug : change le masque avec la touche Espace
-	if Input.is_action_just_pressed("ui_accept"): # "ui_accept" est Espace par défaut
-		select_next_mask(0)
-
-
 
 # La fonction que tu appelles avec 0 ou 1
 func select_next_mask(index: int) -> void:
@@ -88,8 +82,6 @@ func _update_options() -> void:
 	next_options.append(available[0])
 	next_options.append(available[1])
 	
-	print("Nouveau masque actif : ", current_mask.name)
-	print("Options suivantes : 0:", next_options[0].name, " | 1:", next_options[1].name)
 	
 # Active la preview d'une option (0 ou 1)
 func show_preview(index: int) -> void:
@@ -137,7 +129,7 @@ func _process_group(entities: Array, mode: String) -> void:
 			var map_pos = current_mask.local_to_map(current_mask.to_local(entity.global_position))
 			var has_ground = current_mask.get_cell_tile_data(map_pos) != null
 			
-			if has_ground:
+			if !has_ground:
 				_apply_status(entity, true)
 			else:
 				if mode == "DELETE":
@@ -149,7 +141,7 @@ func _process_group(entities: Array, mode: String) -> void:
 
 # Gère l'activation/désactivation propre des objets (Visuel, Process, Physique)
 func _apply_status(entity: Node2D, active: bool) -> void:
-	entity.visible = active
+	#entity.visible = active
 	entity.set_process(active)
 	entity.set_physics_process(active)
 	

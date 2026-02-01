@@ -18,7 +18,7 @@ func setup_navigation():
 	# Attendre la première frame physique pour s'assurer que le NavServer est synchronisé
 	await get_tree().physics_frame
 	
-	target = $"../Player_base"
+	#target = $"../Player_base"
 	if target:
 		nav_agent.target_position = target.global_position
 
