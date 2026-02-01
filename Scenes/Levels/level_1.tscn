@@ -46,7 +46,7 @@ unique_name_in_owner = true
 script = ExtResource("8_3628d")
 
 [node name="Wood_res" type="Node2D" parent="Resources" unique_id=1479521644]
-position = Vector2(-48, 54)
+position = Vector2(-64, 177)
 script = ExtResource("9_irw6p")
 wood_production_value = 1.0
 
@@ -63,6 +63,24 @@ wood_production_value = 1.0
 position = Vector2(0, -18)
 texture = ExtResource("8_tjl6l")
 
+[node name="Wood_res3" type="Node2D" parent="Resources" unique_id=308225718]
+position = Vector2(-256, 1)
+script = ExtResource("9_irw6p")
+wood_production_value = 1.0
+
+[node name="Sprite2D" type="Sprite2D" parent="Resources/Wood_res3" unique_id=1252294272]
+position = Vector2(0, -18)
+texture = ExtResource("8_tjl6l")
+
+[node name="Wood_res4" type="Node2D" parent="Resources" unique_id=1874045170]
+position = Vector2(207, 10)
+script = ExtResource("9_irw6p")
+wood_production_value = 1.0
+
+[node name="Sprite2D" type="Sprite2D" parent="Resources/Wood_res4" unique_id=827279956]
+position = Vector2(0, -18)
+texture = ExtResource("8_tjl6l")
+
 [node name="Stone_res" type="Node2D" parent="Resources" unique_id=710964871]
 position = Vector2(-113, -9)
 script = ExtResource("9_irw6p")
@@ -70,6 +88,22 @@ stone_production_value = 5.0
 
 [node name="Sprite2D" type="Sprite2D" parent="Resources/Stone_res" unique_id=1942545082]
 position = Vector2(1, -1)
+texture = ExtResource("10_irw6p")
+
+[node name="Stone_res2" type="Node2D" parent="Resources" unique_id=180943350]
+position = Vector2(47, -119)
+script = ExtResource("9_irw6p")
+stone_production_value = 5.0
+
+[node name="Sprite2D" type="Sprite2D" parent="Resources/Stone_res2" unique_id=1165553638]
+texture = ExtResource("10_irw6p")
+
+[node name="Stone_res3" type="Node2D" parent="Resources" unique_id=416047401]
+position = Vector2(240, 57)
+script = ExtResource("9_irw6p")
+stone_production_value = 5.0
+
+[node name="Sprite2D" type="Sprite2D" parent="Resources/Stone_res3" unique_id=435326636]
 texture = ExtResource("10_irw6p")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1551926076]

@@ -1,9 +1,16 @@
 [gd_scene format=3 uid="uid://bo82y0rhx06sk"]
 
 [ext_resource type="Texture2D" uid="uid://c3mbjc8hyj5rv" path="res://Assets/Sprites/tower_0.png" id="1_frdxp"]
+[ext_resource type="Texture2D" uid="uid://buts22sqb7smi" path="res://Assets/Sprites/circle_range.png" id="2_d3jwj"]
 
 [node name="preview tower 0" type="Sprite2D" unique_id=1430819620]
 
 [node name="sprite tower 0" type="Sprite2D" parent="." unique_id=1965824367]
+z_index = 2
 position = Vector2(0, -16)
 texture = ExtResource("1_frdxp")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=293124413]
+z_index = 1
+scale = Vector2(0.24, 0.16)
+texture = ExtResource("2_d3jwj")
