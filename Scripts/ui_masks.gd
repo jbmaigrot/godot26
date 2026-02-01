@@ -7,7 +7,7 @@ extends Control
 
 @export_group("Settings")
 @onready var timer: Timer = $Timer
-@onready var manager = $"../Masks_manager"
+@onready var manager = $"../../Masks_manager"
 var pending_selection: int = 0
 
 func _ready() -> void:

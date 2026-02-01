@@ -9,13 +9,13 @@ var stone: float = 0.0
 var wood_per_second: float = 0.0
 var stone_per_second: float = 0.0
 
-@onready var ui = $UI_resources
-@onready var resources_manager = $Resources  # Ajuste le nom selon ton arbre de scène
+@onready var ui = %UI_resources
+@onready var resources_manager = %Resources 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	# connect le bouton UI sur la possibilité de creer des tours
-	$UI.global_add_tower_request.connect($Towers._on_ui_add_tower_request)
+	%UI.global_add_tower_request.connect(%Towers._on_ui_add_tower_request)
 	# 2. Connexion au ResourcesManager
 	if resources_manager:
 		resources_manager.production_changed.connect(_on_production_rates_changed)

@@ -1,0 +1,97 @@
+[gd_scene format=3 uid="uid://hlknkuc7b2qw"]
+
+[ext_resource type="Texture2D" uid="uid://brp5kyaikae6n" path="res://Assets/Sprites/UI_elmement_0.png" id="1_hq2ph"]
+
+[node name="Menu" type="Node2D" unique_id=1600540677]
+position = Vector2(629, 332)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=588711140]
+
+[node name="Control" type="Control" parent="CanvasLayer" unique_id=1278230651]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Panel" type="Panel" parent="CanvasLayer/Control" unique_id=626909971]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Control" unique_id=954529242]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -15.0
+offset_top = -11.5
+offset_right = 15.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer/Control/MarginContainer" unique_id=736497770]
+layout_mode = 2
+texture = ExtResource("1_hq2ph")
+patch_margin_left = 2
+patch_margin_top = 3
+patch_margin_right = 4
+patch_margin_bottom = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Control/MarginContainer" unique_id=891102093]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/MarginContainer/MarginContainer" unique_id=624812197]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/MarginContainer/MarginContainer/VBoxContainer" unique_id=1974134973]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "TITLE"
+
+[node name="HSeparator" type="HSeparator" parent="CanvasLayer/Control/MarginContainer/MarginContainer/VBoxContainer" unique_id=103039672]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="CanvasLayer/Control/MarginContainer/MarginContainer/VBoxContainer" unique_id=1716115604]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "This is a tower defense game with a unique twist: 
+a mask appears over the map, deactivating both the enemy paths and your towers.
+
+You can choose the next mask—choose wisely. 
+The game is played entirely with the mouse."
+
+[node name="HSeparator2" type="HSeparator" parent="CanvasLayer/Control/MarginContainer/MarginContainer/VBoxContainer" unique_id=261958114]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/Control/MarginContainer/MarginContainer/VBoxContainer" unique_id=2143723383]
+layout_mode = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer/Control/MarginContainer/MarginContainer/VBoxContainer/PanelContainer" unique_id=498438477]
+layout_mode = 2
+texture = ExtResource("1_hq2ph")
+patch_margin_left = 4
+patch_margin_top = 3
+patch_margin_right = 2
+patch_margin_bottom = 1
+
+[node name="Button" type="Button" parent="CanvasLayer/Control/MarginContainer/MarginContainer/VBoxContainer/PanelContainer" unique_id=1118924585]
+layout_mode = 2
+text = "Play"

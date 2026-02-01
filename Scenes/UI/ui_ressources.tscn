@@ -8,13 +8,7 @@
 
 [node name="UI_ressources" type="Control" unique_id=395998648 node_paths=PackedStringArray("gold_label", "wood_label", "stone_label")]
 layout_mode = 3
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-grow_horizontal = 2
-grow_vertical = 2
+anchors_preset = 0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 script = ExtResource("1_4oqlf")
@@ -24,15 +18,12 @@ stone_label = NodePath("MarginContainer/MarginContainer/VBoxContainer/Res 3/ston
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=76018862]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 5
-theme_override_constants/margin_top = 5
-theme_override_constants/margin_right = 5
-theme_override_constants/margin_bottom = 5
+offset_right = 307.0
+offset_bottom = 169.0
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
 
 [node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer" unique_id=945691807]
 layout_mode = 2

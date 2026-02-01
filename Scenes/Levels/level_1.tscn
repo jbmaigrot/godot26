@@ -8,15 +8,15 @@
 [ext_resource type="Resource" uid="uid://ckq0dhq0vet7i" path="res://Ressources/tower_0.tres" id="6_trw0a"]
 [ext_resource type="Resource" uid="uid://q6d6at027vno" path="res://Ressources/tower_1.tres" id="7_tjcye"]
 [ext_resource type="PackedScene" uid="uid://d4dfxvfucaywr" path="res://Scenes/UI/Test_UI_jeu.tscn" id="8_557vl"]
-[ext_resource type="Script" path="res://Scripts/resources_manager.gd" id="8_3628d"]
+[ext_resource type="Script" uid="uid://dglj2pf81auxo" path="res://Scripts/resources_manager.gd" id="8_3628d"]
 [ext_resource type="Texture2D" uid="uid://b7kjlm7ubp4db" path="res://Assets/Sprites/trees.png" id="8_tjl6l"]
-[ext_resource type="Script" path="res://Scripts/resource_production.gd" id="9_irw6p"]
+[ext_resource type="Script" uid="uid://djtl0nw7qm2h6" path="res://Scripts/resource_production.gd" id="9_irw6p"]
 [ext_resource type="Script" uid="uid://cmoddd1j15s53" path="res://Scripts/mob_spawner.gd" id="9_tjj3e"]
 [ext_resource type="Texture2D" uid="uid://b871kh3akkvd" path="res://Assets/Sprites/stone_icon.png" id="10_irw6p"]
 [ext_resource type="PackedScene" uid="uid://b0cc5a8tn6ny2" path="res://Scenes/Objects/enemy.tscn" id="10_qxyq8"]
 [ext_resource type="PackedScene" uid="uid://bwa3mbac8h6dk" path="res://Scenes/UI/ui_ressources.tscn" id="12_afv7b"]
 [ext_resource type="PackedScene" uid="uid://dkalptuwja8fu" path="res://Scenes/UI/ui_masks.tscn" id="13_7r2dd"]
-[ext_resource type="Script" path="res://Scripts/masks_manager.gd" id="14_k2mw1"]
+[ext_resource type="Script" uid="uid://cc7s5vwk41175" path="res://Scripts/masks_manager.gd" id="14_k2mw1"]
 
 [node name="Level_1" type="Node2D" unique_id=100231516]
 script = ExtResource("1_o5ofx")
@@ -31,14 +31,17 @@ collision_enabled = false
 script = ExtResource("3_nlqrh")
 
 [node name="Towers" type="Node2D" parent="." unique_id=137093131 node_paths=PackedStringArray("ground_layer")]
+unique_name_in_owner = true
 position = Vector2(301, 290)
 script = ExtResource("4_8nmnw")
 available_towers_data = Array[ExtResource("5_ngxpw")]([ExtResource("6_trw0a"), ExtResource("7_tjcye")])
 ground_layer = NodePath("../TileMapLayer-Base")
 
 [node name="Mobs" type="Node2D" parent="." unique_id=1187758797]
+unique_name_in_owner = true
 
 [node name="Resources" type="Node2D" parent="." unique_id=872982009]
+unique_name_in_owner = true
 script = ExtResource("8_3628d")
 
 [node name="Wood_res" type="Node2D" parent="Resources" unique_id=1479521644]
@@ -73,20 +76,6 @@ modulate = Color(1, 0, 0, 1)
 
 [node name="Player_base" type="Node2D" parent="." unique_id=252246131]
 
-[node name="UI" parent="." unique_id=1048431771 instance=ExtResource("8_557vl")]
-anchors_preset = 0
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_left = 224.0
-offset_top = 139.0
-offset_right = 500.0
-offset_bottom = 263.0
-grow_horizontal = 1
-grow_vertical = 1
-scale = Vector2(0.615, 0.615)
-
 [node name="mob_spawner" type="Node2D" parent="." unique_id=780009381]
 position = Vector2(-322, 0)
 script = ExtResource("9_tjj3e")
@@ -100,20 +89,6 @@ z_index = 4096
 texture_filter = 1
 tile_map_data = PackedByteArray("AAACAAQAAAADAAMAAAD//wkAAAADAAMAAAD9/w4AAAADAAMAAAACAA4AAAADAAMAAAAEAAkAAAADAAMAAAD9//r/AAADAAMAAAD6//X/AAADAAMAAAD4//r/AAADAAMAAAD4/wQAAAADAAMAAAD9//D/AAADAAMAAAACAPD/AAADAAMAAAAEAPX/AAADAAMAAAAHAPr/AAADAAMAAAAHAAQAAAADAAMAAAAEAP//AAADAAMAAAACAPr/AAADAAMAAAD///X/AAADAAMAAAD6/wkAAAADAAMAAAD9/wQAAAADAAMAAAD6////AAADAAMAAAA=")
 tile_set = ExtResource("2_nlqrh")
-
-[node name="UI_resources" parent="." unique_id=395998648 instance=ExtResource("12_afv7b")]
-offset_left = -308.00003
-offset_top = -175.0
-offset_right = -308.00003
-offset_bottom = -175.0
-scale = Vector2(0.65, 0.65)
-
-[node name="UI_masks" parent="." unique_id=2126837010 instance=ExtResource("13_7r2dd")]
-offset_left = 122.00001
-offset_top = -229.0
-offset_right = 162.0
-offset_bottom = -189.0
-scale = Vector2(0.51, 0.51)
 
 [node name="Masks_manager" type="Node2D" parent="." unique_id=1951074649]
 script = ExtResource("14_k2mw1")
@@ -145,3 +120,20 @@ z_index = 2000
 texture_filter = 1
 tile_map_data = PackedByteArray("AAD2/wIAAAADAAAAAAD2/wMAAAADAAAAAAD2/wQAAAADAAAAAAD1/wMAAAADAAAAAAD1/wIAAAADAAAAAAD0/wMAAAADAAAAAAD0/wIAAAADAAAAAAD0/wEAAAADAAAAAAD0/wAAAAADAAAAAADz/wEAAAADAAAAAADz/wAAAAADAAAAAADz////AAADAAAAAADz//7/AAADAAAAAADz//3/AAADAAAAAAD0//7/AAADAAAAAAD0//3/AAADAAAAAAD0//z/AAADAAAAAAD0//v/AAADAAAAAAD1//r/AAADAAAAAAD1//v/AAADAAAAAAD1//z/AAADAAAAAAD2//z/AAADAAAAAAD1//n/AAADAAAAAAD2//j/AAADAAAAAAD2//f/AAADAAAAAAD2//n/AAADAAAAAAD2//r/AAADAAAAAAD1//j/AAADAAAAAAD0//n/AAADAAAAAAD0//r/AAADAAAAAADz//v/AAADAAAAAADz//r/AAADAAAAAADz//n/AAADAAAAAAD0//j/AAADAAAAAAD0//f/AAADAAAAAADz//f/AAADAAAAAADz//z/AAADAAAAAADy//v/AAADAAAAAADz//j/AAADAAAAAADz/wMAAAADAAAAAAD0/wQAAAADAAAAAADz/wUAAAADAAAAAAD0/wYAAAADAAAAAAD0/wUAAAADAAAAAAD1/wYAAAADAAAAAAD1/wUAAAADAAAAAAD1/wQAAAADAAAAAAD2/wUAAAADAAAAAAD3/wAAAAADAAAAAAD3////AAADAAAAAAD3//7/AAADAAAAAAD3//3/AAADAAAAAAD+/+z/AAADAAAAAAD9/+v/AAADAAAAAAD+/+r/AAADAAAAAAD+/+n/AAADAAAAAAD//+j/AAADAAAAAAD+/+j/AAADAAAAAAD+/+f/AAADAAAAAAD//+b/AAADAAAAAAD+/+X/AAADAAAAAAD//+T/AAADAAAAAAD//+f/AAADAAAAAAAAAOb/AAADAAAAAAD//+X/AAADAAAAAAAAAOT/AAADAAAAAAAAAOX/AAADAAAAAAAAAOf/AAADAAAAAAAAAOj/AAADAAAAAAABAOj/AAADAAAAAAAAAOn/AAADAAAAAAD//+P/AAADAAAAAAD+/+b/AAADAAAAAAD+/+T/AAADAAAAAAD+/+P/AAADAAAAAAD9/+n/AAADAAAAAAABAOz/AAADAAAAAAABAOv/AAADAAAAAAABAOr/AAADAAAAAAABAOT/AAADAAAAAAAAAOP/AAADAAAAAAABAOP/AAADAAAAAAABAOX/AAADAAAAAAABAOb/AAADAAAAAAACAOb/AAADAAAAAAABAOf/AAADAAAAAAABAOn/AAADAAAAAAACAOj/AAADAAAAAAACAOf/AAADAAAAAAACAOX/AAADAAAAAAACAOr/AAADAAAAAAACAOn/AAADAAAAAAADAOb/AAADAAAAAAADAOj/AAADAAAAAAADAOX/AAADAAAAAAACAOv/AAADAAAAAAADAOr/AAADAAAAAAD+/xIAAAADAAAAAAD9/xMAAAADAAAAAAD+/xQAAAADAAAAAAD+/xUAAAADAAAAAAD//xYAAAADAAAAAAD//xcAAAADAAAAAAAAABcAAAADAAAAAAAAABYAAAADAAAAAAAAABUAAAADAAAAAAABABQAAAADAAAAAAABABIAAAADAAAAAAABABcAAAADAAAAAAABABYAAAADAAAAAAABABMAAAADAAAAAAABABUAAAADAAAAAAAAABgAAAADAAAAAAAAABkAAAADAAAAAAABABgAAAADAAAAAAD//xkAAAADAAAAAAD//xgAAAADAAAAAAD+/xcAAAADAAAAAAD+/xgAAAADAAAAAAD+/xkAAAADAAAAAAD+/xYAAAADAAAAAAD9/xUAAAADAAAAAAD9/xcAAAADAAAAAAD9/xgAAAADAAAAAAD8/xcAAAADAAAAAAD9/xYAAAADAAAAAAD9/xkAAAADAAAAAAD9/xoAAAADAAAAAAD8/xsAAAADAAAAAAD8/xkAAAADAAAAAAD+/xoAAAADAAAAAAD9/xsAAAADAAAAAAD9/xwAAAADAAAAAAD//xoAAAADAAAAAAD+/xsAAAADAAAAAAD//xsAAAADAAAAAAAAABoAAAADAAAAAAAAABsAAAADAAAAAAABABoAAAADAAAAAAABABkAAAADAAAAAAACABIAAAADAAAAAAACABQAAAADAAAAAAACABYAAAADAAAAAAACABgAAAADAAAAAAACABcAAAADAAAAAAACABUAAAADAAAAAAACABkAAAADAAAAAAABABsAAAADAAAAAAACABwAAAADAAAAAAABAB0AAAADAAAAAAABABwAAAADAAAAAAAAAB0AAAADAAAAAAAAABwAAAADAAAAAAD//xwAAAADAAAAAAD//xAAAAADAAAAAAD//w8AAAADAAAAAAD//w4AAAADAAAAAAD//w0AAAADAAAAAAAAAA4AAAADAAAAAAAAAA0AAAADAAAAAAAAAA8AAAADAAAAAAAAABAAAAADAAAAAAD9/xEAAAADAAAAAAD9/xQAAAADAAAAAAAJAAIAAAADAAAAAAAJAAMAAAADAAAAAAAJAAQAAAADAAAAAAAJAAUAAAADAAAAAAAKAAQAAAADAAAAAAAKAAIAAAADAAAAAAAKAP3/AAADAAAAAAAKAPz/AAADAAAAAAAKAPr/AAADAAAAAAAJAPz/AAADAAAAAAAJAPv/AAADAAAAAAAKAPv/AAADAAAAAAALAPz/AAADAAAAAAALAP3/AAADAAAAAAALAPr/AAADAAAAAAAJAPr/AAADAAAAAAAJAPn/AAADAAAAAAAKAPn/AAADAAAAAAD//+7/AAADAAAAAAAAAO7/AAADAAAAAAD//+//AAADAAAAAAD+/+//AAADAAAAAAD8/+3/AAADAAAAAAABAO3/AAADAAAAAAACAOz/AAADAAAAAAACAO3/AAADAAAAAAAIAAAAAAADAAAAAAAIAP7/AAADAAAAAAA=")
 tile_set = ExtResource("2_nlqrh")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=303866761]
+
+[node name="UI" parent="CanvasLayer" unique_id=1048431771 instance=ExtResource("8_557vl")]
+unique_name_in_owner = true
+offset_top = 0.0
+scale = Vector2(0.58, 0.58)
+
+[node name="UI_resources" parent="CanvasLayer" unique_id=395998648 instance=ExtResource("12_afv7b")]
+unique_name_in_owner = true
+scale = Vector2(0.65, 0.65)
+
+[node name="UI_masks" parent="CanvasLayer" unique_id=2126837010 instance=ExtResource("13_7r2dd")]
+unique_name_in_owner = true
+offset_left = 0.0
+offset_bottom = 0.0
+scale = Vector2(0.39, 0.39)
