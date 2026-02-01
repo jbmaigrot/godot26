@@ -12,6 +12,10 @@ var stone_per_second: float = 0.0
 @onready var ui = %UI_resources
 @onready var resources_manager = %Resources 
 
+var total_kills: int = 0
+var game_time: float = 0.0
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	# connect le bouton UI sur la possibilité de creer des tours
@@ -28,7 +32,7 @@ func _process(delta: float) -> void:
 	# Accumulation précise avec delta
 	wood += wood_per_second * delta
 	stone += stone_per_second * delta
-	
+	game_time += delta
 	update_ui_elements()
 
 # Cette fonction reçoit les nouvelles valeurs dès qu'un masque change
@@ -65,11 +69,14 @@ func check_tower_money(tower_info: TowerData) -> bool:
 	
 func update_ui_elements() -> void:
 	if ui:
-		# On convertit en int() seulement pour l'affichage
 		ui.update_gold(int(gold))
 		ui.update_wood(int(wood), int(wood_per_second))
 		ui.update_stone(int(stone), int(stone_per_second))
+		# --- APPEL DES NOUVELLES FONCTIONS UI ---
+		ui.update_kills(total_kills)
+		ui.update_timer(int(game_time))
 
 
 func add_money(value: int):
 	gold += value
+	total_kills += 1 # Chaque gain d'argent (loot) compte comme un kill

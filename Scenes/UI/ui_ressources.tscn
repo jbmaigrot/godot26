@@ -6,15 +6,17 @@
 [ext_resource type="Texture2D" uid="uid://dm8w628d6j673" path="res://Assets/Sprites/Wood_icon.png" id="3_k7vr8"]
 [ext_resource type="Texture2D" uid="uid://b871kh3akkvd" path="res://Assets/Sprites/stone_icon.png" id="4_l3vbp"]
 
-[node name="UI_ressources" type="Control" unique_id=395998648 node_paths=PackedStringArray("gold_label", "wood_label", "stone_label")]
+[node name="UI_ressources" type="Control" unique_id=395998648 node_paths=PackedStringArray("gold_label", "wood_label", "stone_label", "kills_label", "timer_label")]
 layout_mode = 3
 anchors_preset = 0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 script = ExtResource("1_4oqlf")
-gold_label = NodePath("MarginContainer/MarginContainer/VBoxContainer/Res 1/Gold")
-wood_label = NodePath("MarginContainer/MarginContainer/VBoxContainer/Res 2/wood")
-stone_label = NodePath("MarginContainer/MarginContainer/VBoxContainer/Res 3/stone")
+gold_label = NodePath("MarginContainer/MarginContainer/HBoxContainer/VBoxContainer/Res 1/Gold")
+wood_label = NodePath("MarginContainer/MarginContainer/HBoxContainer/VBoxContainer/Res 2/wood")
+stone_label = NodePath("MarginContainer/MarginContainer/HBoxContainer/VBoxContainer/Res 3/stone")
+kills_label = NodePath("MarginContainer/MarginContainer/HBoxContainer/VBoxContainer2/Res 5/kills")
+timer_label = NodePath("MarginContainer/MarginContainer/HBoxContainer/VBoxContainer2/Res 4/Time")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=76018862]
 layout_mode = 1
@@ -42,69 +44,112 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/MarginContainer" unique_id=458629949]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/MarginContainer" unique_id=147716612]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="MarginContainer/MarginContainer/VBoxContainer" unique_id=774546748]
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/MarginContainer/HBoxContainer" unique_id=326815179]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Label" type="Label" parent="MarginContainer/MarginContainer/HBoxContainer/VBoxContainer2" unique_id=774546748]
+layout_mode = 2
+text = "Score"
+
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/MarginContainer/HBoxContainer/VBoxContainer2" unique_id=1614351883]
+layout_mode = 2
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/MarginContainer/HBoxContainer/VBoxContainer2/MarginContainer2" unique_id=2118801489]
+layout_mode = 2
+
+[node name="Res 4" type="HBoxContainer" parent="MarginContainer/MarginContainer/HBoxContainer/VBoxContainer2" unique_id=1921809657]
+layout_mode = 2
+
+[node name="label" type="Label" parent="MarginContainer/MarginContainer/HBoxContainer/VBoxContainer2/Res 4" unique_id=2008417214]
+layout_mode = 2
+text = "Time alive :"
+
+[node name="Time" type="Label" parent="MarginContainer/MarginContainer/HBoxContainer/VBoxContainer2/Res 4" unique_id=1448195096]
+layout_mode = 2
+text = "0"
+
+[node name="Res 5" type="HBoxContainer" parent="MarginContainer/MarginContainer/HBoxContainer/VBoxContainer2" unique_id=468188112]
+layout_mode = 2
+
+[node name="label" type="Label" parent="MarginContainer/MarginContainer/HBoxContainer/VBoxContainer2/Res 5" unique_id=1054913324]
+layout_mode = 2
+text = "Units killed :"
+
+[node name="kills" type="Label" parent="MarginContainer/MarginContainer/HBoxContainer/VBoxContainer2/Res 5" unique_id=561332685]
+layout_mode = 2
+text = "0"
+
+[node name="VSeparator" type="VSeparator" parent="MarginContainer/MarginContainer/HBoxContainer" unique_id=1771931416]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/MarginContainer/HBoxContainer" unique_id=458629949]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="MarginContainer/MarginContainer/HBoxContainer/VBoxContainer" unique_id=670567885]
 layout_mode = 2
 text = "ressources"
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/MarginContainer/VBoxContainer" unique_id=1957741586]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/MarginContainer/HBoxContainer/VBoxContainer" unique_id=1957741586]
 layout_mode = 2
 
-[node name="HSeparator" type="HSeparator" parent="MarginContainer/MarginContainer/VBoxContainer/MarginContainer" unique_id=2051458093]
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/MarginContainer/HBoxContainer/VBoxContainer/MarginContainer" unique_id=2051458093]
 layout_mode = 2
 
-[node name="Res 1" type="HBoxContainer" parent="MarginContainer/MarginContainer/VBoxContainer" unique_id=179590859]
+[node name="Res 1" type="HBoxContainer" parent="MarginContainer/MarginContainer/HBoxContainer/VBoxContainer" unique_id=179590859]
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/MarginContainer/VBoxContainer/Res 1" unique_id=162776060]
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/MarginContainer/HBoxContainer/VBoxContainer/Res 1" unique_id=162776060]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 texture = ExtResource("2_4oqlf")
 expand_mode = 1
 stretch_mode = 4
 
-[node name="Gold" type="Label" parent="MarginContainer/MarginContainer/VBoxContainer/Res 1" unique_id=413294476]
+[node name="Gold" type="Label" parent="MarginContainer/MarginContainer/HBoxContainer/VBoxContainer/Res 1" unique_id=413294476]
 layout_mode = 2
 text = "25"
 
-[node name="Label2" type="Label" parent="MarginContainer/MarginContainer/VBoxContainer/Res 1" unique_id=507260776]
+[node name="Label2" type="Label" parent="MarginContainer/MarginContainer/HBoxContainer/VBoxContainer/Res 1" unique_id=507260776]
 layout_mode = 2
 text = "/ destroy units go gain more"
 
-[node name="Res 2" type="HBoxContainer" parent="MarginContainer/MarginContainer/VBoxContainer" unique_id=1763544671]
+[node name="Res 2" type="HBoxContainer" parent="MarginContainer/MarginContainer/HBoxContainer/VBoxContainer" unique_id=1763544671]
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/MarginContainer/VBoxContainer/Res 2" unique_id=1948036698]
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/MarginContainer/HBoxContainer/VBoxContainer/Res 2" unique_id=1948036698]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 texture = ExtResource("3_k7vr8")
 expand_mode = 1
 stretch_mode = 4
 
-[node name="wood" type="Label" parent="MarginContainer/MarginContainer/VBoxContainer/Res 2" unique_id=2042294364]
+[node name="wood" type="Label" parent="MarginContainer/MarginContainer/HBoxContainer/VBoxContainer/Res 2" unique_id=2042294364]
 layout_mode = 2
 text = "25  + (10)"
 
-[node name="Label2" type="Label" parent="MarginContainer/MarginContainer/VBoxContainer/Res 2" unique_id=2066231237]
+[node name="Label2" type="Label" parent="MarginContainer/MarginContainer/HBoxContainer/VBoxContainer/Res 2" unique_id=2066231237]
 layout_mode = 2
 text = "/ control forests"
 
-[node name="Res 3" type="HBoxContainer" parent="MarginContainer/MarginContainer/VBoxContainer" unique_id=649128282]
+[node name="Res 3" type="HBoxContainer" parent="MarginContainer/MarginContainer/HBoxContainer/VBoxContainer" unique_id=649128282]
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/MarginContainer/VBoxContainer/Res 3" unique_id=553349027]
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/MarginContainer/HBoxContainer/VBoxContainer/Res 3" unique_id=553349027]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 texture = ExtResource("4_l3vbp")
 expand_mode = 1
 stretch_mode = 4
 
-[node name="stone" type="Label" parent="MarginContainer/MarginContainer/VBoxContainer/Res 3" unique_id=702310144]
+[node name="stone" type="Label" parent="MarginContainer/MarginContainer/HBoxContainer/VBoxContainer/Res 3" unique_id=702310144]
 layout_mode = 2
 text = "25"
 
-[node name="Label2" type="Label" parent="MarginContainer/MarginContainer/VBoxContainer/Res 3" unique_id=104327094]
+[node name="Label2" type="Label" parent="MarginContainer/MarginContainer/HBoxContainer/VBoxContainer/Res 3" unique_id=104327094]
 layout_mode = 2
 text = "/ control stone patches"
