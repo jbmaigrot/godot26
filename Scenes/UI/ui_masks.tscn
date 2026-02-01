@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dkjbxkdg01xa0" path="res://Scripts/ui_masks.gd" id="1_j2is3"]
 [ext_resource type="Texture2D" uid="uid://brp5kyaikae6n" path="res://Assets/Sprites/UI_elmement_0.png" id="2_4akpb"]
+[ext_resource type="ButtonGroup" uid="uid://dtxm4xjng5yu5" path="res://Ressources/button_group_mask.tres" id="3_4akpb"]
 
 [node name="UI_masks" type="Control" unique_id=2126837010 node_paths=PackedStringArray("mask_one_button", "mask_two_button", "progress_bar")]
 layout_mode = 3
@@ -68,11 +69,18 @@ layout_mode = 2
 custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
 size_flags_horizontal = 3
+toggle_mode = true
+button_pressed = true
+action_mode = 0
+button_group = ExtResource("3_4akpb")
 text = "Mask one"
 
 [node name="Button2" type="Button" parent="MarginContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1658292593]
 layout_mode = 2
 size_flags_horizontal = 3
+toggle_mode = true
+action_mode = 0
+button_group = ExtResource("3_4akpb")
 text = "Mask two"
 
 [node name="HSeparator3" type="HSeparator" parent="MarginContainer/MarginContainer/VBoxContainer" unique_id=1823409962]

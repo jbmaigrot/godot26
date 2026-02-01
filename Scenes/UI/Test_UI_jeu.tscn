@@ -97,8 +97,7 @@ metadata/_edit_group_ = true
 
 [node name="CustomButton" type="PanelContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=511099722]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
+size_flags_horizontal = 6
 
 [node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/CustomButton" unique_id=429752422]
 layout_mode = 2
@@ -230,7 +229,7 @@ main_icon = NodePath("../MarginContainer/VBoxContainer/HBoxContainer/TextureRect
 
 [node name="CustomButton2" type="PanelContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1469415009]
 layout_mode = 2
-size_flags_horizontal = 4
+size_flags_horizontal = 6
 size_flags_vertical = 4
 
 [node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/CustomButton2" unique_id=158287414]

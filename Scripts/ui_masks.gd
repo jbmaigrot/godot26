@@ -14,12 +14,12 @@ func _ready() -> void:
 	# Connexion des signaux pour Mask One
 	mask_one_button.mouse_entered.connect(_on_mask_one_hover)
 	mask_one_button.mouse_exited.connect(_on_mask_one_exit)
-	mask_one_button.pressed.connect(_on_mask_one_selected)
+	mask_one_button.toggled.connect(_on_mask_one_toggled) # On utilise toggled
 	
 	# Connexion des signaux pour Mask Two
 	mask_two_button.mouse_entered.connect(_on_mask_two_hover)
 	mask_two_button.mouse_exited.connect(_on_mask_two_exit)
-	mask_two_button.pressed.connect(_on_mask_two_selected)
+	mask_two_button.toggled.connect(_on_mask_two_toggled) # On utilise toggled
 	
 	# Connexion automatique du timeout du Timer
 	timer.timeout.connect(_on_timer_timeout)
@@ -40,6 +40,14 @@ func _on_mask_one_exit():
 func _on_mask_one_selected():
 	pending_selection = 0
 
+func _on_mask_one_toggled(is_pressed: bool):
+	if is_pressed:
+		pending_selection = 0
+
+func _on_mask_two_toggled(is_pressed: bool):
+	if is_pressed:
+		pending_selection = 1
+		
 # --- Logique Mask Two ---
 func _on_mask_two_hover():
 	manager.show_preview(1)

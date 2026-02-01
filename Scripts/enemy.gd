@@ -7,6 +7,8 @@ class_name Enemy
 @export var dammage: int = 1
 @onready var nav_agent: NavigationAgent2D = $NavigationAgent2D
 
+@export var gold_value = 2
+
 var main:Main = null
 
 func _ready():
@@ -51,10 +53,13 @@ func take_damage(amount: int):
 	# Optional: Add a visual flash or hit effect here
 	if health <= 0:
 		die()
+		
+
 
 func die():
 	# Optional: Give gold to the player here
 	# Global.money += 10
+	main.add_money(gold_value)
 	queue_free() # Removes the enemy from the scene
 	
 

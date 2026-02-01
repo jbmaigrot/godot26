@@ -69,3 +69,7 @@ func update_ui_elements() -> void:
 		ui.update_gold(int(gold))
 		ui.update_wood(int(wood), int(wood_per_second))
 		ui.update_stone(int(stone), int(stone_per_second))
+
+
+func add_money(value: int):
+	gold += value
