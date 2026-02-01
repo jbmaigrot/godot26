@@ -68,29 +68,33 @@ func can_build_at(tile_pos: Vector2i) -> bool:
 	return true
 
 func place_tower(tile_pos: Vector2i):
-	# Optionnel : une petite sécurité pour ne pas spammer dans le _process
-	if occupied_cells.has(tile_pos): return
+	# 1. Sécurité : on ne construit pas si la case est déjà prise
+	if occupied_cells.has(tile_pos): 
+		return
 	
-	# On vérifie le prix auprès du Main (le banquier)
+	# 2. Récupérer les données de la tour sélectionnée
 	var tower_info = available_towers_data[current_tower_index]
 	
+	# 3. Demander au Main si on peut payer
 	if main.check_tower_money(tower_info):
+		# L'ACHAT EST VALIDÉ
 		var new_tower = selected_tower_scene.instantiate()
 		add_child(new_tower)
+		
+		# Positionnement (ajuste le Vector2(0, -16) selon ton pivot de sprite)
 		new_tower.global_position = ground_layer.map_to_local(tile_pos)
+		
+		# Enregistrement pour empêcher de reconstruire par-dessus
 		occupied_cells[tile_pos] = new_tower
-		print("Tour construite")
+		
+		print("Tour ", tower_info.name, " construite avec succès !")
+		
+		# Optionnel : Désactiver le ghost après la construction ?
+		disable_ghost() 
 	else:
-		print("Pas assez d'or !")
-	
-	
-	
-	var new_tower = selected_tower_scene.instantiate()
-	add_child(new_tower)
-	new_tower.global_position = ground_layer.map_to_local(tile_pos)
-	occupied_cells[tile_pos] = new_tower
-	
-	print("tower built")
+		# L'ACHAT EST REFUSÉ
+		print("Action impossible : Ressources insuffisantes !")
+
 
 ## Réactive le mode fantôme
 func enable_ghost(index: int) -> void:

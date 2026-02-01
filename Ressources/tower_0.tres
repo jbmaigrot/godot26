@@ -9,6 +9,9 @@
 script = ExtResource("1_luhry")
 name = "Tour 1"
 description = "Description 1"
+cost_gold = 10
+cost_wood = 0
+cost_stone = 0
 scene = ExtResource("3_6kymq")
 preview_scene = ExtResource("2_1esev")
 icon = ExtResource("1_lwqoe")

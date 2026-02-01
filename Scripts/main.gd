@@ -37,8 +37,19 @@ func game_over():
 	# You can use get_tree().reload_current_scene() to restart
 	
 	
-func check_tower_money(tower_info: TowerData):
-	return true
+func check_tower_money(tower_info: TowerData) -> bool:
+	# Vérification avec les bons noms de variables du TowerData
+	if gold >= tower_info.cost_gold and wood >= tower_info.cost_wood and stone >= tower_info.cost_stone:
+		# Déduction des ressources
+		gold -= tower_info.cost_gold
+		wood -= tower_info.cost_wood
+		stone -= tower_info.cost_stone
+		
+		update_ui_elements()
+		return true
+	
+	print("Ressources insuffisantes pour : ", tower_info.name)
+	return false
 	
 func update_ui_elements() -> void:
 	if ui:
