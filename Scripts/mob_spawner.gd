@@ -1,36 +1,64 @@
 extends Node2D
 
-# Export variables allow you to tweak these in the Godot Inspector
-@export var enemy_scene: PackedScene  # Drag your Enemy.tscn here
-@export var spawn_delay: float = 2.0  # Seconds between spawns
+@export_group("Réglages du Pack")
+@export var enemy_scene: PackedScene
+@export var warning_time: float = 10.0  # Temps du camembert (ex: 10s)
+@export var amount_to_spawn: int = 5    # Nombre total d'ennemis
+@export var time_between_mobs: float = 1.0 # Délai entre chaque mob (ex: 1s)
 
-@onready var spawn_timer: Timer = $SpawnTimer
-@onready var mobs_container = $"../Mobs"
+@onready var mob_timer: Timer = $MobTimer
+@export var progress_bar: TextureProgressBar 
+
+var mobs_spawned_count: int = 0
+var target_node: Node2D
+var container_node: Node
 
 func _ready() -> void:
-	spawn_timer.wait_time = spawn_delay
-	# Connect the timer's timeout signal to our spawn function
-	spawn_timer.timeout.connect(_on_spawn_timer_timeout)
-	spawn_timer.start()
+	# 1. Préparation du camembert
+	if progress_bar:
+		progress_bar.value = 0
+		progress_bar.max_value = 100
+		progress_bar.show()
+		
+		# Animation du remplissage sur 10 secondes
+		var tween = create_tween()
+		tween.tween_property(progress_bar, "value", 100, warning_time)
+	
+	# 2. Timer pour le compte à rebours initial
+	mob_timer.wait_time = warning_time
+	mob_timer.one_shot = true
+	mob_timer.timeout.connect(_on_countdown_finished)
+	mob_timer.start()
 
-func _on_spawn_timer_timeout() -> void:
-	spawn_enemy()
+func _on_countdown_finished() -> void:
+	# Le premier délai est passé, on cache le camembert
+	if progress_bar:
+		progress_bar.hide()
+	
+	# 3. On change la logique du Timer pour le spawn en série
+	mob_timer.timeout.disconnect(_on_countdown_finished)
+	mob_timer.timeout.connect(_on_spawn_tick)
+	
+	mob_timer.wait_time = time_between_mobs
+	mob_timer.one_shot = false
+	mob_timer.start()
+	
+	# On fait apparaître le tout premier ennemi immédiatement
+	_on_spawn_tick()
+
+func _on_spawn_tick() -> void:
+	if mobs_spawned_count < amount_to_spawn:
+		spawn_enemy()
+		mobs_spawned_count += 1
+	
+	# Une fois que tous les ennemis sont sortis, le spawner s'autodétruit
+	if mobs_spawned_count >= amount_to_spawn:
+		mob_timer.stop()
+		queue_free()
 
 func spawn_enemy() -> void:
-	if enemy_scene:
-		# 1. Create an instance of the mob
+	if enemy_scene and container_node:
 		var enemy = enemy_scene.instantiate()
-	
-		# 2. Set its position (usually the spawner's position)
-		enemy.position = global_position
-		enemy.target = $"../Player_base"
-		
-		# On ajoute l'ennemi comme enfant du nœud Mobs au lieu du parent global
-		if mobs_container:
-			mobs_container.add_child(enemy)
-		else:
-			# Sécurité au cas où le nœud "Mobs" n'existe pas ou est mal nommé
-			print("Erreur : Le nœud '../Mobs' est introuvable !")
-			
-	else:
-		print("Warning: No enemy_scene assigned to the MobSpawner!")
+		enemy.global_position = global_position
+		enemy.target = target_node # On utilise la variable reçue
+		container_node.add_child(enemy) # On utilise la variable reçue

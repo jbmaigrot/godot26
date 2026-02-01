@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://dvtfb7um6h1gd"]
+
+[ext_resource type="Script" uid="uid://cmoddd1j15s53" path="res://Scripts/mob_spawner.gd" id="1_xn2ct"]
+[ext_resource type="PackedScene" uid="uid://b0cc5a8tn6ny2" path="res://Scenes/Objects/enemy.tscn" id="2_htvnj"]
+[ext_resource type="Texture2D" uid="uid://buts22sqb7smi" path="res://Assets/Sprites/circle_range.png" id="3_eklga"]
+
+[node name="mob_spawner" type="Node2D" unique_id=275470641 node_paths=PackedStringArray("progress_bar")]
+y_sort_enabled = true
+script = ExtResource("1_xn2ct")
+enemy_scene = ExtResource("2_htvnj")
+progress_bar = NodePath("Control/TextureProgressBar")
+
+[node name="MobTimer" type="Timer" parent="." unique_id=383187962]
+
+[node name="WaveTimer" type="Timer" parent="." unique_id=1516543253]
+wait_time = 30.0
+
+[node name="Control" type="Control" parent="." unique_id=313138567]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 1.0
+offset_bottom = 1.0
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="Control" unique_id=342203191]
+layout_mode = 0
+offset_left = -13.0
+offset_top = -12.0
+offset_right = 987.0
+offset_bottom = 988.0
+scale = Vector2(0.025, 0.025)
+step = 0.1
+value = 25.0
+fill_mode = 4
+texture_under = ExtResource("3_eklga")
+texture_progress = ExtResource("3_eklga")
+tint_progress = Color(2.6471912e-07, 0.30887213, 0.3107771, 1)
