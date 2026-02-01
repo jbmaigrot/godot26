@@ -1,8 +1,7 @@
 [gd_scene format=3 uid="uid://cqthi2xirxhww"]
 
 [ext_resource type="PackedScene" uid="uid://b0cc5a8tn6ny2" path="res://Scenes/Objects/enemy.tscn" id="1_ste6u"]
-[ext_resource type="PackedScene" uid="uid://bu78r3thxof5y" path="res://Scenes/Objects/tower.tscn" id="2_x2wu1"]
-[ext_resource type="PackedScene" uid="uid://hmtbm0ghe441" path="res://Scenes/Objects/projectile.tscn" id="3_x2wu1"]
+[ext_resource type="PackedScene" uid="uid://bu78r3thxof5y" path="res://Scenes/Objects/tower_0.tscn" id="2_x2wu1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uy2gt"]
 size = Vector2(69, 68)
@@ -14,7 +13,6 @@ position = Vector2(199, 185)
 
 [node name="Tower" parent="." unique_id=258828074 instance=ExtResource("2_x2wu1")]
 position = Vector2(638, 191)
-projectile_scene = ExtResource("3_x2wu1")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1029307303]
 

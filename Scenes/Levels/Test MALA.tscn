@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://ighbsj5gm3jn" path="res://Scripts/main.gd" id="1_xq0hc"]
 [ext_resource type="TileSet" uid="uid://daa7eu2x4my4d" path="res://Ressources/tileset_temp.tres" id="2_wuixj"]
-[ext_resource type="Script" path="res://Scripts/tile_map_layer_base.gd" id="3_i5ms1"]
+[ext_resource type="Script" uid="uid://cju5bo7mf4hdc" path="res://Scripts/tile_map_layer_base.gd" id="3_i5ms1"]
 [ext_resource type="Script" uid="uid://2ttknnv561fy" path="res://Scripts/tower_placement.gd" id="4_dpd5p"]
 [ext_resource type="Script" uid="uid://b6b0n4uwqiwah" path="res://Ressources/tower_data.gd" id="5_wuixj"]
 [ext_resource type="Resource" uid="uid://ckq0dhq0vet7i" path="res://Ressources/tower_0.tres" id="6_i5ms1"]
@@ -63,3 +63,6 @@ script = ExtResource("8_oixh4")
 enemy_scene = ExtResource("9_ksp68")
 
 [node name="SpawnTimer" type="Timer" parent="mob_spawner" unique_id=1279954263]
+
+[node name="Enemy" parent="." unique_id=352245600 instance=ExtResource("9_ksp68")]
+position = Vector2(-76.000015, 176)

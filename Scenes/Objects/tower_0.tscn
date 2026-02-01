@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://oqwqyxke03us" path="res://Scripts/tower.gd" id="1_mh5eo"]
 [ext_resource type="PackedScene" uid="uid://b0l60actuvf5i" path="res://Scenes/Objects/projectile.tscn" id="2_k775i"]
 [ext_resource type="Shape2D" uid="uid://bt8ks1mvf5hi3" path="res://Ressources/ellipse-16.tres" id="2_tghyl"]
-[ext_resource type="Texture2D" uid="uid://ci066wviaqgy8" path="res://Assets/Sprites/tower.png" id="3_4oh1s"]
+[ext_resource type="Texture2D" uid="uid://ci066wviaqgy8" path="res://Assets/Sprites/tower_0.png" id="3_4oh1s"]
 
 [node name="Tower" type="Area2D" unique_id=258828074]
 script = ExtResource("1_mh5eo")

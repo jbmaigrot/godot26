@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://bo82y0rhx06sk"]
+
+[ext_resource type="Texture2D" uid="uid://b7iakc4y4c5lc" path="res://Assets/Sprites/tower_0_icon.png" id="1_f5v44"]
+
+[node name="preview tower 1" type="Sprite2D" unique_id=1965824367]
+texture = ExtResource("1_f5v44")

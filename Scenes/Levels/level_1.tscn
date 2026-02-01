@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://ighbsj5gm3jn" path="res://Scripts/main.gd" id="1_o5ofx"]
 [ext_resource type="TileSet" uid="uid://dqv5qisbsksx" path="res://Ressources/jb_test_tileset.tres" id="2_nlqrh"]
-[ext_resource type="Script" path="res://Scripts/tile_map_layer_base.gd" id="3_nlqrh"]
+[ext_resource type="Script" uid="uid://cju5bo7mf4hdc" path="res://Scripts/tile_map_layer_base.gd" id="3_nlqrh"]
 [ext_resource type="Script" uid="uid://2ttknnv561fy" path="res://Scripts/tower_placement.gd" id="4_8nmnw"]
 [ext_resource type="Script" uid="uid://b6b0n4uwqiwah" path="res://Ressources/tower_data.gd" id="5_ngxpw"]
 [ext_resource type="Resource" uid="uid://ckq0dhq0vet7i" path="res://Ressources/tower_0.tres" id="6_trw0a"]
@@ -23,7 +23,7 @@ tile_map_data = PackedByteArray("AAAKABcAAAAAAAMAAAAKABYAAAAAAAMAAAAKABUAAAAAAAM
 tile_set = ExtResource("2_nlqrh")
 collision_enabled = false
 script = ExtResource("3_nlqrh")
-mask = NodePath(".")
+mask = NodePath("../(debug) Centers of 5x5 Fog")
 
 [node name="Towers" type="Node2D" parent="." unique_id=137093131 node_paths=PackedStringArray("ground_layer", "mask_layer")]
 position = Vector2(301, 290)
