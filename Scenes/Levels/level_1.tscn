@@ -14,6 +14,7 @@
 [ext_resource type="Script" uid="uid://cmoddd1j15s53" path="res://Scripts/mob_spawner.gd" id="9_tjj3e"]
 [ext_resource type="Texture2D" uid="uid://b871kh3akkvd" path="res://Assets/Sprites/stone_icon.png" id="10_irw6p"]
 [ext_resource type="PackedScene" uid="uid://b0cc5a8tn6ny2" path="res://Scenes/Objects/enemy.tscn" id="10_qxyq8"]
+[ext_resource type="Texture2D" uid="uid://gn27irjdapn7" path="res://Assets/Sprites/base.png" id="12_31phq"]
 [ext_resource type="PackedScene" uid="uid://bwa3mbac8h6dk" path="res://Scenes/UI/ui_ressources.tscn" id="12_afv7b"]
 [ext_resource type="PackedScene" uid="uid://dkalptuwja8fu" path="res://Scenes/UI/ui_masks.tscn" id="13_7r2dd"]
 [ext_resource type="Script" uid="uid://cc7s5vwk41175" path="res://Scripts/masks_manager.gd" id="14_k2mw1"]
@@ -45,7 +46,7 @@ unique_name_in_owner = true
 script = ExtResource("8_3628d")
 
 [node name="Wood_res" type="Node2D" parent="Resources" unique_id=1479521644]
-position = Vector2(-14, 18)
+position = Vector2(-48, 54)
 script = ExtResource("9_irw6p")
 wood_production_value = 1.0
 
@@ -75,6 +76,9 @@ texture = ExtResource("10_irw6p")
 modulate = Color(1, 0, 0, 1)
 
 [node name="Player_base" type="Node2D" parent="." unique_id=252246131]
+
+[node name="Node2D" type="Sprite2D" parent="Player_base" unique_id=1388883769]
+texture = ExtResource("12_31phq")
 
 [node name="mob_spawner" type="Node2D" parent="." unique_id=780009381]
 position = Vector2(-322, 0)
@@ -123,7 +127,7 @@ tile_set = ExtResource("2_nlqrh")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=303866761]
 
-[node name="UI" parent="CanvasLayer" unique_id=1048431771 instance=ExtResource("8_557vl")]
+[node name="UI" parent="CanvasLayer" unique_id=991737340 instance=ExtResource("8_557vl")]
 unique_name_in_owner = true
 offset_top = 0.0
 scale = Vector2(0.58, 0.58)
