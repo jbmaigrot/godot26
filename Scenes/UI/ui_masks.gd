@@ -7,6 +7,8 @@ extends Control
 
 @export_group("Settings")
 @onready var timer: Timer = $Timer
+@onready var manager = $"../Masks_manager"
+var pending_selection: int = 0
 
 func _ready() -> void:
 	# Connexion des signaux pour Mask One
@@ -30,23 +32,23 @@ func _process(_delta: float) -> void:
 
 # --- Logique Mask One ---
 func _on_mask_one_hover():
-	print("Aperçu du Mask 1 (Comparaison...)")
+	manager.show_preview(0)
 
 func _on_mask_one_exit():
-	print("Fin de l'aperçu Mask 1")
+	manager.hide_preview(0)
 
 func _on_mask_one_selected():
-	print("Mask 1 sélectionné pour le prochain cycle")
+	pending_selection = 0
 
 # --- Logique Mask Two ---
 func _on_mask_two_hover():
-	print("Aperçu du Mask 2 (Comparaison...)")
+	manager.show_preview(1)
 
 func _on_mask_two_exit():
-	print("Fin de l'aperçu Mask 2")
+	manager.hide_preview(1)
 
 func _on_mask_two_selected():
-	print("Mask 2 sélectionné pour le prochain cycle")
+	pending_selection = 1
 
 # --- Logique du Cycle ---
 func _on_timer_timeout() -> void:
@@ -54,6 +56,8 @@ func _on_timer_timeout() -> void:
 	print("Action effectuée ! Reset du cycle.")
 
 func execute_cycle_action():
+	manager.select_next_mask(pending_selection)
+	
 	# button_pressed renvoie true si le bouton est en mode "Toggle" et activé
 	if mask_one_button.button_pressed:
 		print("Application du Mask 1")
