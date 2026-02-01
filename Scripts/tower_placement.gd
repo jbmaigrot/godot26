@@ -38,7 +38,7 @@ func _ready() -> void:
 	call_deferred("_register_initial_resources")
 	
 	# 1. On trouve le gestionnaire
-	var manager = $"../Masks_manager"
+	var manager = $"../Masks_manager" 
 	if manager:
 		# On s'abonne au changement de masque (si tu as créé le signal)
 		# Ou on récupère simplement le masque actuel au début
