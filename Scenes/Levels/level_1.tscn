@@ -18,6 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://bwa3mbac8h6dk" path="res://Scenes/UI/ui_ressources.tscn" id="12_afv7b"]
 [ext_resource type="PackedScene" uid="uid://dkalptuwja8fu" path="res://Scenes/UI/ui_masks.tscn" id="13_7r2dd"]
 [ext_resource type="Script" uid="uid://cc7s5vwk41175" path="res://Scripts/masks_manager.gd" id="14_k2mw1"]
+[ext_resource type="Texture2D" uid="uid://buts22sqb7smi" path="res://Assets/Sprites/circle_range.png" id="19_7hll7"]
 
 [node name="Level_1" type="Node2D" unique_id=100231516]
 script = ExtResource("1_o5ofx")
@@ -119,7 +120,10 @@ position = Vector2(-322, 0)
 script = ExtResource("9_tjj3e")
 enemy_scene = ExtResource("10_qxyq8")
 
-[node name="SpawnTimer" type="Timer" parent="mob_spawner" unique_id=1279954263]
+[node name="WaveTimer" type="Timer" parent="mob_spawner" unique_id=1279954263]
+wait_time = 30.0
+
+[node name="MobTimer" type="Timer" parent="mob_spawner" unique_id=1156720779]
 
 [node name="(debug) Centers of 5x5 Fog" type="TileMapLayer" parent="." unique_id=626676577]
 visible = false
@@ -160,6 +164,7 @@ tile_map_data = PackedByteArray("AAD2/wIAAAADAAAAAAD2/wMAAAADAAAAAAD2/wQAAAADAAA
 tile_set = ExtResource("2_nlqrh")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=303866761]
+visible = false
 
 [node name="UI" parent="CanvasLayer" unique_id=991737340 instance=ExtResource("8_557vl")]
 unique_name_in_owner = true
@@ -175,3 +180,25 @@ unique_name_in_owner = true
 offset_left = 0.0
 offset_bottom = 0.0
 scale = Vector2(0.39, 0.39)
+
+[node name="Control" type="Control" parent="." unique_id=257817141]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -321.0
+offset_top = 1.0
+offset_right = -321.0
+offset_bottom = 1.0
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="Control" unique_id=1756175000]
+layout_mode = 0
+offset_left = -13.0
+offset_top = -12.0
+offset_right = 987.0
+offset_bottom = 988.0
+scale = Vector2(0.025, 0.025)
+step = 0.1
+value = 25.0
+fill_mode = 4
+texture_under = ExtResource("19_7hll7")
+texture_progress = ExtResource("19_7hll7")
+tint_progress = Color(2.6471912e-07, 0.30887213, 0.3107771, 1)
