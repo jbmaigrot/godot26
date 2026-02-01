@@ -1,6 +1,10 @@
 extends Node2D
 class_name Main
-@export var base_health: int = 20
+
+@export var max_health: int = 20
+@onready var base_health: int = max_health # On initialise avec le max
+@export var game_over_screen: Control
+
 
 var gold: float = 100.0
 var wood: float = 0.0
@@ -14,10 +18,12 @@ var stone_per_second: float = 0.0
 
 var total_kills: int = 0
 var game_time: float = 0.0
-
+var is_game_over: bool = false # Flag pour stopper la logique
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	if game_over_screen:
+		game_over_screen.hide() # On s'assure qu'il est caché au début
 	# connect le bouton UI sur la possibilité de creer des tours
 	%UI.global_add_tower_request.connect(%Towers._on_ui_add_tower_request)
 	# 2. Connexion au ResourcesManager
@@ -29,6 +35,9 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	if is_game_over:
+		return
+	
 	# Accumulation précise avec delta
 	wood += wood_per_second * delta
 	stone += stone_per_second * delta
@@ -42,15 +51,26 @@ func _on_production_rates_changed(new_wood_ps: float, new_stone_ps: float) -> vo
 	# Optionnel : update_ui_elements() ici si tu veux un retour immédiat sur l'UI
 
 func take_damage(amount: int):
+	if is_game_over: return
 	base_health -= amount
 	print("Base hit! Health remaining: ", base_health)
-	
+	update_ui_elements()
 	if base_health <= 0:
+		base_health = 0 # Propreté pour l'UI
 		game_over()
 
 func game_over():
+	is_game_over = true
 	print("Game Over!")
-	# You can use get_tree().reload_current_scene() to restart
+
+	# Rendre l'UI visible
+	if game_over_screen:
+		game_over_screen.show()
+	
+	# Optionnel : Arrêter le reste du monde (physique, ennemis, etc.)
+	get_tree().paused = true 
+	# (Attention : si tu utilises paused = true, ton UI de Game Over 
+	# doit avoir son Process Mode réglé sur "Always" pour rester cliquable)
 	
 	
 func check_tower_money(tower_info: TowerData) -> bool:
@@ -75,8 +95,10 @@ func update_ui_elements() -> void:
 		# --- APPEL DES NOUVELLES FONCTIONS UI ---
 		ui.update_kills(total_kills)
 		ui.update_timer(int(game_time))
+		ui.update_health(base_health, max_health)
 
 
 func add_money(value: int):
+	if is_game_over: return
 	gold += value
 	total_kills += 1 # Chaque gain d'argent (loot) compte comme un kill

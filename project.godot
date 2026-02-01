@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="godot26"
-run/main_scene="uid://ce02lcxbtpcrd"
+run/main_scene="uid://hlknkuc7b2qw"
 config/features=PackedStringArray("4.6", "Mobile")
 config/icon="res://Assets/Sprites/icon.svg"
 

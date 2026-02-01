@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dm8w628d6j673" path="res://Assets/Sprites/Wood_icon.png" id="3_k7vr8"]
 [ext_resource type="Texture2D" uid="uid://b871kh3akkvd" path="res://Assets/Sprites/stone_icon.png" id="4_l3vbp"]
 
-[node name="UI_ressources" type="Control" unique_id=395998648 node_paths=PackedStringArray("gold_label", "wood_label", "stone_label", "kills_label", "timer_label")]
+[node name="UI_ressources" type="Control" unique_id=395998648 node_paths=PackedStringArray("gold_label", "wood_label", "stone_label", "health_label", "kills_label", "timer_label")]
 layout_mode = 3
 anchors_preset = 0
 size_flags_horizontal = 4
@@ -15,6 +15,7 @@ script = ExtResource("1_4oqlf")
 gold_label = NodePath("MarginContainer/MarginContainer/HBoxContainer/VBoxContainer/Res 1/Gold")
 wood_label = NodePath("MarginContainer/MarginContainer/HBoxContainer/VBoxContainer/Res 2/wood")
 stone_label = NodePath("MarginContainer/MarginContainer/HBoxContainer/VBoxContainer/Res 3/stone")
+health_label = NodePath("MarginContainer/MarginContainer/HBoxContainer/VBoxContainer2/Res 6/label")
 kills_label = NodePath("MarginContainer/MarginContainer/HBoxContainer/VBoxContainer2/Res 5/kills")
 timer_label = NodePath("MarginContainer/MarginContainer/HBoxContainer/VBoxContainer2/Res 4/Time")
 
@@ -62,6 +63,16 @@ layout_mode = 2
 [node name="HSeparator" type="HSeparator" parent="MarginContainer/MarginContainer/HBoxContainer/VBoxContainer2/MarginContainer2" unique_id=2118801489]
 layout_mode = 2
 
+[node name="Res 6" type="HBoxContainer" parent="MarginContainer/MarginContainer/HBoxContainer/VBoxContainer2" unique_id=563166547]
+layout_mode = 2
+
+[node name="label" type="Label" parent="MarginContainer/MarginContainer/HBoxContainer/VBoxContainer2/Res 6" unique_id=1888076096]
+layout_mode = 2
+text = "Health left :"
+
+[node name="health" type="Label" parent="MarginContainer/MarginContainer/HBoxContainer/VBoxContainer2/Res 6" unique_id=726304887]
+layout_mode = 2
+
 [node name="Res 4" type="HBoxContainer" parent="MarginContainer/MarginContainer/HBoxContainer/VBoxContainer2" unique_id=1921809657]
 layout_mode = 2
 
@@ -78,7 +89,6 @@ layout_mode = 2
 
 [node name="label" type="Label" parent="MarginContainer/MarginContainer/HBoxContainer/VBoxContainer2/Res 5" unique_id=1054913324]
 layout_mode = 2
-text = "Units killed :"
 
 [node name="kills" type="Label" parent="MarginContainer/MarginContainer/HBoxContainer/VBoxContainer2/Res 5" unique_id=561332685]
 layout_mode = 2

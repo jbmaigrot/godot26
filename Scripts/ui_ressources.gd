@@ -3,6 +3,7 @@ extends Control
 @export var gold_label: Label
 @export var wood_label: Label
 @export var stone_label: Label
+@export var health_label: Label  # Nouveau label pour les unités tuées
 @export var kills_label: Label  # Nouveau label pour les unités tuées
 @export var timer_label: Label # Nouveau label pour le temps
 
@@ -30,3 +31,6 @@ func update_timer(seconds: int) -> void:
 	var secs = seconds % 60
 	# format("%02d") permet d'avoir toujours deux chiffres (ex: 05 au lieu de 5)
 	timer_label.text = str("%02d:%02d" % [mins, secs])
+
+func update_health(current: int, max_hp: int) -> void:
+	health_label.text = "HP: " + str(current) + " / " + str(max_hp)

@@ -10,9 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://d4dfxvfucaywr" path="res://Scenes/UI/Test_UI_jeu.tscn" id="8_557vl"]
 [ext_resource type="Script" uid="uid://dglj2pf81auxo" path="res://Scripts/resources_manager.gd" id="8_3628d"]
 [ext_resource type="Texture2D" uid="uid://b7kjlm7ubp4db" path="res://Assets/Sprites/trees.png" id="8_tjl6l"]
-[ext_resource type="Script" path="res://Scripts/resource_production.gd" id="9_irw6p"]
-[ext_resource type="Script" uid="uid://cmoddd1j15s53" path="res://Scripts/mob_spawner.gd" id="9_tjj3e"]
-[ext_resource type="PackedScene" uid="uid://b0cc5a8tn6ny2" path="res://Scenes/Objects/enemy.tscn" id="10_qxyq8"]
+[ext_resource type="Script" uid="uid://djtl0nw7qm2h6" path="res://Scripts/resource_production.gd" id="9_irw6p"]
 [ext_resource type="Texture2D" uid="uid://b8rm4wutjg111" path="res://Assets/Sprites/mine.png" id="11_31phq"]
 [ext_resource type="Texture2D" uid="uid://gn27irjdapn7" path="res://Assets/Sprites/base.png" id="12_31phq"]
 [ext_resource type="PackedScene" uid="uid://bwa3mbac8h6dk" path="res://Scenes/UI/ui_ressources.tscn" id="12_afv7b"]
@@ -20,10 +18,13 @@
 [ext_resource type="Script" uid="uid://c3n7p3t0o5u66" path="res://Scenes/Levels/wave_spawner.gd" id="13_fayjm"]
 [ext_resource type="PackedScene" uid="uid://dvtfb7um6h1gd" path="res://Scenes/Objects/mob_spawner.tscn" id="14_31phq"]
 [ext_resource type="Script" uid="uid://cc7s5vwk41175" path="res://Scripts/masks_manager.gd" id="14_k2mw1"]
+[ext_resource type="Texture2D" uid="uid://brp5kyaikae6n" path="res://Assets/Sprites/UI_elmement_0.png" id="19_7hll7"]
+[ext_resource type="Script" uid="uid://dbppr3wsycj36" path="res://Scenes/Levels/game_over.gd" id="19_fayjm"]
 
-[node name="Level_1" type="Node2D" unique_id=100231516]
+[node name="Level_1" type="Node2D" unique_id=100231516 node_paths=PackedStringArray("game_over_screen")]
 y_sort_enabled = true
 script = ExtResource("1_o5ofx")
+game_over_screen = NodePath("CanvasLayer/Game Over")
 
 [node name="TileMapLayer-Base" type="TileMapLayer" parent="." unique_id=1922053369]
 z_index = -10
@@ -198,3 +199,58 @@ unique_name_in_owner = true
 offset_left = 0.0
 offset_bottom = 0.0
 scale = Vector2(0.39, 0.39)
+
+[node name="Game Over" type="Control" parent="CanvasLayer" unique_id=197887351]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("19_fayjm")
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Game Over" unique_id=99580041]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer/Game Over/MarginContainer" unique_id=147506234]
+layout_mode = 2
+texture = ExtResource("19_7hll7")
+region_rect = Rect2(0, 0, 32, 32)
+patch_margin_left = 2
+patch_margin_top = 3
+patch_margin_right = 2
+patch_margin_bottom = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Game Over/MarginContainer" unique_id=2011098402]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Game Over/MarginContainer/MarginContainer" unique_id=514916376]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/Game Over/MarginContainer/MarginContainer/VBoxContainer" unique_id=142222519]
+layout_mode = 2
+text = "Game Over"
+
+[node name="HSeparator" type="HSeparator" parent="CanvasLayer/Game Over/MarginContainer/MarginContainer/VBoxContainer" unique_id=1032516825]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="CanvasLayer/Game Over/MarginContainer/MarginContainer/VBoxContainer" unique_id=255433915]
+layout_mode = 2
+text = "Restart"
+
+[connection signal="pressed" from="CanvasLayer/Game Over/MarginContainer/MarginContainer/VBoxContainer/Button" to="CanvasLayer/Game Over" method="_on_restart_button_pressed"]
