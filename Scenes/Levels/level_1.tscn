@@ -11,6 +11,8 @@
 [ext_resource type="Script" uid="uid://cmoddd1j15s53" path="res://Scripts/mob_spawner.gd" id="9_tjj3e"]
 [ext_resource type="PackedScene" uid="uid://b0cc5a8tn6ny2" path="res://Scenes/Objects/enemy.tscn" id="10_qxyq8"]
 [ext_resource type="Texture2D" uid="uid://b50sfrxcwotfe" path="res://Assets/Sprites/fog.png" id="11_34y5i"]
+[ext_resource type="PackedScene" uid="uid://bwa3mbac8h6dk" path="res://Scenes/UI/ui_ressources.tscn" id="12_afv7b"]
+[ext_resource type="PackedScene" uid="uid://dkalptuwja8fu" path="res://Scenes/UI/ui_masks.tscn" id="13_7r2dd"]
 
 [node name="Level_1" type="Node2D" unique_id=100231516]
 script = ExtResource("1_o5ofx")
@@ -60,7 +62,6 @@ enemy_scene = ExtResource("10_qxyq8")
 [node name="SpawnTimer" type="Timer" parent="mob_spawner" unique_id=1279954263]
 
 [node name="(debug) Centers of 5x5 Fog" type="TileMapLayer" parent="." unique_id=626676577]
-visible = false
 z_index = 4096
 texture_filter = 1
 tile_map_data = PackedByteArray("AAACAAQAAAADAAMAAAD//wkAAAADAAMAAAD9/w4AAAADAAMAAAACAA4AAAADAAMAAAAEAAkAAAADAAMAAAD9//r/AAADAAMAAAD6//X/AAADAAMAAAD4//r/AAADAAMAAAD4/wQAAAADAAMAAAD9//D/AAADAAMAAAACAPD/AAADAAMAAAAEAPX/AAADAAMAAAAHAPr/AAADAAMAAAAHAAQAAAADAAMAAAAEAP//AAADAAMAAAACAPr/AAADAAMAAAD///X/AAADAAMAAAD6/wkAAAADAAMAAAD9/wQAAAADAAMAAAD6////AAADAAMAAAA=")
@@ -74,3 +75,17 @@ texture = ExtResource("11_34y5i")
 [node name="Fog test2" type="Sprite2D" parent="." unique_id=781959778]
 position = Vector2(-81, 123)
 texture = ExtResource("11_34y5i")
+
+[node name="UI_ressources" parent="." unique_id=395998648 instance=ExtResource("12_afv7b")]
+offset_left = -310.0
+offset_top = -176.00002
+offset_right = -310.0
+offset_bottom = -176.00002
+scale = Vector2(0.65, 0.65)
+
+[node name="UI_masks" parent="." unique_id=2126837010 instance=ExtResource("13_7r2dd")]
+offset_left = 122.00001
+offset_top = -229.0
+offset_right = 162.0
+offset_bottom = -189.0
+scale = Vector2(0.51, 0.51)

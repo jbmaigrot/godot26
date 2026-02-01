@@ -2,6 +2,15 @@ extends Node2D
 class_name Main
 @export var base_health: int = 20
 
+var gold: float = 100.0
+var wood: float = 0.0
+var stone: float = 0.0
+
+var wood_per_second: float = 1.5
+var stone_per_second: float = 0.8
+
+@onready var ui = $UI_ressources
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	# connect le bouton UI sur la possibilité de creer des tours
@@ -9,7 +18,11 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	# Accumulation précise avec delta
+	wood += wood_per_second * delta
+	stone += stone_per_second * delta
+	
+	update_ui_elements()
 
 
 func take_damage(amount: int):
@@ -26,3 +39,10 @@ func game_over():
 	
 func check_tower_money(tower_info: TowerData):
 	return true
+	
+func update_ui_elements() -> void:
+	if ui:
+		# On convertit en int() seulement pour l'affichage
+		ui.update_gold(int(gold))
+		ui.update_wood(int(wood), int(wood_per_second))
+		ui.update_stone(int(stone), int(stone_per_second))

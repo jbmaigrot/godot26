@@ -1,0 +1,72 @@
+[gd_scene format=3 uid="uid://dkalptuwja8fu"]
+
+[ext_resource type="Script" uid="uid://dkjbxkdg01xa0" path="res://Scenes/UI/ui_masks.gd" id="1_j2is3"]
+[ext_resource type="Texture2D" uid="uid://brp5kyaikae6n" path="res://Assets/Sprites/UI_elmement_0.png" id="2_4akpb"]
+
+[node name="UI_masks" type="Control" unique_id=2126837010 node_paths=PackedStringArray("mask_one_button", "mask_two_button", "progress_bar")]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_j2is3")
+mask_one_button = NodePath("MarginContainer/MarginContainer/VBoxContainer/HBoxContainer/Button")
+mask_two_button = NodePath("MarginContainer/MarginContainer/VBoxContainer/HBoxContainer/Button2")
+progress_bar = NodePath("MarginContainer/MarginContainer/VBoxContainer/ProgressBar")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=2045234371]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer" unique_id=145124400]
+layout_mode = 2
+texture = ExtResource("2_4akpb")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 3
+patch_margin_bottom = 7
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer" unique_id=1094980208]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/MarginContainer" unique_id=62802084]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/MarginContainer/VBoxContainer" unique_id=190507193]
+layout_mode = 2
+text = "Mask control"
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/MarginContainer/VBoxContainer" unique_id=2066612401]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="MarginContainer/MarginContainer/VBoxContainer" unique_id=375796389]
+layout_mode = 2
+text = "Choose and select the mask that will be used next (hower to compare)"
+
+[node name="HSeparator2" type="HSeparator" parent="MarginContainer/MarginContainer/VBoxContainer" unique_id=919008179]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/MarginContainer/VBoxContainer" unique_id=163418836]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="MarginContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=2055264521]
+layout_mode = 2
+text = "Mask one"
+
+[node name="Button2" type="Button" parent="MarginContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1658292593]
+layout_mode = 2
+text = "Mask two"
+
+[node name="HSeparator3" type="HSeparator" parent="MarginContainer/MarginContainer/VBoxContainer" unique_id=1823409962]
+layout_mode = 2
+
+[node name="ProgressBar" type="ProgressBar" parent="MarginContainer/MarginContainer/VBoxContainer" unique_id=623195258]
+layout_mode = 2
+
+[node name="Timer" type="Timer" parent="." unique_id=1928110996]
+wait_time = 5.0
+autostart = true
