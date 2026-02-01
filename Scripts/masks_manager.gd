@@ -31,11 +31,13 @@ func _ready() -> void:
 	current_mask = shuffle_bag.pop_front()
 	current_mask.visible = true
 	
+	_filter_all_entities()
+	mask_changed.emit(current_mask)
+	
 	# On remplit les deux slots d'attente
 	next_options.append(shuffle_bag.pop_front())
 	next_options.append(shuffle_bag.pop_front())
 	
-	mask_changed.emit(current_mask)
 
 
 # La fonction que tu appelles avec 0 ou 1

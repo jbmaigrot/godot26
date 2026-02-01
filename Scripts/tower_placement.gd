@@ -20,6 +20,8 @@ var mask_layer: TileMapLayer
 @export var color_valid: Color = Color(0, 1, 0, 0.5) 
 @export var color_invalid: Color = Color(1, 0, 0, 0.5)
 
+@onready var resources_container = $"../Resources" # Le nœud qui contient tes blocs de bois/pierre
+
 
 var occupied_cells: Dictionary = {}
 var buildable_data_name: String = "buildable"
@@ -32,6 +34,9 @@ func _ready() -> void:
 	main = get_tree().current_scene as Main
 	disable_ghost()
 	
+	# On attend une frame pour être certain que la liste des enfants de "Resources" est complète
+	call_deferred("_register_initial_resources")
+	
 	# 1. On trouve le gestionnaire
 	var manager = $"../Masks_manager"
 	if manager:
@@ -41,6 +46,7 @@ func _ready() -> void:
 		
 		# Optionnel : Connecter un signal pour mettre à jour automatiquement
 		manager.mask_changed.connect(_on_mask_changed)
+	_register_initial_resources()
 
 func _process(_delta):
 # On s'arrête si le ghost n'est pas actif ou si le sprite n'est pas encore créé
@@ -148,3 +154,12 @@ func _on_ui_add_tower_request(index: int) -> void:
 
 func _on_mask_changed(new_mask: TileMapLayer) -> void:
 	mask_layer = new_mask
+
+func _register_initial_resources() -> void:
+	if resources_container:
+		for resource in resources_container.get_children():
+			if is_instance_valid(resource):
+				# On calcule la position dans la grille
+				var res_tile = ground_layer.local_to_map(ground_layer.to_local(resource.global_position))
+				# On l'ajoute au dictionnaire pour bloquer la construction
+				occupied_cells[res_tile] = resource

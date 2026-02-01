@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dkalptuwja8fu"]
 
-[ext_resource type="Script" uid="uid://dkjbxkdg01xa0" path="res://Scenes/UI/ui_masks.gd" id="1_j2is3"]
+[ext_resource type="Script" uid="uid://dkjbxkdg01xa0" path="res://Scripts/ui_masks.gd" id="1_j2is3"]
 [ext_resource type="Texture2D" uid="uid://brp5kyaikae6n" path="res://Assets/Sprites/UI_elmement_0.png" id="2_4akpb"]
 
 [node name="UI_masks" type="Control" unique_id=2126837010 node_paths=PackedStringArray("mask_one_button", "mask_two_button", "progress_bar")]

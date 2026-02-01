@@ -8,12 +8,15 @@
 [ext_resource type="Resource" uid="uid://ckq0dhq0vet7i" path="res://Ressources/tower_0.tres" id="6_trw0a"]
 [ext_resource type="Resource" uid="uid://q6d6at027vno" path="res://Ressources/tower_1.tres" id="7_tjcye"]
 [ext_resource type="PackedScene" uid="uid://d4dfxvfucaywr" path="res://Scenes/UI/Test_UI_jeu.tscn" id="8_557vl"]
+[ext_resource type="Script" uid="uid://dglj2pf81auxo" path="res://Scripts/resources_manager.gd" id="8_3628d"]
 [ext_resource type="Texture2D" uid="uid://b7kjlm7ubp4db" path="res://Assets/Sprites/trees.png" id="8_tjl6l"]
+[ext_resource type="Script" uid="uid://djtl0nw7qm2h6" path="res://Scripts/resource_production.gd" id="9_irw6p"]
 [ext_resource type="Script" uid="uid://cmoddd1j15s53" path="res://Scripts/mob_spawner.gd" id="9_tjj3e"]
+[ext_resource type="Texture2D" uid="uid://b871kh3akkvd" path="res://Assets/Sprites/stone_icon.png" id="10_irw6p"]
 [ext_resource type="PackedScene" uid="uid://b0cc5a8tn6ny2" path="res://Scenes/Objects/enemy.tscn" id="10_qxyq8"]
 [ext_resource type="PackedScene" uid="uid://bwa3mbac8h6dk" path="res://Scenes/UI/ui_ressources.tscn" id="12_afv7b"]
 [ext_resource type="PackedScene" uid="uid://dkalptuwja8fu" path="res://Scenes/UI/ui_masks.tscn" id="13_7r2dd"]
-[ext_resource type="Script" uid="uid://cc7s5vwk41175" path="res://Scenes/Levels/masks_manager.gd" id="14_k2mw1"]
+[ext_resource type="Script" uid="uid://cc7s5vwk41175" path="res://Scripts/masks_manager.gd" id="14_k2mw1"]
 
 [node name="Level_1" type="Node2D" unique_id=100231516]
 script = ExtResource("1_o5ofx")
@@ -36,13 +39,34 @@ ground_layer = NodePath("../TileMapLayer-Base")
 [node name="Mobs" type="Node2D" parent="." unique_id=1187758797]
 
 [node name="Resources" type="Node2D" parent="." unique_id=872982009]
+script = ExtResource("8_3628d")
 
 [node name="Wood_res" type="Node2D" parent="Resources" unique_id=1479521644]
 position = Vector2(-14, 18)
+script = ExtResource("9_irw6p")
+wood_production_value = 1.0
 
 [node name="Sprite2D" type="Sprite2D" parent="Resources/Wood_res" unique_id=999434528]
 position = Vector2(0, -18)
 texture = ExtResource("8_tjl6l")
+
+[node name="Wood_res2" type="Node2D" parent="Resources" unique_id=1817499063]
+position = Vector2(13, -27)
+script = ExtResource("9_irw6p")
+wood_production_value = 1.0
+
+[node name="Sprite2D" type="Sprite2D" parent="Resources/Wood_res2" unique_id=1172444828]
+position = Vector2(0, -18)
+texture = ExtResource("8_tjl6l")
+
+[node name="Stone_res" type="Node2D" parent="Resources" unique_id=710964871]
+position = Vector2(-113, -9)
+script = ExtResource("9_irw6p")
+stone_production_value = 5.0
+
+[node name="Sprite2D" type="Sprite2D" parent="Resources/Stone_res" unique_id=1942545082]
+position = Vector2(1, -1)
+texture = ExtResource("10_irw6p")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1551926076]
 modulate = Color(1, 0, 0, 1)
