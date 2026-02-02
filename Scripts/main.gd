@@ -6,8 +6,8 @@ class_name Main
 @export var game_over_screen: Control
 
 
-var gold: float = 100.0
-var wood: float = 0.0
+var gold: float = 70.0
+var wood: float = 40.0
 var stone: float = 0.0
 
 var wood_per_second: float = 0.0

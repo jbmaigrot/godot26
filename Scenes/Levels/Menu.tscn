@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://csxq10ieauqf7" path="res://Scenes/Levels/Main_menu.gd" id="1_aegwq"]
 [ext_resource type="Texture2D" uid="uid://brp5kyaikae6n" path="res://Assets/Sprites/UI_elmement_0.png" id="1_hq2ph"]
+[ext_resource type="LabelSettings" uid="uid://b237c40thsjnv" path="res://Ressources/new_label_settings.tres" id="3_v6ejk"]
 
 [node name="Menu" type="Node2D" unique_id=1600540677]
 position = Vector2(629, 332)
@@ -67,7 +68,8 @@ layout_mode = 2
 [node name="Label" type="Label" parent="CanvasLayer/Control/MarginContainer/MarginContainer/VBoxContainer" unique_id=1974134973]
 layout_mode = 2
 size_flags_horizontal = 4
-text = "TITLE"
+text = "The Last Farm on Greyveil Island"
+label_settings = ExtResource("3_v6ejk")
 
 [node name="HSeparator" type="HSeparator" parent="CanvasLayer/Control/MarginContainer/MarginContainer/VBoxContainer" unique_id=103039672]
 layout_mode = 2
@@ -75,11 +77,17 @@ layout_mode = 2
 [node name="Label2" type="Label" parent="CanvasLayer/Control/MarginContainer/MarginContainer/VBoxContainer" unique_id=1716115604]
 layout_mode = 2
 size_flags_horizontal = 4
-text = "This is a tower defense game with a unique twist: 
-a mask appears over the map, deactivating both the enemy paths and your towers.
+text = "Far in the ocean, there is an island always half-masked by mist: Greyveil.
+Alas, recently its last inhabitants are being attacked by mysterious demons.
 
-You can choose the next mask—choose wisely. 
-The game is played entirely with the mouse."
+This is a tower defense game with a unique twist: 
+A thick grey fog masks and disables some paths 
+and towers, but it changes every 10 seconds.
+You can pick the next mask — choose wisely.
+
+The game is played with mouse only."
+label_settings = ExtResource("3_v6ejk")
+horizontal_alignment = 1
 
 [node name="HSeparator2" type="HSeparator" parent="CanvasLayer/Control/MarginContainer/MarginContainer/VBoxContainer" unique_id=261958114]
 layout_mode = 2

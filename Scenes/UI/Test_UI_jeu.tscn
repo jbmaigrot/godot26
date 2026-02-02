@@ -38,8 +38,8 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -300.0
-offset_top = -217.0
+offset_left = -310.0
+offset_top = -173.0
 grow_horizontal = 0
 grow_vertical = 0
 theme_override_constants/margin_left = 10
@@ -206,8 +206,9 @@ layout_mode = 2
 theme_override_constants/separation = 3
 
 [node name="desctiption" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/CustomButton/MarginContainer/VBoxContainer" unique_id=1555973112]
+custom_minimum_size = Vector2(10, 10)
 layout_mode = 2
-text = "descriptio zeeeeeeeeeee, c'est un peu long, et que ce se passe t-il??"
+text = "description"
 label_settings = ExtResource("3_k63uj")
 autowrap_mode = 3
 text_overrun_behavior = 5
@@ -339,8 +340,9 @@ layout_mode = 2
 theme_override_constants/separation = 3
 
 [node name="desctiption" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/CustomButton2/MarginContainer/VBoxContainer" unique_id=1529993115]
+custom_minimum_size = Vector2(1, 1)
 layout_mode = 2
-text = "descriptio zeeeeeeeeeee, c'est un peu long, et que ce se passe t-il??"
+text = "description"
 label_settings = ExtResource("3_k63uj")
 autowrap_mode = 3
 text_overrun_behavior = 5

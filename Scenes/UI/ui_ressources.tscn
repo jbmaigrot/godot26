@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://brp5kyaikae6n" path="res://Assets/Sprites/UI_elmement_0.png" id="1_poerx"]
 [ext_resource type="Texture2D" uid="uid://dmuywxv2n6vku" path="res://Assets/Sprites/Coin_icon.png" id="2_4oqlf"]
 [ext_resource type="Texture2D" uid="uid://dm8w628d6j673" path="res://Assets/Sprites/Wood_icon.png" id="3_k7vr8"]
+[ext_resource type="LabelSettings" uid="uid://b237c40thsjnv" path="res://Ressources/new_label_settings.tres" id="3_l3vbp"]
 [ext_resource type="Texture2D" uid="uid://b871kh3akkvd" path="res://Assets/Sprites/stone_icon.png" id="4_l3vbp"]
 
 [node name="UI_ressources" type="Control" unique_id=395998648 node_paths=PackedStringArray("gold_label", "wood_label", "stone_label", "health_label", "kills_label", "timer_label")]
@@ -21,8 +22,8 @@ timer_label = NodePath("MarginContainer/MarginContainer/HBoxContainer/VBoxContai
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=76018862]
 layout_mode = 1
-offset_right = 307.0
-offset_bottom = 169.0
+offset_right = 267.0
+offset_bottom = 152.0
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
@@ -56,6 +57,7 @@ size_flags_vertical = 4
 [node name="Label" type="Label" parent="MarginContainer/MarginContainer/HBoxContainer/VBoxContainer2" unique_id=774546748]
 layout_mode = 2
 text = "Score"
+label_settings = ExtResource("3_l3vbp")
 
 [node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/MarginContainer/HBoxContainer/VBoxContainer2" unique_id=1614351883]
 layout_mode = 2
@@ -68,43 +70,54 @@ layout_mode = 2
 
 [node name="label" type="Label" parent="MarginContainer/MarginContainer/HBoxContainer/VBoxContainer2/Res 6" unique_id=1888076096]
 layout_mode = 2
-text = "Health left :"
+text = "Health:"
+label_settings = ExtResource("3_l3vbp")
 
 [node name="health" type="Label" parent="MarginContainer/MarginContainer/HBoxContainer/VBoxContainer2/Res 6" unique_id=726304887]
 layout_mode = 2
+label_settings = ExtResource("3_l3vbp")
 
 [node name="Res 4" type="HBoxContainer" parent="MarginContainer/MarginContainer/HBoxContainer/VBoxContainer2" unique_id=1921809657]
 layout_mode = 2
 
 [node name="label" type="Label" parent="MarginContainer/MarginContainer/HBoxContainer/VBoxContainer2/Res 4" unique_id=2008417214]
 layout_mode = 2
-text = "Time alive :"
+text = "Time:"
+label_settings = ExtResource("3_l3vbp")
 
 [node name="Time" type="Label" parent="MarginContainer/MarginContainer/HBoxContainer/VBoxContainer2/Res 4" unique_id=1448195096]
 layout_mode = 2
 text = "0"
+label_settings = ExtResource("3_l3vbp")
 
 [node name="Res 5" type="HBoxContainer" parent="MarginContainer/MarginContainer/HBoxContainer/VBoxContainer2" unique_id=468188112]
 layout_mode = 2
 
 [node name="label" type="Label" parent="MarginContainer/MarginContainer/HBoxContainer/VBoxContainer2/Res 5" unique_id=1054913324]
 layout_mode = 2
+label_settings = ExtResource("3_l3vbp")
 
 [node name="kills" type="Label" parent="MarginContainer/MarginContainer/HBoxContainer/VBoxContainer2/Res 5" unique_id=561332685]
 layout_mode = 2
 text = "0"
+label_settings = ExtResource("3_l3vbp")
 
 [node name="VSeparator" type="VSeparator" parent="MarginContainer/MarginContainer/HBoxContainer" unique_id=1771931416]
 layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/MarginContainer/HBoxContainer" unique_id=458629949]
 layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
 
 [node name="Label2" type="Label" parent="MarginContainer/MarginContainer/HBoxContainer/VBoxContainer" unique_id=670567885]
+visible = false
 layout_mode = 2
 text = "ressources"
+label_settings = ExtResource("3_l3vbp")
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/MarginContainer/HBoxContainer/VBoxContainer" unique_id=1957741586]
+visible = false
 layout_mode = 2
 
 [node name="HSeparator" type="HSeparator" parent="MarginContainer/MarginContainer/HBoxContainer/VBoxContainer/MarginContainer" unique_id=2051458093]
@@ -123,10 +136,12 @@ stretch_mode = 4
 [node name="Gold" type="Label" parent="MarginContainer/MarginContainer/HBoxContainer/VBoxContainer/Res 1" unique_id=413294476]
 layout_mode = 2
 text = "25"
+label_settings = ExtResource("3_l3vbp")
 
 [node name="Label2" type="Label" parent="MarginContainer/MarginContainer/HBoxContainer/VBoxContainer/Res 1" unique_id=507260776]
 layout_mode = 2
-text = "/ destroy units go gain more"
+text = "(+1/kill)"
+label_settings = ExtResource("3_l3vbp")
 
 [node name="Res 2" type="HBoxContainer" parent="MarginContainer/MarginContainer/HBoxContainer/VBoxContainer" unique_id=1763544671]
 layout_mode = 2
@@ -141,10 +156,11 @@ stretch_mode = 4
 [node name="wood" type="Label" parent="MarginContainer/MarginContainer/HBoxContainer/VBoxContainer/Res 2" unique_id=2042294364]
 layout_mode = 2
 text = "25  + (10)"
+label_settings = ExtResource("3_l3vbp")
 
 [node name="Label2" type="Label" parent="MarginContainer/MarginContainer/HBoxContainer/VBoxContainer/Res 2" unique_id=2066231237]
 layout_mode = 2
-text = "/ control forests"
+label_settings = ExtResource("3_l3vbp")
 
 [node name="Res 3" type="HBoxContainer" parent="MarginContainer/MarginContainer/HBoxContainer/VBoxContainer" unique_id=649128282]
 layout_mode = 2
@@ -159,7 +175,8 @@ stretch_mode = 4
 [node name="stone" type="Label" parent="MarginContainer/MarginContainer/HBoxContainer/VBoxContainer/Res 3" unique_id=702310144]
 layout_mode = 2
 text = "25"
+label_settings = ExtResource("3_l3vbp")
 
 [node name="Label2" type="Label" parent="MarginContainer/MarginContainer/HBoxContainer/VBoxContainer/Res 3" unique_id=104327094]
 layout_mode = 2
-text = "/ control stone patches"
+label_settings = ExtResource("3_l3vbp")

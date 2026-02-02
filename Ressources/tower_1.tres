@@ -8,10 +8,10 @@
 [resource]
 script = ExtResource("1_nfa6h")
 index = 1
-name = "Tour 2"
-description = "Long distance tower"
-cost_gold = 0
-cost_wood = 25
+name = "Watchtower"
+description = "Long range"
+cost_gold = 15
+cost_wood = 10
 cost_stone = 25
 scene = ExtResource("3_dndeq")
 preview_scene = ExtResource("2_4wxw4")
