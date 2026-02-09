@@ -8,7 +8,7 @@ size = Vector2(27, 9)
 
 [node name="Projectile" type="Area2D" unique_id=1976663396]
 script = ExtResource("1_jobfh")
-speed = 250
+speed = 400
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=406430207]
 shape = SubResource("RectangleShape2D_k1cl8")

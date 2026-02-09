@@ -8,7 +8,7 @@
 [node name="Tower" type="Area2D" unique_id=258828074]
 script = ExtResource("1_00fu1")
 projectile_scene = ExtResource("2_l6vkb")
-shoot_cooldown = null
+shoot_cooldown = 1.5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1864448042]
 scale = Vector2(240, 160)

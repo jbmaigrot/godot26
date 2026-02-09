@@ -9,10 +9,10 @@
 script = ExtResource("1_nfa6h")
 index = 1
 name = "Watchtower"
-description = "Long range"
+description = "Long range, Shoots faster"
 cost_gold = 15
-cost_wood = 11
-cost_stone = 25
+cost_wood = 0
+cost_stone = 20
 scene = ExtResource("3_dndeq")
 preview_scene = ExtResource("2_4wxw4")
 icon = ExtResource("1_3p56t")
