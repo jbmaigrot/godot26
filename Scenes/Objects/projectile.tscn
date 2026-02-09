@@ -4,11 +4,11 @@
 [ext_resource type="Texture2D" uid="uid://blx1f86xkd2g7" path="res://Assets/Sprites/arrow.png" id="1_m12d2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k1cl8"]
-size = Vector2(32, 12)
+size = Vector2(27, 9)
 
 [node name="Projectile" type="Area2D" unique_id=1976663396]
 script = ExtResource("1_jobfh")
-speed = 200
+speed = 250
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=406430207]
 shape = SubResource("RectangleShape2D_k1cl8")

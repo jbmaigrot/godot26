@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://d4dfxvfucaywr"]
 
 [ext_resource type="Script" uid="uid://bfbh0koo635lb" path="res://Scripts/main_ui.gd" id="1_153dk"]
+[ext_resource type="Theme" uid="uid://bnvqj0ubcd58q" path="res://Ressources/ui_theme.tres" id="1_k63uj"]
 [ext_resource type="Texture2D" uid="uid://brp5kyaikae6n" path="res://Assets/Sprites/UI_elmement_0.png" id="2_aimx2"]
 [ext_resource type="Script" uid="uid://dy2ulufn5t4h1" path="res://Scripts/Add_tower_button.gd" id="2_t71j2"]
 [ext_resource type="Resource" uid="uid://ckq0dhq0vet7i" path="res://Ressources/tower_0.tres" id="3_7tcah"]
@@ -29,6 +30,7 @@ grow_horizontal = 0
 grow_vertical = 0
 size_flags_horizontal = 6
 size_flags_vertical = 6
+theme = ExtResource("1_k63uj")
 script = ExtResource("1_153dk")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=2086873229]

@@ -3,9 +3,9 @@
 [ext_resource type="Script" uid="uid://csxq10ieauqf7" path="res://Scenes/Levels/Main_menu.gd" id="1_aegwq"]
 [ext_resource type="Texture2D" uid="uid://brp5kyaikae6n" path="res://Assets/Sprites/UI_elmement_0.png" id="1_hq2ph"]
 [ext_resource type="LabelSettings" uid="uid://b237c40thsjnv" path="res://Ressources/new_label_settings.tres" id="3_v6ejk"]
+[ext_resource type="Theme" uid="uid://bnvqj0ubcd58q" path="res://Ressources/ui_theme.tres" id="4_oxsyl"]
 
 [node name="Menu" type="Node2D" unique_id=1600540677]
-position = Vector2(629, 332)
 script = ExtResource("1_aegwq")
 game_scene_path = "uid://ce02lcxbtpcrd"
 
@@ -83,7 +83,7 @@ Alas, recently its last inhabitants are being attacked by mysterious demons.
 This is a tower defense game with a unique twist: 
 A thick grey fog masks and disables some paths 
 and towers, but it changes every 10 seconds.
-You can pick the next mask — choose wisely.
+You can pick the next mask. Choose wisely.
 
 The game is played with mouse only."
 label_settings = ExtResource("3_v6ejk")
@@ -94,6 +94,7 @@ layout_mode = 2
 
 [node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/Control/MarginContainer/MarginContainer/VBoxContainer" unique_id=2143723383]
 layout_mode = 2
+size_flags_vertical = 4
 
 [node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer/Control/MarginContainer/MarginContainer/VBoxContainer/PanelContainer" unique_id=498438477]
 layout_mode = 2
@@ -105,6 +106,7 @@ patch_margin_bottom = 1
 
 [node name="Button" type="Button" parent="CanvasLayer/Control/MarginContainer/MarginContainer/VBoxContainer/PanelContainer" unique_id=1118924585]
 layout_mode = 2
+theme = ExtResource("4_oxsyl")
 text = "Play"
 
 [connection signal="pressed" from="CanvasLayer/Control/MarginContainer/MarginContainer/VBoxContainer/PanelContainer/Button" to="." method="_on_play_button_pressed"]

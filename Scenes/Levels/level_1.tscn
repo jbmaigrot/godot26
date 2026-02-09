@@ -21,6 +21,7 @@
 [ext_resource type="Texture2D" uid="uid://brp5kyaikae6n" path="res://Assets/Sprites/UI_elmement_0.png" id="19_7hll7"]
 [ext_resource type="Script" uid="uid://dbppr3wsycj36" path="res://Scenes/Levels/game_over.gd" id="19_fayjm"]
 [ext_resource type="LabelSettings" uid="uid://b237c40thsjnv" path="res://Ressources/new_label_settings.tres" id="21_nojx8"]
+[ext_resource type="Theme" uid="uid://bnvqj0ubcd58q" path="res://Ressources/ui_theme.tres" id="22_vvknj"]
 
 [node name="Level_1" type="Node2D" unique_id=100231516 node_paths=PackedStringArray("game_over_screen")]
 y_sort_enabled = true
@@ -212,20 +213,20 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
+offset_right = 40.0
+offset_bottom = 40.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+theme = ExtResource("22_vvknj")
 script = ExtResource("19_fayjm")
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Game Over" unique_id=99580041]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 1
+anchors_preset = -1
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer/Game Over/MarginContainer" unique_id=147506234]
 layout_mode = 2

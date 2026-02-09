@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dkalptuwja8fu"]
 
 [ext_resource type="Script" uid="uid://dkjbxkdg01xa0" path="res://Scripts/ui_masks.gd" id="1_j2is3"]
+[ext_resource type="Theme" uid="uid://bnvqj0ubcd58q" path="res://Ressources/ui_theme.tres" id="1_y1a2m"]
 [ext_resource type="Texture2D" uid="uid://brp5kyaikae6n" path="res://Assets/Sprites/UI_elmement_0.png" id="2_4akpb"]
 [ext_resource type="ButtonGroup" uid="uid://dtxm4xjng5yu5" path="res://Ressources/button_group_mask.tres" id="3_4akpb"]
 [ext_resource type="LabelSettings" uid="uid://b237c40thsjnv" path="res://Ressources/new_label_settings.tres" id="3_clg6x"]
@@ -13,6 +14,7 @@ anchor_right = 1.0
 offset_left = -40.0
 offset_bottom = 40.0
 grow_horizontal = 0
+theme = ExtResource("1_y1a2m")
 script = ExtResource("1_j2is3")
 mask_one_button = NodePath("MarginContainer/MarginContainer/VBoxContainer/HBoxContainer/Button")
 mask_two_button = NodePath("MarginContainer/MarginContainer/VBoxContainer/HBoxContainer/Button2")
