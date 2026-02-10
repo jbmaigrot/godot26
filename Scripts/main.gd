@@ -20,6 +20,12 @@ var total_kills: int = 0
 var game_time: float = 0.0
 var is_game_over: bool = false # Flag pour stopper la logique
 
+
+@export_group("Visual Effects")
+@export var floating_value_scene: PackedScene
+@export var heart_icon: Texture2D # Glisse ton icône de coeur ici
+@export var base_node: Node2D
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	if game_over_screen:
@@ -53,11 +59,25 @@ func _on_production_rates_changed(new_wood_ps: float, new_stone_ps: float) -> vo
 func take_damage(amount: int):
 	if is_game_over: return
 	base_health -= amount
+
+	spawn_base_damage_visual(amount)
 	print("Base hit! Health remaining: ", base_health)
 	update_ui_elements()
 	if base_health <= 0:
 		base_health = 0 # Propreté pour l'UI
 		game_over()
+
+func spawn_base_damage_visual(amount: int):
+	if floating_value_scene:
+		var damage_popup = floating_value_scene.instantiate()
+		
+		# On place le popup sur la base avec un décalage vertical
+		damage_popup.global_position = base_node.global_position 
+		
+		get_tree().current_scene.add_child(damage_popup)
+		
+		# On affiche "-X" pour les dégâts
+		damage_popup.setup(-amount, heart_icon, Color.RED)
 
 func game_over():
 	is_game_over = true

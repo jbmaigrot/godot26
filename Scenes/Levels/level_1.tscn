@@ -2,31 +2,36 @@
 
 [ext_resource type="Script" uid="uid://ighbsj5gm3jn" path="res://Scripts/main.gd" id="1_o5ofx"]
 [ext_resource type="TileSet" uid="uid://dqv5qisbsksx" path="res://Ressources/jb_test_tileset.tres" id="2_nlqrh"]
+[ext_resource type="PackedScene" uid="uid://cfw2nmlhdb44l" path="res://Scenes/Objects/FloatingValue.tscn" id="2_pmbdk"]
+[ext_resource type="Texture2D" uid="uid://c0c586fre6ah" path="res://Assets/Sprites/heart_icon.png" id="3_ksf1i"]
 [ext_resource type="Script" uid="uid://cju5bo7mf4hdc" path="res://Scripts/tile_map_layer_base.gd" id="3_nlqrh"]
 [ext_resource type="Script" uid="uid://2ttknnv561fy" path="res://Scripts/tower_placement.gd" id="4_8nmnw"]
 [ext_resource type="Script" uid="uid://b6b0n4uwqiwah" path="res://Ressources/tower_data.gd" id="5_ngxpw"]
 [ext_resource type="Resource" uid="uid://ckq0dhq0vet7i" path="res://Ressources/tower_0.tres" id="6_trw0a"]
 [ext_resource type="Resource" uid="uid://q6d6at027vno" path="res://Ressources/tower_1.tres" id="7_tjcye"]
 [ext_resource type="PackedScene" uid="uid://d4dfxvfucaywr" path="res://Scenes/UI/Test_UI_jeu.tscn" id="8_557vl"]
-[ext_resource type="Script" path="res://Scripts/resources_manager.gd" id="8_3628d"]
+[ext_resource type="Script" uid="uid://dglj2pf81auxo" path="res://Scripts/resources_manager.gd" id="8_3628d"]
 [ext_resource type="Texture2D" uid="uid://b7kjlm7ubp4db" path="res://Assets/Sprites/trees.png" id="8_tjl6l"]
-[ext_resource type="Script" path="res://Scripts/resource_production.gd" id="9_irw6p"]
+[ext_resource type="Script" uid="uid://djtl0nw7qm2h6" path="res://Scripts/resource_production.gd" id="9_irw6p"]
 [ext_resource type="Texture2D" uid="uid://b8rm4wutjg111" path="res://Assets/Sprites/mine.png" id="11_31phq"]
 [ext_resource type="Texture2D" uid="uid://gn27irjdapn7" path="res://Assets/Sprites/base.png" id="12_31phq"]
 [ext_resource type="PackedScene" uid="uid://bwa3mbac8h6dk" path="res://Scenes/UI/ui_ressources.tscn" id="12_afv7b"]
 [ext_resource type="PackedScene" uid="uid://dkalptuwja8fu" path="res://Scenes/UI/ui_masks.tscn" id="13_7r2dd"]
 [ext_resource type="Script" uid="uid://c3n7p3t0o5u66" path="res://Scenes/Levels/wave_spawner.gd" id="13_fayjm"]
 [ext_resource type="PackedScene" uid="uid://dvtfb7um6h1gd" path="res://Scenes/Objects/mob_spawner.tscn" id="14_31phq"]
-[ext_resource type="Script" path="res://Scripts/masks_manager.gd" id="14_k2mw1"]
+[ext_resource type="Script" uid="uid://cc7s5vwk41175" path="res://Scripts/masks_manager.gd" id="14_k2mw1"]
 [ext_resource type="Texture2D" uid="uid://brp5kyaikae6n" path="res://Assets/Sprites/UI_elmement_0.png" id="19_7hll7"]
 [ext_resource type="Script" uid="uid://dbppr3wsycj36" path="res://Scenes/Levels/game_over.gd" id="19_fayjm"]
 [ext_resource type="LabelSettings" uid="uid://b237c40thsjnv" path="res://Ressources/new_label_settings.tres" id="21_nojx8"]
 [ext_resource type="Theme" uid="uid://bnvqj0ubcd58q" path="res://Ressources/ui_theme.tres" id="22_vvknj"]
 
-[node name="Level_1" type="Node2D" unique_id=100231516 node_paths=PackedStringArray("game_over_screen")]
+[node name="Level_1" type="Node2D" unique_id=100231516 node_paths=PackedStringArray("game_over_screen", "base_node")]
 y_sort_enabled = true
 script = ExtResource("1_o5ofx")
 game_over_screen = NodePath("CanvasLayer/Game Over")
+floating_value_scene = ExtResource("2_pmbdk")
+heart_icon = ExtResource("3_ksf1i")
+base_node = NodePath("Player_base")
 
 [node name="TileMapLayer-Base" type="TileMapLayer" parent="." unique_id=1922053369]
 z_index = -10
@@ -195,7 +200,6 @@ scale = Vector2(0.6, 0.6)
 
 [node name="UI_resources" parent="CanvasLayer" unique_id=395998648 instance=ExtResource("12_afv7b")]
 unique_name_in_owner = true
-texture_filter = 2
 scale = Vector2(0.6, 0.6)
 
 [node name="UI_masks" parent="CanvasLayer" unique_id=2126837010 instance=ExtResource("13_7r2dd")]

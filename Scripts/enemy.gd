@@ -8,8 +8,13 @@ class_name Enemy
 @onready var nav_agent: NavigationAgent2D = $NavigationAgent2D
 
 @export var gold_value = 2
+@export var floating_value_scene: PackedScene
+@export var gold_icon: Texture2D # Glisse ton icône de pièce ici
 
 var main:Main = null
+
+
+
 
 func _ready():
 	# On attend un peu que la map de navigation soit prête
@@ -57,10 +62,28 @@ func take_damage(amount: int):
 
 
 func die():
-	# Optional: Give gold to the player here
-	# Global.money += 10
-	main.add_money(gold_value)
-	queue_free() # Removes the enemy from the scene
+	# 1. Création du visuel de gain de ressources
+	spawn_loot_visual(gold_value, gold_icon)
+	
+	# 2. Logique de jeu (ajout de l'argent réel)
+	if main:
+		main.add_money(gold_value)
+	
+	# 3. Suppression de l'ennemi
+	queue_free()
+
+func spawn_loot_visual(amount: int, icon: Texture2D):
+	if floating_value_scene:
+		var loot_popup = floating_value_scene.instantiate()
+		
+		# On le place sur l'ennemi
+		loot_popup.global_position = global_position
+		
+		# On l'ajoute à la racine pour qu'il ne disparaisse pas avec queue_free() de l'ennemi
+		get_tree().current_scene.add_child(loot_popup)
+		
+		# On le configure (Jaune pour l'or par exemple)
+		loot_popup.setup(amount, icon, Color.YELLOW)
 	
 
 func reach_base():
