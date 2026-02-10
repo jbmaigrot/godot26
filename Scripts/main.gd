@@ -107,6 +107,20 @@ func check_tower_money(tower_info: TowerData) -> bool:
 	print("Ressources insuffisantes pour : ", tower_info.name)
 	return false
 	
+# Vérifie simplement si le joueur a les ressources (sans les retirer)
+func has_enough_resources(tower_info: TowerData) -> bool:
+	return gold >= tower_info.cost_gold and \
+			wood >= tower_info.cost_wood and \
+			stone >= tower_info.cost_stone
+
+# Cette fonction ne sera appelée que lors du clic de placement réussi
+func spend_resources(tower_info: TowerData) -> void:
+	gold -= tower_info.cost_gold
+	wood -= tower_info.cost_wood
+	stone -= tower_info.cost_stone
+	update_ui_elements()
+	
+	
 func update_ui_elements() -> void:
 	if ui:
 		ui.update_gold(int(gold))

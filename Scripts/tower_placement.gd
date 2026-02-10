@@ -58,7 +58,11 @@ func _process(_delta):
 	
 	preview_sprite.global_position = ground_layer.map_to_local(tile_pos) # + Vector2(0, -16)
 	
-	if can_build_at(tile_pos):
+	var tower_info = available_towers_data[current_tower_index]
+	var can_afford = main.has_enough_resources(tower_info)
+	var can_place = can_build_at(tile_pos)
+	
+	if can_place and can_afford:
 		preview_sprite.modulate = color_valid
 		if Input.is_action_just_pressed("left_click"):
 			place_tower(tile_pos)
@@ -84,33 +88,21 @@ func can_build_at(tile_pos: Vector2i) -> bool:
 	return true
 
 func place_tower(tile_pos: Vector2i):
-	# 1. Sécurité : on ne construit pas si la case est déjà prise
 	if occupied_cells.has(tile_pos): 
 		return
-	
-	# 2. Récupérer les données de la tour sélectionnée
-	var tower_info = available_towers_data[current_tower_index]
-	
-	# 3. Demander au Main si on peut payer
-	if main.check_tower_money(tower_info):
-		# L'ACHAT EST VALIDÉ
-		var new_tower = selected_tower_scene.instantiate()
-		add_child(new_tower)
-		
-		# Positionnement (ajuste le Vector2(0, -16) selon ton pivot de sprite)
-		new_tower.global_position = ground_layer.map_to_local(tile_pos)
-		
-		# Enregistrement pour empêcher de reconstruire par-dessus
-		occupied_cells[tile_pos] = new_tower
-		
-		print("Tour ", tower_info.name, " construite avec succès !")
-		
-		# Optionnel : Désactiver le ghost après la construction ?
-		#disable_ghost() 
-	else:
-		# L'ACHAT EST REFUSÉ
-		print("Action impossible : Ressources insuffisantes !")
 
+	var tower_info = available_towers_data[current_tower_index]
+
+	# On retire l'argent car le clic a été validé par le _process
+	main.spend_resources(tower_info)
+
+	# Création de la tour
+	var new_tower = selected_tower_scene.instantiate()
+	add_child(new_tower)
+	new_tower.global_position = ground_layer.map_to_local(tile_pos)
+	occupied_cells[tile_pos] = new_tower
+
+	print("Tour ", tower_info.name, " construite !")
 
 ## Réactive le mode fantôme
 func enable_ghost(index: int) -> void:
