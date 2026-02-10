@@ -9,4 +9,5 @@ func _input(event: InputEvent) -> void:
 func restart_game() -> void:
 	print("Relance du jeu...")
 	# Recharge la scène active depuis le début
+	get_tree().paused = false 
 	get_tree().reload_current_scene()

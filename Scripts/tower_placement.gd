@@ -106,7 +106,7 @@ func place_tower(tile_pos: Vector2i):
 		print("Tour ", tower_info.name, " construite avec succès !")
 		
 		# Optionnel : Désactiver le ghost après la construction ?
-		disable_ghost() 
+		#disable_ghost() 
 	else:
 		# L'ACHAT EST REFUSÉ
 		print("Action impossible : Ressources insuffisantes !")

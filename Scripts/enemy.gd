@@ -13,7 +13,7 @@ class_name Enemy
 
 var main:Main = null
 
-
+@export var anim_player: AnimationPlayer
 
 
 func _ready():
@@ -55,10 +55,13 @@ func update_target_position(new_target: Vector2):
 	
 func take_damage(amount: int):
 	health -= amount
-	# Optional: Add a visual flash or hit effect here
+	
+	# On joue l'animation de flash
+	if anim_player.has_animation("Hit"):
+		anim_player.play("Hit")
+	
 	if health <= 0:
 		die()
-		
 
 
 func die():
