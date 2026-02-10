@@ -24,12 +24,29 @@ func _ready() -> void:
 	# Connexion automatique du timeout du Timer
 	timer.timeout.connect(_on_timer_timeout)
 
+# Dans ton _process, remplace la logique actuelle par celle-ci :
 func _process(_delta: float) -> void:
-	# Mise à jour de la barre de progression
 	if timer.time_left > 0:
+		# 1. Calcul du ratio global (0.0 à 1.0)
 		var ratio = (timer.wait_time - timer.time_left) / timer.wait_time
 		progress_bar.value = ratio * 100
-
+		
+		# 2. Logique de couleur "Tension"
+		# On définit à partir de quel moment (en %) on commence à devenir rouge
+		var start_red_at = 0.7  # 70% du temps écoulé (donc 30% restants)
+		
+		if ratio > start_red_at:
+			# On calcule un nouveau ratio spécifique pour la fin (0.0 à 1.0)
+			# clamp permet de rester entre 0 et 1 pour éviter les erreurs de calcul
+			var red_ratio = clamp((ratio - start_red_at) / (1.0 - start_red_at), 0.0, 1.0)
+			
+			# Transition du Blanc vers le Rouge
+			progress_bar.modulate = Color.WHITE.lerp(Color.RED, red_ratio)
+		else:
+			# Avant le seuil, la barre reste d'une couleur normale
+			progress_bar.modulate = Color.WHITE
+	else:
+		progress_bar.modulate = Color.WHITE
 # --- Logique Mask One ---
 func _on_mask_one_hover():
 	manager.show_preview(0)

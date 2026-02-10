@@ -129,6 +129,7 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="MarginContainer/MarginContainer/HBoxContainer/VBoxContainer/Res 1" unique_id=162776060]
+texture_filter = 1
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 texture = ExtResource("2_4oqlf")
@@ -149,6 +150,7 @@ label_settings = ExtResource("3_l3vbp")
 layout_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="MarginContainer/MarginContainer/HBoxContainer/VBoxContainer/Res 2" unique_id=1948036698]
+texture_filter = 1
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 texture = ExtResource("3_k7vr8")
@@ -168,6 +170,7 @@ label_settings = ExtResource("3_l3vbp")
 layout_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="MarginContainer/MarginContainer/HBoxContainer/VBoxContainer/Res 3" unique_id=553349027]
+texture_filter = 1
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 texture = ExtResource("4_l3vbp")

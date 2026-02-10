@@ -17,13 +17,14 @@
 [ext_resource type="Texture2D" uid="uid://gn27irjdapn7" path="res://Assets/Sprites/base.png" id="12_31phq"]
 [ext_resource type="PackedScene" uid="uid://bwa3mbac8h6dk" path="res://Scenes/UI/ui_ressources.tscn" id="12_afv7b"]
 [ext_resource type="PackedScene" uid="uid://dkalptuwja8fu" path="res://Scenes/UI/ui_masks.tscn" id="13_7r2dd"]
-[ext_resource type="Script" uid="uid://c3n7p3t0o5u66" path="res://Scenes/Levels/wave_spawner.gd" id="13_fayjm"]
+[ext_resource type="Script" uid="uid://c3n7p3t0o5u66" path="res://Scripts/wave_spawner.gd" id="13_fayjm"]
 [ext_resource type="PackedScene" uid="uid://dvtfb7um6h1gd" path="res://Scenes/Objects/mob_spawner.tscn" id="14_31phq"]
 [ext_resource type="Script" uid="uid://cc7s5vwk41175" path="res://Scripts/masks_manager.gd" id="14_k2mw1"]
 [ext_resource type="Texture2D" uid="uid://brp5kyaikae6n" path="res://Assets/Sprites/UI_elmement_0.png" id="19_7hll7"]
-[ext_resource type="Script" uid="uid://dbppr3wsycj36" path="res://Scenes/Levels/game_over.gd" id="19_fayjm"]
+[ext_resource type="Script" uid="uid://dbppr3wsycj36" path="res://Scripts/game_over.gd" id="19_fayjm"]
 [ext_resource type="LabelSettings" uid="uid://b237c40thsjnv" path="res://Ressources/new_label_settings.tres" id="21_nojx8"]
 [ext_resource type="Theme" uid="uid://bnvqj0ubcd58q" path="res://Ressources/ui_theme.tres" id="22_vvknj"]
+[ext_resource type="Script" uid="uid://cncw4sisiqxsn" path="res://Scripts/r_to_restart.gd" id="25_ksf1i"]
 
 [node name="Level_1" type="Node2D" unique_id=100231516 node_paths=PackedStringArray("game_over_screen", "base_node")]
 y_sort_enabled = true
@@ -200,6 +201,7 @@ scale = Vector2(0.6, 0.6)
 
 [node name="UI_resources" parent="CanvasLayer" unique_id=395998648 instance=ExtResource("12_afv7b")]
 unique_name_in_owner = true
+texture_filter = 2
 scale = Vector2(0.6, 0.6)
 
 [node name="UI_masks" parent="CanvasLayer" unique_id=2126837010 instance=ExtResource("13_7r2dd")]
@@ -262,5 +264,54 @@ layout_mode = 2
 [node name="Button" type="Button" parent="CanvasLayer/Game Over/MarginContainer/MarginContainer/VBoxContainer" unique_id=255433915]
 layout_mode = 2
 text = "Restart"
+
+[node name="R to restart" type="Control" parent="CanvasLayer" unique_id=1069232930]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+grow_vertical = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("22_vvknj")
+script = ExtResource("25_ksf1i")
+
+[node name="MarginContainer2" type="MarginContainer" parent="CanvasLayer/R to restart" unique_id=552236588]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -43.0
+offset_right = 154.0
+grow_vertical = 0
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer/R to restart/MarginContainer2" unique_id=1348873420]
+layout_mode = 2
+texture = ExtResource("19_7hll7")
+region_rect = Rect2(0, 0, 32, 32)
+patch_margin_left = 2
+patch_margin_top = 3
+patch_margin_right = 2
+patch_margin_bottom = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/R to restart/MarginContainer2" unique_id=1433450070]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Label" type="Label" parent="CanvasLayer/R to restart/MarginContainer2/MarginContainer" unique_id=2039884301]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 10
+text = "Press R to restart"
 
 [connection signal="pressed" from="CanvasLayer/Game Over/MarginContainer/MarginContainer/VBoxContainer/Button" to="CanvasLayer/Game Over" method="_on_restart_button_pressed"]
