@@ -19,6 +19,7 @@ var mask_layer: TileMapLayer
 @export_group("Apparence")
 @export var color_valid: Color = Color(0, 1, 0, 0.5) 
 @export var color_invalid: Color = Color(1, 0, 0, 0.5)
+@export var color_no_resources: Color = Color(1, 0.5, 0, 0.5) 
 
 @onready var resources_container = $"../Resources" # Le nœud qui contient tes blocs de bois/pierre
 
@@ -62,12 +63,17 @@ func _process(_delta):
 	var can_afford = main.has_enough_resources(tower_info)
 	var can_place = can_build_at(tile_pos)
 	
-	if can_place and can_afford:
+	if not can_place:
+		# CAS 1 : Terrain bloqué (Priorité haute)
+		preview_sprite.modulate = color_invalid
+	elif not can_afford:
+		# CAS 2 : Terrain libre mais pas assez de ressources
+		preview_sprite.modulate = color_no_resources
+	else:
+		# CAS 3 : Tout est OK
 		preview_sprite.modulate = color_valid
 		if Input.is_action_just_pressed("left_click"):
 			place_tower(tile_pos)
-	else:
-		preview_sprite.modulate = color_invalid
 
 
 func can_build_at(tile_pos: Vector2i) -> bool:
