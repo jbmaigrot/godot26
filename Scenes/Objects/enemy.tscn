@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://cfw2nmlhdb44l" path="res://Scenes/Objects/FloatingValue.tscn" id="2_8ypxt"]
 [ext_resource type="Texture2D" uid="uid://evgybgwect5v" path="res://Assets/Sprites/devil.png" id="2_i2hje"]
 [ext_resource type="Texture2D" uid="uid://dmuywxv2n6vku" path="res://Assets/Sprites/Coin_icon.png" id="3_vm7cc"]
-[ext_resource type="Shader" uid="uid://bor2nsw7n7404" path="res://Scenes/Objects/enemy_hit.gdshader" id="4_vm7cc"]
+[ext_resource type="Shader" uid="uid://bor2nsw7n7404" path="res://Scripts/Shaders/enemy_hit.gdshader" id="4_vm7cc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1f0kj"]
 custom_solver_bias = 1.0

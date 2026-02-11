@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cfw2nmlhdb44l"]
 
 [ext_resource type="Script" uid="uid://c713uvkwn68xc" path="res://Scripts/floating_value.gd" id="1_ee404"]
-[ext_resource type="Theme" uid="uid://bnvqj0ubcd58q" path="res://Ressources/ui_theme.tres" id="1_iijku"]
+[ext_resource type="Theme" uid="uid://bnvqj0ubcd58q" path="res://Ressources/ui_theme_default.tres" id="1_iijku"]
 [ext_resource type="Texture2D" uid="uid://dmuywxv2n6vku" path="res://Assets/Sprites/Coin_icon.png" id="2_ee404"]
 
 [sub_resource type="Animation" id="Animation_ee404"]

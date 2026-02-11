@@ -1,7 +1,7 @@
 [gd_scene format=4 uid="uid://dg2jm0pnlffjk"]
 
 [ext_resource type="Script" uid="uid://ighbsj5gm3jn" path="res://Scripts/main.gd" id="1_lgqj4"]
-[ext_resource type="TileSet" uid="uid://dqv5qisbsksx" path="res://Ressources/jb_test_tileset.tres" id="2_fpm3c"]
+[ext_resource type="TileSet" uid="uid://dqv5qisbsksx" path="res://Ressources/tileset_main.tres" id="2_fpm3c"]
 [ext_resource type="Script" uid="uid://cju5bo7mf4hdc" path="res://Scripts/tile_map_layer_base.gd" id="3_fwnfx"]
 [ext_resource type="Script" uid="uid://2ttknnv561fy" path="res://Scripts/tower_placement.gd" id="4_2fnbc"]
 [ext_resource type="Texture2D" uid="uid://ci066wviaqgy8" path="res://Assets/Sprites/tower_1.png" id="6_yn3p4"]

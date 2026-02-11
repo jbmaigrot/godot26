@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://ceh6n3u1xd5n5" path="res://Scripts/enemy.gd" id="1_imya0"]
 [ext_resource type="PackedScene" uid="uid://cfw2nmlhdb44l" path="res://Scenes/Objects/FloatingValue.tscn" id="2_ksmyw"]
 [ext_resource type="Texture2D" uid="uid://dmuywxv2n6vku" path="res://Assets/Sprites/Coin_icon.png" id="3_4ypk7"]
-[ext_resource type="Shader" uid="uid://bor2nsw7n7404" path="res://Scenes/Objects/enemy_hit.gdshader" id="4_1udvx"]
+[ext_resource type="Shader" uid="uid://bor2nsw7n7404" path="res://Scripts/Shaders/enemy_hit.gdshader" id="4_1udvx"]
 [ext_resource type="Texture2D" uid="uid://evgybgwect5v" path="res://Assets/Sprites/devil.png" id="5_68mlv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1f0kj"]
