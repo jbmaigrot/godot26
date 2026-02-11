@@ -4,7 +4,7 @@ class_name Enemy
 @export var SPEED = 50.0
 @export var target: Node2D = null # La base à atteindre
 @export var health: int = 30
-@export var dammage: int = 1
+@export var damage: int = 1
 @onready var nav_agent: NavigationAgent2D = $NavigationAgent2D
 
 @export var gold_value = 2
@@ -92,7 +92,7 @@ func spawn_loot_visual(amount: int, icon: Texture2D):
 func reach_base():
 	# Check if the target (the base) has a method to lose healt
 	if main != null:
-		main.take_damage(dammage) # Or whatever damage the enemy deals
+		main.take_damage(damage) # Or whatever damage the enemy deals
 	
 	# The enemy has done its job, remove it
 	queue_free()

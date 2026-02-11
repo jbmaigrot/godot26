@@ -23,7 +23,7 @@ func update_stone(amount: int, production: int) -> void:
 
 # Met à jour le nombre d'unités tuées
 func update_kills(count: int) -> void:
-	kills_label.text = "Kills: " + str(count)
+	kills_label.text = str(count)
 
 # Met à jour l'affichage du temps (format MM:SS)
 func update_timer(seconds: int) -> void:
@@ -33,4 +33,4 @@ func update_timer(seconds: int) -> void:
 	timer_label.text = str("%02d:%02d" % [mins, secs])
 
 func update_health(current: int, max_hp: int) -> void:
-	health_label.text = "HP: " + str(current) + " / " + str(max_hp)
+	health_label.text = str(current) + "/" + str(max_hp)

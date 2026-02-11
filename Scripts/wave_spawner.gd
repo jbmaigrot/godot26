@@ -10,6 +10,8 @@ extends Node2D
 @export var initial_mob_count: int = 5
 @export var initial_warning_time: float = 5.0
 @export var initial_time_between_mobs: float = 1.0 
+@export var min_time_between_mobs: float = 0.2
+@export var boss_frequency: int = 5
 
 @onready var player_base = %Player_base
 @onready var mobs_container = %Mobs
@@ -32,7 +34,7 @@ func _on_wave_timeout() -> void:
 	# On réduit légèrement le temps du camembert pour presser le joueur
 	var current_warning = max(2.0, initial_warning_time - (wave_number * 0.2))
 	# On réduit le délai entre chaque mob (réduit de 0.05s par vague, min 0.1s pour l'effet "mitraillette")
-	var current_spawn_rate = max(0.1, initial_time_between_mobs - (wave_number * 0.05))
+	var current_spawn_rate = max(min_time_between_mobs, initial_time_between_mobs - (wave_number * 0.05))
 	
 	# Appliquer le nouveau délai au timer pour la PROCHAINE vague
 	wave_timer.wait_time = current_delay
@@ -51,6 +53,7 @@ func spawn_custom_pack(count: int, warning: float, rate: float) -> void:
 		spawner.amount_to_spawn = count
 		spawner.warning_time = warning
 		spawner.time_between_mobs = rate # <--- On injecte le nouveau taux
-		
+		if wave_number % boss_frequency == 0 :
+			spawner.is_boss_wave = true
 		spawner.global_position = pos_node.global_position
 		add_child(spawner)

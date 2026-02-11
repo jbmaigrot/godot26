@@ -3,11 +3,13 @@
 [ext_resource type="Script" uid="uid://cmoddd1j15s53" path="res://Scripts/mob_spawner.gd" id="1_xn2ct"]
 [ext_resource type="PackedScene" uid="uid://b0cc5a8tn6ny2" path="res://Scenes/Objects/enemy.tscn" id="2_htvnj"]
 [ext_resource type="Texture2D" uid="uid://buts22sqb7smi" path="res://Assets/Sprites/circle_range.png" id="3_eklga"]
+[ext_resource type="PackedScene" uid="uid://wbsf6mb6s48w" path="res://Scenes/Objects/boss.tscn" id="3_htvnj"]
 
 [node name="mob_spawner" type="Node2D" unique_id=275470641 node_paths=PackedStringArray("progress_bar")]
 y_sort_enabled = true
 script = ExtResource("1_xn2ct")
 enemy_scene = ExtResource("2_htvnj")
+boss_scene = ExtResource("3_htvnj")
 progress_bar = NodePath("Control/TextureProgressBar")
 
 [node name="MobTimer" type="Timer" parent="." unique_id=383187962]

@@ -18,7 +18,7 @@ script = ExtResource("1_4oqlf")
 gold_label = NodePath("MarginContainer/MarginContainer/HBoxContainer/VBoxContainer/Res 1/Gold")
 wood_label = NodePath("MarginContainer/MarginContainer/HBoxContainer/VBoxContainer/Res 2/wood")
 stone_label = NodePath("MarginContainer/MarginContainer/HBoxContainer/VBoxContainer/Res 3/stone")
-health_label = NodePath("MarginContainer/MarginContainer/HBoxContainer/VBoxContainer2/Res 6/label")
+health_label = NodePath("MarginContainer/MarginContainer/HBoxContainer/VBoxContainer2/Res 6/health")
 kills_label = NodePath("MarginContainer/MarginContainer/HBoxContainer/VBoxContainer2/Res 5/kills")
 timer_label = NodePath("MarginContainer/MarginContainer/HBoxContainer/VBoxContainer2/Res 4/Time")
 
@@ -72,11 +72,12 @@ layout_mode = 2
 
 [node name="label" type="Label" parent="MarginContainer/MarginContainer/HBoxContainer/VBoxContainer2/Res 6" unique_id=1888076096]
 layout_mode = 2
-text = "Health:"
+text = "HP:"
 label_settings = ExtResource("3_l3vbp")
 
 [node name="health" type="Label" parent="MarginContainer/MarginContainer/HBoxContainer/VBoxContainer2/Res 6" unique_id=726304887]
 layout_mode = 2
+text = "0"
 label_settings = ExtResource("3_l3vbp")
 
 [node name="Res 4" type="HBoxContainer" parent="MarginContainer/MarginContainer/HBoxContainer/VBoxContainer2" unique_id=1921809657]
@@ -97,6 +98,7 @@ layout_mode = 2
 
 [node name="label" type="Label" parent="MarginContainer/MarginContainer/HBoxContainer/VBoxContainer2/Res 5" unique_id=1054913324]
 layout_mode = 2
+text = "Kills:"
 label_settings = ExtResource("3_l3vbp")
 
 [node name="kills" type="Label" parent="MarginContainer/MarginContainer/HBoxContainer/VBoxContainer2/Res 5" unique_id=561332685]
@@ -159,11 +161,7 @@ stretch_mode = 4
 
 [node name="wood" type="Label" parent="MarginContainer/MarginContainer/HBoxContainer/VBoxContainer/Res 2" unique_id=2042294364]
 layout_mode = 2
-text = "25  + (10)"
-label_settings = ExtResource("3_l3vbp")
-
-[node name="Label2" type="Label" parent="MarginContainer/MarginContainer/HBoxContainer/VBoxContainer/Res 2" unique_id=2066231237]
-layout_mode = 2
+text = "25 (+10/s)"
 label_settings = ExtResource("3_l3vbp")
 
 [node name="Res 3" type="HBoxContainer" parent="MarginContainer/MarginContainer/HBoxContainer/VBoxContainer" unique_id=649128282]
@@ -180,8 +178,4 @@ stretch_mode = 4
 [node name="stone" type="Label" parent="MarginContainer/MarginContainer/HBoxContainer/VBoxContainer/Res 3" unique_id=702310144]
 layout_mode = 2
 text = "25"
-label_settings = ExtResource("3_l3vbp")
-
-[node name="Label2" type="Label" parent="MarginContainer/MarginContainer/HBoxContainer/VBoxContainer/Res 3" unique_id=104327094]
-layout_mode = 2
 label_settings = ExtResource("3_l3vbp")

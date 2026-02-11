@@ -2,6 +2,8 @@ extends Node2D
 
 @export_group("Réglages du Pack")
 @export var enemy_scene: PackedScene
+@export var boss_scene: PackedScene
+@export var is_boss_wave :bool = false
 @export var warning_time: float = 10.0  # Temps du camembert (ex: 10s)
 @export var amount_to_spawn: int = 5    # Nombre total d'ennemis
 @export var time_between_mobs: float = 1.0 # Délai entre chaque mob (ex: 1s)
@@ -48,7 +50,11 @@ func _on_countdown_finished() -> void:
 
 func _on_spawn_tick() -> void:
 	if mobs_spawned_count < amount_to_spawn:
-		spawn_enemy()
+		# Pour les vagues de boss, on remplace le premier ennemi par un boss
+		if is_boss_wave && mobs_spawned_count == 0:
+			spawn_enemy(boss_scene)
+		else:
+			spawn_enemy(enemy_scene)
 		mobs_spawned_count += 1
 	
 	# Une fois que tous les ennemis sont sortis, le spawner s'autodétruit
@@ -56,9 +62,9 @@ func _on_spawn_tick() -> void:
 		mob_timer.stop()
 		queue_free()
 
-func spawn_enemy() -> void:
-	if enemy_scene and container_node:
-		var enemy = enemy_scene.instantiate()
+func spawn_enemy(scene) -> void:
+	if scene and container_node:
+		var enemy = scene.instantiate()
 		enemy.global_position = global_position
 		enemy.target = target_node # On utilise la variable reçue
 		container_node.add_child(enemy) # On utilise la variable reçue
