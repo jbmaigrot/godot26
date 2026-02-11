@@ -21,6 +21,8 @@ func _ready() -> void:
 		progress_bar.value = 0
 		progress_bar.max_value = 100
 		progress_bar.show()
+		if is_boss_wave:
+			progress_bar.tint_under = Color.RED
 		
 		# Animation du remplissage sur 10 secondes
 		var tween = create_tween()
