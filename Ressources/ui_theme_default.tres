@@ -2,6 +2,47 @@
 
 [ext_resource type="FontFile" uid="uid://c5gujw5rg7fo7" path="res://Ressources/VCR_OSD_MONO_1.001.ttf" id="1_7yfp6"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oc488"]
+bg_color = Color(0.049811088, 0.11875079, 0.1942392, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8wf32"]
+bg_color = Color(0.069496185, 0.15175822, 0.24489969, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wloh6"]
+bg_color = Color(0.031586252, 0.087857254, 0.14999294, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.98077756, 0.94537085, 0.67875075, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
 [resource]
 default_font = ExtResource("1_7yfp6")
 default_font_size = 16
+Button/colors/icon_hover_color = Color(0.3180198, 0.31801978, 0.31801975, 1)
+Button/colors/icon_pressed_color = Color(0, 0, 0, 1)
+Button/styles/hover = SubResource("StyleBoxFlat_oc488")
+Button/styles/normal = SubResource("StyleBoxFlat_8wf32")
+Button/styles/pressed = SubResource("StyleBoxFlat_wloh6")
