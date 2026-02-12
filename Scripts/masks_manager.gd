@@ -157,7 +157,7 @@ func _process_group(entities: Array, mode: String) -> void:
 			var map_pos = current_mask.local_to_map(current_mask.to_local(entity.global_position))
 			var has_ground = current_mask.get_cell_tile_data(map_pos) != null
 			
-			if !has_ground:
+			if has_ground:
 				_apply_status(entity, true)
 			else:
 				if mode == "DELETE":
