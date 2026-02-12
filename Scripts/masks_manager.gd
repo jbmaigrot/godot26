@@ -7,11 +7,14 @@ var next_options: Array[TileMapLayer] = []
 signal mask_changed(new_mask: TileMapLayer)
 
 @export_range(0.0, 1.0) var preview_alpha: float = 0.3
+@export var transition_duration: float = 0.5
+
 
 @onready var towers_container = $"../Towers"
 @onready var mobs_container = $"../Mobs"
 @onready var resources_container = $"../Resources"
 
+var is_transitioning: bool = false
 
 func _ready() -> void:
 	# 1. Récupération dynamique des enfants
@@ -39,32 +42,55 @@ func _ready() -> void:
 	next_options.append(shuffle_bag.pop_front())
 	
 
-
-# La fonction que tu appelles avec 0 ou 1
 func select_next_mask(index: int) -> void:
-	if index < 0 or index >= next_options.size():
+	if is_transitioning or index < 0 or index >= next_options.size():
 		return
 
-	# 1. On arrête proprement la preview de TOUTES les options
-	# Cela remet la visibilité à false et l'alpha à 1.0
-	for i in range(next_options.size()):
-		hide_preview(i)
+	is_transitioning = true # On verrouillen
 
-	# 2. On cache l'ancien masque actif
-	if current_mask:
-		current_mask.visible = false
-		current_mask.self_modulate.a = 1.0
+	var old_mask = current_mask
+	var new_mask = next_options[index]
 	
-	# 3. On définit et on affiche le nouveau masque
-	current_mask = next_options[index]
-	current_mask.visible = true
-	current_mask.self_modulate.a = 1.0 # Toujours plein d'opacité ici
+	# On cache les previews proprement avant de démarrer
+	hide_preview(0)
+	hide_preview(1)
+	# 1. Préparation du nouveau masque
+	new_mask.visible = true
+	new_mask.self_modulate.a = 0.0
 	
-	# 4. On génère les nouvelles options pour le tour suivant
-	_update_options()
-	_filter_all_entities()
+	# 2. Animation fluide avec Tween
+	var tween = create_tween().set_parallel(true)
 	
-	mask_changed.emit(current_mask)
+	# On fait apparaître le nouveau et disparaître l'ancien
+	tween.tween_property(new_mask, "self_modulate:a", 1.0, transition_duration)
+	if old_mask:
+		tween.tween_property(old_mask, "self_modulate:a", 0.0, transition_duration)
+
+	# 3. Actions de fin de transition
+	# .chain() permet d'attendre la fin des animations précédentes
+	tween.chain().tween_callback(func():
+		if old_mask:
+			old_mask.visible = false
+			old_mask.self_modulate.a = 1.0
+		
+		current_mask = new_mask
+		
+		_update_options()
+		_filter_all_entities() # Appliqué quand le sol est totalement là
+		is_transitioning = false # On déverrouille à la fin !
+		mask_changed.emit(current_mask)
+	)
+
+# On modifie un peu _apply_status pour que ce soit raccord visuellement
+func _apply_status(entity: Node2D, active: bool) -> void:
+	# On synchronise la visibilité de l'unité avec son état d'activation
+	entity.visible = active 
+	entity.set_process(active)
+	entity.set_physics_process(active)
+	
+	for child in entity.get_children():
+		if child is CollisionShape2D or child is CollisionPolygon2D:
+			child.set_deferred("disabled", !active)
 
 func _update_options() -> void:
 	next_options.clear()
@@ -87,7 +113,7 @@ func _update_options() -> void:
 	
 # Active la preview d'une option (0 ou 1)
 func show_preview(index: int) -> void:
-	if index < 0 or index >= next_options.size():
+	if is_transitioning or index < 0 or index >= next_options.size():
 		return
 	
 	var target = next_options[index]
@@ -97,7 +123,7 @@ func show_preview(index: int) -> void:
 
 # Désactive la preview d'une option
 func hide_preview(index: int) -> void:
-	if index < 0 or index >= next_options.size():
+	if is_transitioning or index < 0 or index >= next_options.size():
 		return
 		
 	var target = next_options[index]
@@ -140,14 +166,3 @@ func _process_group(entities: Array, mode: String) -> void:
 				else:
 					print("unit desactivated by fog")
 					_apply_status(entity, false)
-
-# Gère l'activation/désactivation propre des objets (Visuel, Process, Physique)
-func _apply_status(entity: Node2D, active: bool) -> void:
-	#entity.visible = active
-	entity.set_process(active)
-	entity.set_physics_process(active)
-	
-	# Gestion des collisions pour éviter qu'une tour cachée ne tire
-	for child in entity.get_children():
-		if child is CollisionShape2D or child is CollisionPolygon2D:
-			child.set_deferred("disabled", !active)
