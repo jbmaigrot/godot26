@@ -6,12 +6,19 @@ extends Node2D
 @onready var wave_timer: Timer = $WaveTimer
 
 @export_group("Difficulté Initiale")
-@export var initial_wave_delay: float = 15.0
 @export var initial_mob_count: int = 5
+@export var boss_frequency: int = 5
+
+@export var wave_delay_curve :Curve
+@export var warning_curve :Curve
+@export var spawn_rate_curve :Curve
+
+@export_group("Deprecated")
+@export var initial_wave_delay: float = 15.0
 @export var initial_warning_time: float = 5.0
 @export var initial_time_between_mobs: float = 1.0 
 @export var min_time_between_mobs: float = 0.2
-@export var boss_frequency: int = 5
+
 
 @onready var player_base = %Player_base
 @onready var mobs_container = %Mobs
@@ -28,13 +35,16 @@ func _on_wave_timeout() -> void:
 	
 	# --- LOGIQUE DE DIFFICULTÉ ---
 	# On réduit le délai entre les vagues (minimum 5s)
-	var current_delay = max(5.0, initial_wave_delay - (wave_number * 0.5))
+	#OLD var current_delay = max(5.0, initial_wave_delay - (wave_number * 0.5))
+	var current_delay = wave_delay_curve.sample(wave_number)
 	# On augmente le nombre d'ennemis (ex: +1 tous les 2 vagues)
 	var current_mob_count = initial_mob_count + floor(wave_number / 2.0)
 	# On réduit légèrement le temps du camembert pour presser le joueur
-	var current_warning = max(2.0, initial_warning_time - (wave_number * 0.2))
+	#OLD var current_warning = max(2.0, initial_warning_time - (wave_number * 0.2))
+	var current_warning = warning_curve.sample(wave_number)
 	# On réduit le délai entre chaque mob (réduit de 0.05s par vague, min 0.1s pour l'effet "mitraillette")
-	var current_spawn_rate = max(min_time_between_mobs, initial_time_between_mobs - (wave_number * 0.05))
+	#OLD var current_spawn_rate = max(min_time_between_mobs, initial_time_between_mobs - (wave_number * 0.05))
+	var current_spawn_rate = spawn_rate_curve.sample(wave_number)
 	
 	# Appliquer le nouveau délai au timer pour la PROCHAINE vague
 	wave_timer.wait_time = current_delay
