@@ -6,6 +6,30 @@
 [ext_resource type="ButtonGroup" uid="uid://dtxm4xjng5yu5" path="res://Ressources/button_group_mask.tres" id="3_4akpb"]
 [ext_resource type="LabelSettings" uid="uid://b237c40thsjnv" path="res://Ressources/label_settings_default.tres" id="3_clg6x"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y1a2m"]
+bg_color = Color(0, 0, 0, 0.13725491)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.000113828006, 0.000113828064, 0.00011382786, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wotbw"]
+bg_color = Color(0.5040665, 0.10159101, 0.012244559, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
 [sub_resource type="Animation" id="Animation_y1a2m"]
 resource_name = "10 sec charging"
 length = 10.0
@@ -33,6 +57,34 @@ tracks/1/keys = {
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(0.8156863, 0.04705882, 0, 1), Color(0.8156863, 0.04705882, 0, 1), Color(0.55476016, 0.07902216, 0, 1), Color(0.8156863, 0.04705882, 0, 1), Color(0.8156863, 0.04705882, 0, 1), Color(0.47842193, 0.0112056695, 0.004434647, 1), Color(0.8156863, 0.04705882, 0, 1), Color(0.8156863, 0.047058824, 0, 1)]
 }
 
+[sub_resource type="Animation" id="Animation_7iy65"]
+resource_name = "15s_charging"
+length = 15.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MarginContainer/MarginContainer/VBoxContainer/ProgressBar:value")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 15),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 100.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MarginContainer/MarginContainer/VBoxContainer/ProgressBar:theme_override_styles/fill:bg_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 15),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.5058824, 0.101960786, 0.011764706, 0.6901961), Color(0.3689146, 0.06367863, 0.0060475324, 1)]
+}
+
 [sub_resource type="Animation" id="Animation_wotbw"]
 length = 0.001
 tracks/0/type = "bezier"
@@ -58,10 +110,23 @@ tracks/1/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MarginContainer/MarginContainer/VBoxContainer/ProgressBar:theme_override_styles/fill:bg_color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.5040665, 0.10159101, 0.012244559, 1)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7iy65"]
 _data = {
 &"10 sec charging": SubResource("Animation_y1a2m"),
+&"15s_charging": SubResource("Animation_7iy65"),
 &"RESET": SubResource("Animation_wotbw")
 }
 
@@ -155,6 +220,8 @@ layout_mode = 2
 
 [node name="ProgressBar" type="ProgressBar" parent="MarginContainer/MarginContainer/VBoxContainer" unique_id=623195258]
 layout_mode = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_y1a2m")
+theme_override_styles/fill = SubResource("StyleBoxFlat_wotbw")
 
 [node name="Timer" type="Timer" parent="." unique_id=1928110996]
 wait_time = 15.0

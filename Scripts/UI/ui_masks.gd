@@ -25,15 +25,15 @@ func _ready() -> void:
 	anim_player.animation_finished.connect(_on_animation_player_finished)
 	
 	# Lancement de l'animation de cycle
-	anim_player.play("10 sec charging")
+	anim_player.play("15s_charging")
 
 # Nouvelle fonction pour intercepter la fin de n'importe quelle animation
 func _on_animation_player_finished(anim_name: String):
-	if anim_name == "10 sec charging":
+	if anim_name == "15s_charging":
 		_on_cycle_finished()
 		# Si ton animation n'est pas en "Loop" dans l'éditeur, 
 		# tu dois la relancer manuellement ici :
-		anim_player.play("10 sec charging")
+		anim_player.play("15s_charging")
 
 # --- Logique Mask One ---
 func _on_mask_one_hover():

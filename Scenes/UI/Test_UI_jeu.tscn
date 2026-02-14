@@ -97,9 +97,17 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 metadata/_edit_group_ = true
 
-[node name="CustomButton" type="PanelContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=511099722]
+[node name="CustomButton" type="PanelContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=511099722 node_paths=PackedStringArray("name_label", "desc_label", "gold_label", "wood_label", "stone_label", "main_icon")]
 layout_mode = 2
 size_flags_horizontal = 6
+script = ExtResource("2_t71j2")
+tower_info = ExtResource("3_7tcah")
+name_label = NodePath("MarginContainer/VBoxContainer/name")
+desc_label = NodePath("MarginContainer/VBoxContainer/description")
+gold_label = NodePath("MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/prix gold")
+wood_label = NodePath("MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/VBoxContainer/HBoxContainer2/prix bois")
+stone_label = NodePath("MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/VBoxContainer/HBoxContainer3/prix pierre")
+main_icon = NodePath("MarginContainer/VBoxContainer/HBoxContainer/TextureRect")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/CustomButton" unique_id=429752422]
 layout_mode = 2
@@ -221,25 +229,19 @@ autowrap_mode = 3
 text_overrun_behavior = 5
 max_lines_visible = 4
 
-[node name="Button" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/CustomButton" unique_id=855956770 node_paths=PackedStringArray("name_label", "desc_label", "gold_label", "wood_label", "stone_label", "main_icon")]
-modulate = Color(1, 1, 1, 0)
-custom_minimum_size = Vector2(20, 20)
-layout_mode = 2
-script = ExtResource("2_t71j2")
-tower_info = ExtResource("3_7tcah")
-name_label = NodePath("../MarginContainer/VBoxContainer/name")
-desc_label = NodePath("../MarginContainer/VBoxContainer/description")
-gold_label = NodePath("../MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/prix gold")
-wood_label = NodePath("../MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/VBoxContainer/HBoxContainer2/prix bois")
-stone_label = NodePath("../MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/VBoxContainer/HBoxContainer3/prix pierre")
-main_icon = NodePath("../MarginContainer/VBoxContainer/HBoxContainer/TextureRect")
-
-[node name="CustomButton2" type="PanelContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1469415009]
+[node name="CustomButton2" type="PanelContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1709110498 node_paths=PackedStringArray("name_label", "desc_label", "gold_label", "wood_label", "stone_label", "main_icon")]
 layout_mode = 2
 size_flags_horizontal = 6
-size_flags_vertical = 4
+script = ExtResource("2_t71j2")
+tower_info = ExtResource("4_oqd1j")
+name_label = NodePath("MarginContainer/VBoxContainer/name")
+desc_label = NodePath("MarginContainer/VBoxContainer/description")
+gold_label = NodePath("MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/prix gold")
+wood_label = NodePath("MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/VBoxContainer/HBoxContainer2/prix bois")
+stone_label = NodePath("MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/VBoxContainer/HBoxContainer3/prix pierre")
+main_icon = NodePath("MarginContainer/VBoxContainer/HBoxContainer/TextureRect")
 
-[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/CustomButton2" unique_id=158287414]
+[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/CustomButton2" unique_id=732883131]
 layout_mode = 2
 texture = ExtResource("2_aimx2")
 patch_margin_left = 5
@@ -247,39 +249,38 @@ patch_margin_top = 3
 patch_margin_right = 4
 patch_margin_bottom = 4
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/CustomButton2" unique_id=1091654437]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/CustomButton2" unique_id=649113720]
 layout_mode = 2
 theme_override_constants/margin_left = 2
 theme_override_constants/margin_top = 2
 theme_override_constants/margin_right = 2
 theme_override_constants/margin_bottom = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/CustomButton2/MarginContainer" unique_id=947888853]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/CustomButton2/MarginContainer" unique_id=1032793960]
 layout_mode = 2
 size_flags_horizontal = 4
-size_flags_vertical = 4
 
-[node name="name" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/CustomButton2/MarginContainer/VBoxContainer" unique_id=87064360]
+[node name="name" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/CustomButton2/MarginContainer/VBoxContainer" unique_id=357756745]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 1
 text = "Structure_name"
 label_settings = ExtResource("3_k63uj")
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/CustomButton2/MarginContainer/VBoxContainer" unique_id=489514125]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/CustomButton2/MarginContainer/VBoxContainer" unique_id=1922736985]
 layout_mode = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_right = 10
 
-[node name="HSeparator" type="HSeparator" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/CustomButton2/MarginContainer/VBoxContainer/MarginContainer" unique_id=105976161]
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/CustomButton2/MarginContainer/VBoxContainer/MarginContainer" unique_id=2073844830]
 layout_mode = 2
 theme_override_constants/separation = 3
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/CustomButton2/MarginContainer/VBoxContainer" unique_id=167788849]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/CustomButton2/MarginContainer/VBoxContainer" unique_id=522176265]
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/CustomButton2/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1862574567]
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/CustomButton2/MarginContainer/VBoxContainer/HBoxContainer" unique_id=915471478]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -288,67 +289,67 @@ texture = ExtResource("8_k63uj")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="VSeparator" type="VSeparator" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/CustomButton2/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1944418444]
+[node name="VSeparator" type="VSeparator" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/CustomButton2/MarginContainer/VBoxContainer/HBoxContainer" unique_id=963346467]
 layout_mode = 2
 
-[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/CustomButton2/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1833183389]
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/CustomButton2/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1122363782]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_styles/panel = SubResource("StyleBoxEmpty_6goqt")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/CustomButton2/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer" unique_id=1710735484]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/CustomButton2/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer" unique_id=252668705]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/CustomButton2/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/VBoxContainer" unique_id=1943265969]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/CustomButton2/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/VBoxContainer" unique_id=1159678768]
 layout_mode = 2
 
-[node name="TextureRect2" type="TextureRect" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/CustomButton2/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/VBoxContainer/HBoxContainer" unique_id=218334977]
+[node name="TextureRect2" type="TextureRect" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/CustomButton2/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/VBoxContainer/HBoxContainer" unique_id=1093680473]
 custom_minimum_size = Vector2(10, 10)
 layout_mode = 2
 size_flags_horizontal = 4
 texture = ExtResource("9_6goqt")
 expand_mode = 2
 
-[node name="prix gold" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/CustomButton2/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/VBoxContainer/HBoxContainer" unique_id=21334079]
+[node name="prix gold" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/CustomButton2/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/VBoxContainer/HBoxContainer" unique_id=341179272]
 layout_mode = 2
 size_flags_horizontal = 4
 text = ": 20"
 label_settings = ExtResource("3_k63uj")
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/CustomButton2/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/VBoxContainer" unique_id=871144561]
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/CustomButton2/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/VBoxContainer" unique_id=560463226]
 layout_mode = 2
 
-[node name="TextureRect2" type="TextureRect" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/CustomButton2/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/VBoxContainer/HBoxContainer2" unique_id=979615499]
+[node name="TextureRect2" type="TextureRect" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/CustomButton2/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/VBoxContainer/HBoxContainer2" unique_id=322781938]
 layout_mode = 2
 texture = ExtResource("10_u5k0s")
 
-[node name="prix bois" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/CustomButton2/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/VBoxContainer/HBoxContainer2" unique_id=1610190712]
+[node name="prix bois" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/CustomButton2/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/VBoxContainer/HBoxContainer2" unique_id=613851845]
 layout_mode = 2
 text = ": 0"
 label_settings = ExtResource("3_k63uj")
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/CustomButton2/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/VBoxContainer" unique_id=213567107]
+[node name="HBoxContainer3" type="HBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/CustomButton2/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/VBoxContainer" unique_id=1049678138]
 layout_mode = 2
 
-[node name="TextureRect2" type="TextureRect" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/CustomButton2/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/VBoxContainer/HBoxContainer3" unique_id=1186377731]
+[node name="TextureRect2" type="TextureRect" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/CustomButton2/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/VBoxContainer/HBoxContainer3" unique_id=1618252224]
 layout_mode = 2
 texture = ExtResource("11_vebho")
 
-[node name="prix pierre" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/CustomButton2/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/VBoxContainer/HBoxContainer3" unique_id=1552336823]
+[node name="prix pierre" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/CustomButton2/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/VBoxContainer/HBoxContainer3" unique_id=1272453152]
 layout_mode = 2
 text = ": 25"
 label_settings = ExtResource("3_k63uj")
 
-[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/CustomButton2/MarginContainer/VBoxContainer" unique_id=1987558704]
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/CustomButton2/MarginContainer/VBoxContainer" unique_id=1572391221]
 layout_mode = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_right = 10
 
-[node name="HSeparator" type="HSeparator" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/CustomButton2/MarginContainer/VBoxContainer/MarginContainer2" unique_id=776196348]
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/CustomButton2/MarginContainer/VBoxContainer/MarginContainer2" unique_id=1523083017]
 layout_mode = 2
 theme_override_constants/separation = 3
 
-[node name="description" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/CustomButton2/MarginContainer/VBoxContainer" unique_id=1529993115]
+[node name="description" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/CustomButton2/MarginContainer/VBoxContainer" unique_id=1464220299]
 custom_minimum_size = Vector2(160, 1)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -360,18 +361,5 @@ autowrap_mode = 3
 text_overrun_behavior = 5
 max_lines_visible = 4
 
-[node name="Button" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/CustomButton2" unique_id=527226280 node_paths=PackedStringArray("name_label", "desc_label", "gold_label", "wood_label", "stone_label", "main_icon")]
-modulate = Color(1, 1, 1, 0)
-custom_minimum_size = Vector2(20, 20)
-layout_mode = 2
-script = ExtResource("2_t71j2")
-tower_info = ExtResource("4_oqd1j")
-name_label = NodePath("../MarginContainer/VBoxContainer/name")
-desc_label = NodePath("../MarginContainer/VBoxContainer/description")
-gold_label = NodePath("../MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/prix gold")
-wood_label = NodePath("../MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/VBoxContainer/HBoxContainer2/prix bois")
-stone_label = NodePath("../MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/VBoxContainer/HBoxContainer3/prix pierre")
-main_icon = NodePath("../MarginContainer/VBoxContainer/HBoxContainer/TextureRect")
-
-[connection signal="add_tower_request" from="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/CustomButton/Button" to="." method="_on_texture_button_add_tower_request"]
-[connection signal="add_tower_request" from="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/CustomButton2/Button" to="." method="_on_texture_button_add_tower_request"]
+[connection signal="add_tower_request" from="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/CustomButton" to="." method="_on_texture_button_add_tower_request"]
+[connection signal="add_tower_request" from="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/CustomButton2" to="." method="_on_texture_button_add_tower_request"]

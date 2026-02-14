@@ -190,6 +190,7 @@ material = SubResource("ShaderMaterial_1fgkh")
 script = ExtResource("14_k2mw1")
 
 [node name="MALA_Mask_1" type="TileMapLayer" parent="Masks_manager" unique_id=1333416564]
+visible = false
 y_sort_enabled = true
 texture_filter = 1
 use_parent_material = true
