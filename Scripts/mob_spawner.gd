@@ -9,7 +9,9 @@ extends Node2D
 @export var time_between_mobs: float = 1.0 # Délai entre chaque mob (ex: 1s)
 
 @onready var mob_timer: Timer = $MobTimer
-@export var progress_bar: TextureProgressBar 
+@export var progress_bar: TextureProgressBar
+@export var progress_bar_boss: TextureProgressBar  
+var active_bar: TextureProgressBar
 
 @export var spawn_particles: CPUParticles2D
 
@@ -18,17 +20,26 @@ var target_node: Node2D
 var container_node: Node
 
 func _ready() -> void:
+	# 1. Sélection de la barre à utiliser
+	if is_boss_wave and progress_bar_boss:
+		active_bar = progress_bar_boss
+		if progress_bar: progress_bar.hide() # On cache l'autre par sécurité
+	else:
+		active_bar = progress_bar
+		if progress_bar_boss: progress_bar_boss.hide()
+	
+	
 	# 1. Préparation du camembert
-	if progress_bar:
-		progress_bar.value = 0
-		progress_bar.max_value = 100
-		progress_bar.show()
+	if active_bar:
+		active_bar.value = 0
+		active_bar.max_value = 100
+		active_bar.show()
 		if is_boss_wave:
-			progress_bar.tint_under = Color.RED
+			active_bar.tint_under = Color.RED
 		
 		# Animation du remplissage sur 10 secondes
 		var tween = create_tween()
-		tween.tween_property(progress_bar, "value", 100, warning_time)
+		tween.tween_property(active_bar, "value", 100, warning_time)
 	
 	# 2. Timer pour le compte à rebours initial
 	mob_timer.wait_time = warning_time

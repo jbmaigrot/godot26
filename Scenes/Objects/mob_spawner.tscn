@@ -6,7 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://wbsf6mb6s48w" path="res://Scenes/Objects/boss.tscn" id="3_htvnj"]
 [ext_resource type="Texture2D" uid="uid://c567n75y1c5ow" path="res://Assets/Sprites/satan icon - gris.png" id="4_eklga"]
 [ext_resource type="Texture2D" uid="uid://m2kj88g1q6ux" path="res://Assets/Sprites/satan icon.png" id="5_wix7d"]
-[ext_resource type="Texture2D" uid="uid://dmuywxv2n6vku" path="res://Assets/Sprites/Coin_icon.png" id="7_v1rt2"]
+[ext_resource type="Texture2D" uid="uid://po61ip7tsw2t" path="res://Assets/Sprites/satan_boss icon.png" id="7_p608s"]
+[ext_resource type="Texture2D" uid="uid://b50sfrxcwotfe" path="res://Assets/Sprites/fog.png" id="7_v1rt2"]
 
 [sub_resource type="Curve" id="Curve_p608s"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -16,12 +17,13 @@ point_count = 2
 offsets = PackedFloat32Array(0, 0.4790419, 1)
 colors = PackedColorArray(0.82191056, 2.623126e-06, 7.70092e-07, 1, 0.76285815, 0.2774466, 0.10814328, 1, 0, 0, 0, 1)
 
-[node name="mob_spawner" type="Node2D" unique_id=275470641 node_paths=PackedStringArray("progress_bar", "spawn_particles")]
+[node name="mob_spawner" type="Node2D" unique_id=275470641 node_paths=PackedStringArray("progress_bar", "progress_bar_boss", "spawn_particles")]
 y_sort_enabled = true
 script = ExtResource("1_xn2ct")
 enemy_scene = ExtResource("2_htvnj")
 boss_scene = ExtResource("3_htvnj")
 progress_bar = NodePath("Control/TextureProgressBar2")
+progress_bar_boss = NodePath("Control/TextureProgressBar3")
 spawn_particles = NodePath("CPUParticles2D")
 
 [node name="MobTimer" type="Timer" parent="." unique_id=383187962]
@@ -74,21 +76,41 @@ fill_mode = 4
 texture_under = ExtResource("4_eklga")
 texture_progress = ExtResource("5_wix7d")
 
+[node name="TextureProgressBar3" type="TextureProgressBar" parent="Control" unique_id=951621331]
+z_index = -1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -26.0
+offset_top = -15.0
+offset_right = 38.0
+offset_bottom = 22.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.8, 0.8)
+value = 30.0
+fill_mode = 4
+texture_under = ExtResource("4_eklga")
+texture_progress = ExtResource("7_p608s")
+
 [node name="CPUParticles2D" type="CPUParticles2D" parent="." unique_id=1611856284]
 visible = false
-emitting = false
+position = Vector2(-1, -1)
 amount = 30
 texture = ExtResource("7_v1rt2")
 lifetime = 0.8
-one_shot = true
 explosiveness = 0.85
 emission_shape = 1
 emission_sphere_radius = 20.0
-spread = 180.0
+direction = Vector2(0, -1)
+spread = 90.0
 gravity = Vector2(0, -200)
 initial_velocity_min = 50.0
 initial_velocity_max = 75.0
-scale_amount_min = 0.4
-scale_amount_max = 0.4
+scale_amount_min = 0.05
+scale_amount_max = 0.1
 scale_amount_curve = SubResource("Curve_p608s")
 color_ramp = SubResource("Gradient_v1rt2")

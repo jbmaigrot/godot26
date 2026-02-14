@@ -14,12 +14,15 @@ class_name Enemy
 var main:Main = null
 
 @export var anim_player: AnimationPlayer
+@export var anim_player_walk: AnimationPlayer
 
 
 func _ready():
 	# On attend un peu que la map de navigation soit prête
 	call_deferred("setup_navigation")
 	main = get_tree().current_scene as Main
+	if anim_player_walk.has_animation("walk"):
+		anim_player_walk.play("walk")
 
 func setup_navigation():
 	# Attendre la première frame physique pour s'assurer que le NavServer est synchronisé
