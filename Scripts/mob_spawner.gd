@@ -11,6 +11,8 @@ extends Node2D
 @onready var mob_timer: Timer = $MobTimer
 @export var progress_bar: TextureProgressBar 
 
+@export var spawn_particles: CPUParticles2D
+
 var mobs_spawned_count: int = 0
 var target_node: Node2D
 var container_node: Node
@@ -37,7 +39,8 @@ func _ready() -> void:
 func _on_countdown_finished() -> void:
 	# Le premier délai est passé, on cache le camembert
 	if progress_bar:
-		progress_bar.hide()
+		pass
+		#progress_bar.hide()
 	
 	# 3. On change la logique du Timer pour le spawn en série
 	mob_timer.timeout.disconnect(_on_countdown_finished)
@@ -62,7 +65,18 @@ func _on_spawn_tick() -> void:
 	# Une fois que tous les ennemis sont sortis, le spawner s'autodétruit
 	if mobs_spawned_count >= amount_to_spawn:
 		mob_timer.stop()
-		queue_free()
+		
+		if progress_bar:
+			# Création d'un tween pour une disparition fluide
+			var fade_tween = create_tween()
+			# On fait passer l'opacité (modulate.a) à 0 en 0.5 seconde
+			fade_tween.tween_property(progress_bar, "modulate:a", 0.0, 0.5)
+			
+			# On attend que l'animation soit finie avant de détruire le spawner
+			fade_tween.finished.connect(func(): queue_free())
+		else:
+			# Si pas de barre, on détruit immédiatement
+			queue_free()
 
 func spawn_enemy(scene) -> void:
 	if scene and container_node:
@@ -70,3 +84,7 @@ func spawn_enemy(scene) -> void:
 		enemy.global_position = global_position
 		enemy.target = target_node # On utilise la variable reçue
 		container_node.add_child(enemy) # On utilise la variable reçue
+		if spawn_particles:
+			# Pas besoin de modifier la position si le node est déjà enfant du spawner
+			spawn_particles.restart() 
+			spawn_particles.emitting = true

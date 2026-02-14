@@ -165,16 +165,16 @@ mob_spawner_scene = ExtResource("14_31phq")
 wait_time = 30.0
 
 [node name="Position1" type="Node2D" parent="wave_spawner" unique_id=739812475]
-position = Vector2(-320, 0)
+position = Vector2(-320, -1)
 
 [node name="Position2" type="Node2D" parent="wave_spawner" unique_id=97679865]
-position = Vector2(0, 160)
+position = Vector2(0, 162)
 
 [node name="Position3" type="Node2D" parent="wave_spawner" unique_id=1550650806]
-position = Vector2(322, 1)
+position = Vector2(319, 1)
 
 [node name="Position4" type="Node2D" parent="wave_spawner" unique_id=1367614015]
-position = Vector2(0, -161)
+position = Vector2(0, -159)
 
 [node name="(debug) Centers of 5x5 Fog" type="TileMapLayer" parent="." unique_id=626676577]
 visible = false
