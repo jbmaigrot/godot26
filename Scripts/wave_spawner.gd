@@ -6,11 +6,14 @@ extends Node2D
 @onready var wave_timer: Timer = $WaveTimer
 
 @export_group("Difficulté Initiale")
+## number of enemies in wave 1 (then +1 every 2 waves, hardcoded)
 @export var initial_mob_count: int = 5
+## boss spawns every n-th wave (default: waves 5, 10, 15, ...)
 @export var boss_frequency: int = 5
 
 @export var wave_delay_curve :Curve
 @export var warning_curve :Curve
+## delay between two enemies in the same wave
 @export var spawn_rate_curve :Curve
 
 @export_group("Deprecated")
