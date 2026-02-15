@@ -12,20 +12,20 @@
 custom_solver_bias = 1.0
 size = Vector2(29, 35)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_osb2a"]
+resource_local_to_scene = true
+shader = ExtResource("4_v3p23")
+shader_parameter/shadow_height = 0.442000020995
+shader_parameter/shadow_skew = 0.31200010982000004
+shader_parameter/offset_x = -0.09399995696499996
+shader_parameter/offset_y = -0.2799999658
+shader_parameter/shadow_color = Color(0, 0, 0.2, 0.5)
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_v3p23"]
 resource_local_to_scene = true
 shader = ExtResource("4_vm7cc")
 shader_parameter/flash_color = Color(1, 1, 1, 1)
 shader_parameter/flash_modifier = 0.0
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_osb2a"]
-resource_local_to_scene = true
-shader = ExtResource("4_v3p23")
-shader_parameter/shadow_height = 0.550000026125
-shader_parameter/shadow_skew = 1.8000001805
-shader_parameter/offset_x = 0.5060000715349999
-shader_parameter/offset_y = -0.193999961715
-shader_parameter/shadow_color = Color(0, 0, 0.2, 0.5)
 
 [sub_resource type="Animation" id="Animation_vm7cc"]
 resource_name = "Hit"
@@ -223,19 +223,17 @@ anim_player_walk = NodePath("AnimationPlayer2")
 position = Vector2(-0.5, -3.5)
 shape = SubResource("RectangleShape2D_1f0kj")
 
+[node name="Sprite2D ombre" type="Sprite2D" parent="." unique_id=2030038628]
+material = SubResource("ShaderMaterial_osb2a")
+texture = ExtResource("2_i2hje")
+region_enabled = true
+region_rect = Rect2(-464.25, -473.265, 1000, 1000)
+
 [node name="Node2D" type="Node2D" parent="." unique_id=1932588807]
 
 [node name="Sprite2D" type="Sprite2D" parent="Node2D" unique_id=1173252088]
 material = SubResource("ShaderMaterial_v3p23")
 texture = ExtResource("2_i2hje")
-
-[node name="Sprite2D ombre" type="Sprite2D" parent="Node2D" unique_id=2030038628]
-z_index = -1
-material = SubResource("ShaderMaterial_osb2a")
-rotation = -0.19999999
-texture = ExtResource("2_i2hje")
-region_enabled = true
-region_rect = Rect2(-464.25, -473.265, 1000, 1000)
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=1583255730]
 path_desired_distance = 10.0

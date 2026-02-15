@@ -4,12 +4,22 @@
 [ext_resource type="PackedScene" uid="uid://cfw2nmlhdb44l" path="res://Scenes/Objects/FloatingValue.tscn" id="2_ksmyw"]
 [ext_resource type="Texture2D" uid="uid://dmuywxv2n6vku" path="res://Assets/Sprites/Coin_icon.png" id="3_4ypk7"]
 [ext_resource type="Shader" uid="uid://bor2nsw7n7404" path="res://Scripts/Shaders/enemy_hit.gdshader" id="4_1udvx"]
+[ext_resource type="Shader" uid="uid://bmbmktp60gptr" path="res://Scenes/Objects/shadow_shader.gdshader" id="4_4ypk7"]
 [ext_resource type="Texture2D" uid="uid://evgybgwect5v" path="res://Assets/Sprites/devil.png" id="5_68mlv"]
 [ext_resource type="Texture2D" uid="uid://j2q5r16vi7p6" path="res://Assets/Sprites/ombre_iso.png" id="6_ksmyw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1f0kj"]
 custom_solver_bias = 1.0
 size = Vector2(29, 35)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1udvx"]
+resource_local_to_scene = true
+shader = ExtResource("4_4ypk7")
+shader_parameter/shadow_height = 0.5
+shader_parameter/shadow_skew = 0.33900011110250006
+shader_parameter/offset_x = -0.34899996907749997
+shader_parameter/offset_y = -0.65599998366
+shader_parameter/shadow_color = Color(0, 0, 0.2, 0.5)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_osb2a"]
 resource_local_to_scene = true
@@ -150,6 +160,14 @@ anim_player_walk = NodePath("AnimationPlayer2")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=991233269]
 position = Vector2(-0.5, -3.5)
 shape = SubResource("RectangleShape2D_1f0kj")
+
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=129810927]
+modulate = Color(0.08627451, 0.09019608, 0.101960786, 1)
+material = SubResource("ShaderMaterial_1udvx")
+scale = Vector2(2, 2)
+texture = ExtResource("5_68mlv")
+region_enabled = true
+region_rect = Rect2(-50, -50, 200, 200)
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1173252088]
 modulate = Color(0.08627451, 0.09019608, 0.101960786, 1)

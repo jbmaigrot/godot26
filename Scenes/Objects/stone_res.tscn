@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://f4gxjwuictb0"]
+
+[ext_resource type="Script" uid="uid://djtl0nw7qm2h6" path="res://Scripts/resource_production.gd" id="1_coeqa"]
+[ext_resource type="Shader" uid="uid://bmbmktp60gptr" path="res://Scenes/Objects/shadow_shader.gdshader" id="2_55ap4"]
+[ext_resource type="Texture2D" uid="uid://b8rm4wutjg111" path="res://Assets/Sprites/mine.png" id="2_c72sj"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_evrhy"]
+shader = ExtResource("2_55ap4")
+shader_parameter/shadow_height = 0.550000026125
+shader_parameter/shadow_skew = 1.714000176415
+shader_parameter/offset_x = 0.650000078375
+shader_parameter/offset_y = -0.06399995554000004
+shader_parameter/shadow_color = Color(0, 0, 0.2, 0.5)
+
+[node name="Stone_res" type="Node2D" unique_id=1094199615]
+script = ExtResource("1_coeqa")
+stone_production_value = 1.0
+
+[node name="Sprite2D ombre" type="Sprite2D" parent="." unique_id=1687250578]
+material = SubResource("ShaderMaterial_evrhy")
+position = Vector2(1, -1)
+texture = ExtResource("2_c72sj")
+region_enabled = true
+region_rect = Rect2(-22.565, -39.2, 100, 100)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1640726457]
+position = Vector2(1, -1)
+texture = ExtResource("2_c72sj")

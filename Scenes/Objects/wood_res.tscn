@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://d2qjm0bxxo6q1"]
+
+[ext_resource type="Script" uid="uid://djtl0nw7qm2h6" path="res://Scripts/resource_production.gd" id="1_r3vu8"]
+[ext_resource type="Shader" uid="uid://bmbmktp60gptr" path="res://Scenes/Objects/shadow_shader.gdshader" id="2_cb042"]
+[ext_resource type="Texture2D" uid="uid://b7kjlm7ubp4db" path="res://Assets/Sprites/trees.png" id="2_ekjbf"]
+[ext_resource type="Shader" uid="uid://bjnojf5uxewb6" path="res://Scenes/Objects/wind.gdshader" id="4_cb042"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2e88p"]
+shader = ExtResource("2_cb042")
+shader_parameter/shadow_height = 0.550000026125
+shader_parameter/shadow_skew = 1.8000001805
+shader_parameter/offset_x = 0.8350000871624998
+shader_parameter/offset_y = 0.06500005058749991
+shader_parameter/shadow_color = Color(0, 0, 0.2, 0.5)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0fflj"]
+shader = ExtResource("4_cb042")
+shader_parameter/speed = 1.0
+shader_parameter/minStrength = 0.02000000095
+shader_parameter/maxStrength = 0.10000000475
+shader_parameter/strengthScale = 10.0
+shader_parameter/interval = 3.5
+shader_parameter/detail = 1.0
+shader_parameter/distortion = 0.0
+shader_parameter/heightOffset = 0.0
+shader_parameter/offset = 0.0
+
+[node name="Wood_res" type="Node2D" unique_id=1740049730]
+script = ExtResource("1_r3vu8")
+wood_production_value = 1.0
+
+[node name="Sprite2D ombre" type="Sprite2D" parent="." unique_id=1880095008]
+material = SubResource("ShaderMaterial_2e88p")
+position = Vector2(0, -18)
+texture = ExtResource("2_ekjbf")
+region_enabled = true
+region_rect = Rect2(-79.32, -99.615, 200, 200)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=466333522]
+material = SubResource("ShaderMaterial_0fflj")
+position = Vector2(0, -18)
+texture = ExtResource("2_ekjbf")

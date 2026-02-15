@@ -5,6 +5,7 @@
 [ext_resource type="Shape2D" uid="uid://bt8ks1mvf5hi3" path="res://Ressources/ellipse-16.tres" id="3_gxh6w"]
 [ext_resource type="Texture2D" uid="uid://ci066wviaqgy8" path="res://Assets/Sprites/tower_1.png" id="4_00fu1"]
 [ext_resource type="Shader" uid="uid://bmbmktp60gptr" path="res://Scenes/Objects/shadow_shader.gdshader" id="4_l6vkb"]
+[ext_resource type="Texture2D" uid="uid://ta6vyh2hhrr3" path="res://Assets/Sprites/tower_1_normal.png" id="6_gxh6w"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_gxh6w"]
 shader = ExtResource("4_l6vkb")
@@ -13,6 +14,10 @@ shader_parameter/shadow_skew = 1.8000001805
 shader_parameter/offset_x = 0.34800006403000006
 shader_parameter/offset_y = -0.34399996883999995
 shader_parameter/shadow_color = Color(0, 0, 0.2, 0.5)
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_evlee"]
+diffuse_texture = ExtResource("4_00fu1")
+normal_texture = ExtResource("6_gxh6w")
 
 [node name="Tower" type="Area2D" unique_id=258828074]
 script = ExtResource("1_00fu1")
@@ -23,17 +28,16 @@ shoot_cooldown = 1.5
 scale = Vector2(240, 160)
 shape = ExtResource("3_gxh6w")
 
-[node name="Tower1" type="Sprite2D" parent="." unique_id=802895542]
+[node name="Tower2 ombre" type="Sprite2D" parent="." unique_id=645852567]
+material = SubResource("ShaderMaterial_gxh6w")
 position = Vector2(0, -16)
 texture = ExtResource("4_00fu1")
 region_enabled = true
 region_rect = Rect2(-33.895, -21.66, 100, 100)
 
-[node name="Tower2" type="Sprite2D" parent="." unique_id=645852567]
-z_index = -1
-material = SubResource("ShaderMaterial_gxh6w")
+[node name="Tower1" type="Sprite2D" parent="." unique_id=802895542]
 position = Vector2(0, -16)
-texture = ExtResource("4_00fu1")
+texture = SubResource("CanvasTexture_evlee")
 region_enabled = true
 region_rect = Rect2(-33.895, -21.66, 100, 100)
 

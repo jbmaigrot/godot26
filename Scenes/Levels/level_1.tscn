@@ -12,21 +12,23 @@
 [ext_resource type="Resource" uid="uid://ckq0dhq0vet7i" path="res://Ressources/tower_0.tres" id="6_trw0a"]
 [ext_resource type="Resource" uid="uid://q6d6at027vno" path="res://Ressources/tower_1.tres" id="7_tjcye"]
 [ext_resource type="PackedScene" uid="uid://d4dfxvfucaywr" path="res://Scenes/UI/Test_UI_jeu.tscn" id="8_557vl"]
-[ext_resource type="Script" path="res://Scripts/resources_manager.gd" id="8_3628d"]
-[ext_resource type="Texture2D" uid="uid://b7kjlm7ubp4db" path="res://Assets/Sprites/trees.png" id="8_tjl6l"]
-[ext_resource type="Script" path="res://Scripts/resource_production.gd" id="9_irw6p"]
-[ext_resource type="Texture2D" uid="uid://b8rm4wutjg111" path="res://Assets/Sprites/mine.png" id="11_31phq"]
+[ext_resource type="Script" uid="uid://dglj2pf81auxo" path="res://Scripts/resources_manager.gd" id="8_3628d"]
 [ext_resource type="Texture2D" uid="uid://gn27irjdapn7" path="res://Assets/Sprites/base.png" id="12_31phq"]
 [ext_resource type="PackedScene" uid="uid://bwa3mbac8h6dk" path="res://Scenes/UI/ui_ressources.tscn" id="12_afv7b"]
 [ext_resource type="PackedScene" uid="uid://dkalptuwja8fu" path="res://Scenes/UI/ui_masks.tscn" id="13_7r2dd"]
 [ext_resource type="Script" uid="uid://c3n7p3t0o5u66" path="res://Scripts/wave_spawner.gd" id="13_fayjm"]
+[ext_resource type="PackedScene" uid="uid://d2qjm0bxxo6q1" path="res://Scenes/Objects/wood_res.tscn" id="13_i7ma5"]
 [ext_resource type="PackedScene" uid="uid://dvtfb7um6h1gd" path="res://Scenes/Objects/mob_spawner.tscn" id="14_31phq"]
 [ext_resource type="Script" uid="uid://cc7s5vwk41175" path="res://Scripts/masks_manager.gd" id="14_k2mw1"]
+[ext_resource type="PackedScene" uid="uid://f4gxjwuictb0" path="res://Scenes/Objects/stone_res.tscn" id="14_t8afp"]
+[ext_resource type="Shader" uid="uid://bmbmktp60gptr" path="res://Scenes/Objects/shadow_shader.gdshader" id="15_t8afp"]
 [ext_resource type="Texture2D" uid="uid://brp5kyaikae6n" path="res://Assets/Sprites/UI_elmement_0.png" id="19_7hll7"]
 [ext_resource type="Script" uid="uid://dbppr3wsycj36" path="res://Scripts/UI/game_over.gd" id="19_fayjm"]
 [ext_resource type="Shader" uid="uid://dflqpl1koqnye" path="res://Scripts/Shaders/fog_shader.gdshader" id="20_t8afp"]
 [ext_resource type="Theme" uid="uid://bnvqj0ubcd58q" path="res://Ressources/ui_theme_default.tres" id="22_vvknj"]
 [ext_resource type="Script" uid="uid://cncw4sisiqxsn" path="res://Scripts/UI/r_to_restart.gd" id="25_ksf1i"]
+[ext_resource type="Texture2D" uid="uid://b50sfrxcwotfe" path="res://Assets/Sprites/fog.png" id="28_t8afp"]
+[ext_resource type="Shader" uid="uid://bou71gslpgceg" path="res://Scenes/Levels/screen_fog_shader.gdshader" id="29_1fgkh"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_t8afp"]
 shader = ExtResource("4_vif5h")
@@ -34,6 +36,14 @@ shader_parameter/speed = Vector2(0.03, 0.02)
 shader_parameter/distortion_strength = 0.02
 shader_parameter/frequency = 5.0
 shader_parameter/water_tint = Color(1, 1, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hd8f4"]
+shader = ExtResource("15_t8afp")
+shader_parameter/shadow_height = 1.0000000475
+shader_parameter/shadow_skew = 0.258000107255
+shader_parameter/offset_x = 0.2700000603250001
+shader_parameter/offset_y = 0.18600005633499994
+shader_parameter/shadow_color = Color(0, 0, 0.2, 0.5)
 
 [sub_resource type="Curve" id="Curve_t8afp"]
 _limits = [0.0, 15.0, 1.0, 20.0]
@@ -55,6 +65,16 @@ shader = ExtResource("20_t8afp")
 shader_parameter/speed = 1.0000000475
 shader_parameter/movement_amplitude = 0.50000002375
 shader_parameter/alpha_min = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hnn05"]
+shader = ExtResource("29_1fgkh")
+shader_parameter/resolution = Vector2(320, 180)
+shader_parameter/scan_line_amount = 0.054000002564999997
+shader_parameter/warp_amount = 0.05
+shader_parameter/vignette_amount = 0.7710000366225
+shader_parameter/vignette_intensity = 0.310000014725
+shader_parameter/grille_amount = 0.10000000475
+shader_parameter/brightness_boost = 1.3290000156275
 
 [node name="Level_1" type="Node2D" unique_id=100231516 node_paths=PackedStringArray("game_over_screen", "base_node")]
 y_sort_enabled = true
@@ -99,66 +119,26 @@ unique_name_in_owner = true
 y_sort_enabled = true
 script = ExtResource("8_3628d")
 
-[node name="Wood_res" type="Node2D" parent="Resources" unique_id=1479521644]
+[node name="Wood_res" parent="Resources" unique_id=1740049730 instance=ExtResource("13_i7ma5")]
 position = Vector2(-64, 177)
-script = ExtResource("9_irw6p")
-wood_production_value = 1.0
 
-[node name="Sprite2D" type="Sprite2D" parent="Resources/Wood_res" unique_id=999434528]
-position = Vector2(0, -18)
-texture = ExtResource("8_tjl6l")
+[node name="Wood_res2" parent="Resources" unique_id=709265176 instance=ExtResource("13_i7ma5")]
+position = Vector2(15, -26)
 
-[node name="Wood_res2" type="Node2D" parent="Resources" unique_id=1817499063]
-position = Vector2(15, -24)
-script = ExtResource("9_irw6p")
-wood_production_value = 1.0
+[node name="Wood_res3" parent="Resources" unique_id=576249016 instance=ExtResource("13_i7ma5")]
+position = Vector2(-257, -3)
 
-[node name="Sprite2D" type="Sprite2D" parent="Resources/Wood_res2" unique_id=1172444828]
-position = Vector2(0, -18)
-texture = ExtResource("8_tjl6l")
+[node name="Wood_res4" parent="Resources" unique_id=1233950107 instance=ExtResource("13_i7ma5")]
+position = Vector2(206, 7)
 
-[node name="Wood_res3" type="Node2D" parent="Resources" unique_id=308225718]
-position = Vector2(-256, 1)
-script = ExtResource("9_irw6p")
-wood_production_value = 1.0
-
-[node name="Sprite2D" type="Sprite2D" parent="Resources/Wood_res3" unique_id=1252294272]
-position = Vector2(0, -18)
-texture = ExtResource("8_tjl6l")
-
-[node name="Wood_res4" type="Node2D" parent="Resources" unique_id=1874045170]
-position = Vector2(207, 10)
-script = ExtResource("9_irw6p")
-wood_production_value = 1.0
-
-[node name="Sprite2D" type="Sprite2D" parent="Resources/Wood_res4" unique_id=827279956]
-position = Vector2(0, -18)
-texture = ExtResource("8_tjl6l")
-
-[node name="Stone_res" type="Node2D" parent="Resources" unique_id=710964871]
+[node name="Stone_res" parent="Resources" unique_id=1094199615 instance=ExtResource("14_t8afp")]
 position = Vector2(-113, -9)
-script = ExtResource("9_irw6p")
-stone_production_value = 1.0
 
-[node name="Sprite2D" type="Sprite2D" parent="Resources/Stone_res" unique_id=1942545082]
-position = Vector2(1, -1)
-texture = ExtResource("11_31phq")
+[node name="Stone_res2" parent="Resources" unique_id=1551289027 instance=ExtResource("14_t8afp")]
+position = Vector2(45, -118)
 
-[node name="Stone_res2" type="Node2D" parent="Resources" unique_id=180943350]
-position = Vector2(47, -119)
-script = ExtResource("9_irw6p")
-stone_production_value = 1.0
-
-[node name="Sprite2D" type="Sprite2D" parent="Resources/Stone_res2" unique_id=1165553638]
-texture = ExtResource("11_31phq")
-
-[node name="Stone_res3" type="Node2D" parent="Resources" unique_id=416047401]
-position = Vector2(240, 57)
-script = ExtResource("9_irw6p")
-stone_production_value = 1.0
-
-[node name="Sprite2D" type="Sprite2D" parent="Resources/Stone_res3" unique_id=435326636]
-texture = ExtResource("11_31phq")
+[node name="Stone_res3" parent="Resources" unique_id=636374765 instance=ExtResource("14_t8afp")]
+position = Vector2(237, 59)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1551926076]
 modulate = Color(1, 0, 0, 1)
@@ -167,6 +147,12 @@ y_sort_enabled = true
 [node name="Player_base" type="Node2D" parent="." unique_id=252246131]
 unique_name_in_owner = true
 y_sort_enabled = true
+
+[node name="Node2D ombre" type="Sprite2D" parent="Player_base" unique_id=1138503443]
+material = SubResource("ShaderMaterial_hd8f4")
+texture = ExtResource("12_31phq")
+region_enabled = true
+region_rect = Rect2(-27.235, -34.435, 100, 100)
 
 [node name="Node2D" type="Sprite2D" parent="Player_base" unique_id=1388883769]
 texture = ExtResource("12_31phq")
@@ -239,6 +225,7 @@ tile_map_data = PackedByteArray("AAD2/wIAAAADAAAAAAD2/wMAAAADAAAAAAD2/wQAAAADAAA
 tile_set = ExtResource("2_nlqrh")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=303866761]
+layer = 2
 
 [node name="UI" parent="CanvasLayer" unique_id=991737340 instance=ExtResource("8_557vl")]
 unique_name_in_owner = true
@@ -360,5 +347,30 @@ layout_mode = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 10
 text = "Press R to restart"
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="." unique_id=1405520174]
+visible = false
+position = Vector2(-23, -24)
+energy = 0.2
+shadow_color = Color(0, 0, 0, 1)
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1206857808]
+visible = false
+position = Vector2(10, -5)
+energy = 3.06
+texture = ExtResource("28_t8afp")
+texture_scale = 2.15
+height = 280.0
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="." unique_id=492463756]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer2" unique_id=1706402912]
+material = SubResource("ShaderMaterial_hnn05")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0)
 
 [connection signal="pressed" from="CanvasLayer/Game Over/MarginContainer/MarginContainer/VBoxContainer/Button" to="CanvasLayer/Game Over" method="_on_restart_button_pressed"]

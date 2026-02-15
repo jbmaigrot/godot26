@@ -1,6 +1,7 @@
 [gd_resource type="TileSet" format=3 uid="uid://dqv5qisbsksx"]
 
 [ext_resource type="Texture2D" uid="uid://d3wu0insdbkf0" path="res://Assets/Sprites/tileset.png" id="1_foeds"]
+[ext_resource type="Texture2D" uid="uid://ccfa88yygqq27" path="res://Assets/Sprites/tileset_normal.png" id="2_gmvlx"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_foeds"]
 vertices = PackedVector2Array(16, 0, 0, 8, -16, 0, 0, -8)
@@ -8,8 +9,12 @@ polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(0, -8, -16, 0, 0, 8, 16, 0)])
 agent_radius = 0.0
 
+[sub_resource type="CanvasTexture" id="CanvasTexture_y856a"]
+diffuse_texture = ExtResource("1_foeds")
+normal_texture = ExtResource("2_gmvlx")
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rgij8"]
-texture = ExtResource("1_foeds")
+texture = SubResource("CanvasTexture_y856a")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 0:0/0/custom_data_0 = true
