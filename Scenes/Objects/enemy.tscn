@@ -2,11 +2,12 @@
 
 [ext_resource type="Script" uid="uid://ceh6n3u1xd5n5" path="res://Scripts/enemy.gd" id="2_1f0kj"]
 [ext_resource type="PackedScene" uid="uid://cfw2nmlhdb44l" path="res://Scenes/Objects/FloatingValue.tscn" id="2_8ypxt"]
-[ext_resource type="Texture2D" uid="uid://evgybgwect5v" path="res://Assets/Sprites/devil.png" id="2_i2hje"]
 [ext_resource type="Texture2D" uid="uid://dmuywxv2n6vku" path="res://Assets/Sprites/Coin_icon.png" id="3_vm7cc"]
 [ext_resource type="Shader" uid="uid://bmbmktp60gptr" path="res://Scenes/Objects/shadow_shader.gdshader" id="4_v3p23"]
 [ext_resource type="Shader" uid="uid://bor2nsw7n7404" path="res://Scripts/Shaders/enemy_hit.gdshader" id="4_vm7cc"]
+[ext_resource type="Texture2D" uid="uid://dl82op8nh2btp" path="res://Assets/Sprites/oni_mask.png" id="5_v3p23"]
 [ext_resource type="Texture2D" uid="uid://j2q5r16vi7p6" path="res://Assets/Sprites/ombre_iso.png" id="6_osb2a"]
+[ext_resource type="Texture2D" uid="uid://di8m87pvdd042" path="res://Assets/Sprites/oni_mask_2.png" id="7_0g2vl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1f0kj"]
 custom_solver_bias = 1.0
@@ -225,7 +226,8 @@ shape = SubResource("RectangleShape2D_1f0kj")
 
 [node name="Sprite2D ombre" type="Sprite2D" parent="." unique_id=2030038628]
 material = SubResource("ShaderMaterial_osb2a")
-texture = ExtResource("2_i2hje")
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("5_v3p23")
 region_enabled = true
 region_rect = Rect2(-464.25, -473.265, 1000, 1000)
 
@@ -233,7 +235,8 @@ region_rect = Rect2(-464.25, -473.265, 1000, 1000)
 
 [node name="Sprite2D" type="Sprite2D" parent="Node2D" unique_id=1173252088]
 material = SubResource("ShaderMaterial_v3p23")
-texture = ExtResource("2_i2hje")
+scale = Vector2(2, 2)
+texture = ExtResource("7_0g2vl")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=1583255730]
 path_desired_distance = 10.0

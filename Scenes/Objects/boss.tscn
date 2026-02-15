@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://dmuywxv2n6vku" path="res://Assets/Sprites/Coin_icon.png" id="3_4ypk7"]
 [ext_resource type="Shader" uid="uid://bor2nsw7n7404" path="res://Scripts/Shaders/enemy_hit.gdshader" id="4_1udvx"]
 [ext_resource type="Shader" uid="uid://bmbmktp60gptr" path="res://Scenes/Objects/shadow_shader.gdshader" id="4_4ypk7"]
-[ext_resource type="Texture2D" uid="uid://evgybgwect5v" path="res://Assets/Sprites/devil.png" id="5_68mlv"]
+[ext_resource type="Texture2D" uid="uid://dl82op8nh2btp" path="res://Assets/Sprites/oni_mask.png" id="5_4ypk7"]
 [ext_resource type="Texture2D" uid="uid://j2q5r16vi7p6" path="res://Assets/Sprites/ombre_iso.png" id="6_ksmyw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1f0kj"]
@@ -165,7 +165,7 @@ shape = SubResource("RectangleShape2D_1f0kj")
 modulate = Color(0.08627451, 0.09019608, 0.101960786, 1)
 material = SubResource("ShaderMaterial_1udvx")
 scale = Vector2(2, 2)
-texture = ExtResource("5_68mlv")
+texture = ExtResource("5_4ypk7")
 region_enabled = true
 region_rect = Rect2(-50, -50, 200, 200)
 
@@ -173,7 +173,7 @@ region_rect = Rect2(-50, -50, 200, 200)
 modulate = Color(0.08627451, 0.09019608, 0.101960786, 1)
 material = SubResource("ShaderMaterial_osb2a")
 scale = Vector2(2, 2)
-texture = ExtResource("5_68mlv")
+texture = ExtResource("5_4ypk7")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=1583255730]
 path_desired_distance = 10.0
